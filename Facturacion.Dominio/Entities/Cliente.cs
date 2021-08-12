@@ -6,19 +6,35 @@ using System.Threading.Tasks;
 
 namespace Facturacion.Dominio.Entities
 {
-    public class Cliente
+    
+    public class Cliente 
     {
-        public int nrocliente { get; set; }
+        public Guid Id { get; set; }
+
+        
+        public int NroCliente { get; set; }
 
         //codigo complejo
-        public string codigoCliente { get; set; }
+        public string CodigoCliente { get; set; }
 
         public string Apellido { get; set; }
 
         public string Nombre { get; set; }
 
-        public string ApyNom => Apellido + " " + Nombre;
+        public string ApYNom => Apellido + " " + Nombre;
 
         public string Direccion { get; set; }
+
+        public Zona Zona { get; set; }
+
+        public object[] ObtenerPropiedades()
+        {
+           return this.GetType().GetProperties();
+        }
+
+        public Cliente()
+        {
+            ObtenerPropiedades();
+        }
     }
 }

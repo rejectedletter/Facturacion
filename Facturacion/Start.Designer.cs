@@ -53,7 +53,7 @@ namespace Facturacion
             this.btnNuevoProducto.Name = "btnNuevoProducto";
             this.btnNuevoProducto.Size = new System.Drawing.Size(156, 94);
             this.btnNuevoProducto.TabIndex = 1;
-            this.btnNuevoProducto.Text = "Agregar Producto";
+            this.btnNuevoProducto.Text = "Agregar Cliente nuevo";
             this.btnNuevoProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnNuevoProducto.UseVisualStyleBackColor = true;
             this.btnNuevoProducto.Click += new System.EventHandler(this.btnNuevoProducto_Click);
@@ -68,7 +68,7 @@ namespace Facturacion
             this.btnListarDePRoductos.Name = "btnListarDePRoductos";
             this.btnListarDePRoductos.Size = new System.Drawing.Size(118, 97);
             this.btnListarDePRoductos.TabIndex = 2;
-            this.btnListarDePRoductos.Text = "Lista de Productos";
+            this.btnListarDePRoductos.Text = "Lista de Clientes";
             this.btnListarDePRoductos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnListarDePRoductos.UseVisualStyleBackColor = true;
             this.btnListarDePRoductos.Click += new System.EventHandler(this.btnListarDePRoductos_Click);

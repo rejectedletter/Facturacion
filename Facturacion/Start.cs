@@ -35,7 +35,7 @@ namespace Facturacion
 
         private void btnNuevoProducto_Click(object sender, EventArgs e)
         {
-            var formAgregarProducto = new ABM(TipoOperacion.Alta, null);
+            var formAgregarProducto = new ABMProducto(TipoOperacion.Alta, (Guid)sender);
             formAgregarProducto.Show();
         }
 

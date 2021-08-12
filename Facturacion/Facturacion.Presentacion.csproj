@@ -49,17 +49,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM.cs">
+    <Compile Include="ABMCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM.Designer.cs">
-      <DependentUpon>ABM.cs</DependentUpon>
+    <Compile Include="ABMCliente.Designer.cs">
+      <DependentUpon>ABMCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABMPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMPlan.Designer.cs">
+      <DependentUpon>ABMPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABMProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABMProducto.Designer.cs">
+      <DependentUpon>ABMProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Utils.cs" />
     <Compile Include="Listado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Listado.Designer.cs">
       <DependentUpon>Listado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoCuentaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListadoCuentaCliente.Designer.cs">
+      <DependentUpon>ListadoCuentaCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="Resource1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -75,11 +94,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoOperacion.cs" />
-    <EmbeddedResource Include="ABM.resx">
-      <DependentUpon>ABM.cs</DependentUpon>
+    <EmbeddedResource Include="ABMCliente.resx">
+      <DependentUpon>ABMCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABMProducto.resx">
+      <DependentUpon>ABMProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listado.resx">
       <DependentUpon>Listado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListadoCuentaCliente.resx">
+      <DependentUpon>ListadoCuentaCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resource1.resx">
       <Generator>ResXFileCodeGenerator</Generator>

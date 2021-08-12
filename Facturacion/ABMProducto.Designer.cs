@@ -1,7 +1,7 @@
 ﻿
 namespace Facturacion
 {
-    partial class ABM
+    partial class ABMProducto
     {
         /// <summary>
         /// Required designer variable.
@@ -36,6 +36,8 @@ namespace Facturacion
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,7 +91,7 @@ namespace Facturacion
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Precio";
+            this.label2.Text = "Monto";
             // 
             // btnAceptar
             // 
@@ -101,11 +103,30 @@ namespace Facturacion
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
-            // ABM
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(296, 257);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Plan";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(365, 254);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 8;
+            // 
+            // ABMProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.label2);
@@ -114,7 +135,7 @@ namespace Facturacion
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(816, 489);
             this.MinimumSize = new System.Drawing.Size(816, 489);
-            this.Name = "ABM";
+            this.Name = "ABMProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ABM";
             this.Load += new System.EventHandler(this.ABM_Load);
@@ -134,5 +155,7 @@ namespace Facturacion
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAceptar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
