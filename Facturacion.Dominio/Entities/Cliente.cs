@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Facturacion.Dominio.Entities
 {
-    
+
     public class Cliente 
     {
         public Guid Id { get; set; }
@@ -24,6 +20,8 @@ namespace Facturacion.Dominio.Entities
         public string ApYNom => Apellido + " " + Nombre;
 
         public string Direccion { get; set; }
+
+        public Guid CuentaClienteId { get; set; }
 
         public Zona Zona { get; set; }
 

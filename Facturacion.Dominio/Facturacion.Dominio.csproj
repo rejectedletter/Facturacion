@@ -44,9 +44,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dto\ClienteDto.cs" />
+    <Compile Include="Dto\CuentaClienteDto.cs" />
+    <Compile Include="Dto\DetalleClienteDto.cs" />
+    <Compile Include="Dto\DetalleProductoDto.cs" />
+    <Compile Include="Dto\EOperacion.cs" />
+    <Compile Include="Dto\FacturaDto.cs" />
+    <Compile Include="Dto\MovimientoDto.cs" />
+    <Compile Include="Dto\PlanDto.cs" />
+    <Compile Include="Dto\ProductoDto.cs" />
+    <Compile Include="Dto\ZonaDto.cs" />
     <Compile Include="Entities\Cliente.cs" />
-    <Compile Include="Entities\ClientesProductos.cs" />
+    <Compile Include="Entities\CuentaCliente.cs" />
+    <Compile Include="Entities\DetalleCliente.cs" />
+    <Compile Include="Entities\DetalleProducto.cs" />
     <Compile Include="Entities\Factura.cs" />
+    <Compile Include="Entities\Movimiento.cs" />
     <Compile Include="Entities\Plan.cs" />
     <Compile Include="Entities\Producto.cs" />
     <Compile Include="Entities\ProductosPlanes.cs" />
@@ -56,5 +69,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

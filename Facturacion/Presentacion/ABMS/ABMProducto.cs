@@ -1,13 +1,13 @@
 ﻿using Facturacion.Dominio;
+using Facturacion.Presentacion;
 using System;
 using System.Windows.Forms;
 
 namespace Facturacion
 {
-    public partial class ABMProducto : Form
+    public partial class ABMProducto : ABMBase
     {
-         public TipoOperacion _tipoOperacion { get; set; }
-
+         
         public Guid _clienteId { get; set; }
         public ABMProducto(TipoOperacion tipoOperacion, Guid clienteId)
         {
@@ -16,20 +16,13 @@ namespace Facturacion
 
             InitializeComponent();
 
-            //if (_tipoOperacion == TipoOperacion.Modificacion)
-            //{
-            //    CargarInformacionProducto(clienteId);
-            //    lblTitulo.Text = "Modificar Producto";
-                
-            //}
+            CargarTitulo(_tipoOperacion);
 
-            if (_tipoOperacion == TipoOperacion.Alta)
-            {
-                
-                lblTitulo.Text = "Agregar Producto";
-            }
+            
 
         }
+
+       
 
         //private void CargarInformacionProducto(Guid id)
         //{
@@ -38,6 +31,22 @@ namespace Facturacion
         //    txtDescripcion.Text = objetoCargar.Descripcion;
         //    txtPrecio.Text = objetoCargar.PrecioUnitario.ToString();
         //}
+
+        protected override void CargarTitulo(TipoOperacion tp)
+        {
+            //if (_tipoOperacion == TipoOperacion.Modificacion)
+            //{
+            //    CargarInformacionProducto(clienteId);
+            //    lblTitulo.Text = "Modificar Producto";
+
+            //}
+
+            if (_tipoOperacion == TipoOperacion.Alta)
+            {
+
+                lblTitulo.Text = "Nuevo Producto";
+            }
+        }
 
         private void ABM_Load(object sender, EventArgs e)
         {

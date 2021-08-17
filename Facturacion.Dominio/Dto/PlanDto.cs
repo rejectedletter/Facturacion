@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Facturacion.Dominio.Entities
+namespace Facturacion.Dominio.Dto
 {
-    public class Plan
+    public class PlanDto
     {
         public Guid Id { get; set; }
 
-        public int CaantidadCuotas { get; set; }
+        public int CantidadCuotas { get; set; }
 
         public decimal Porcentaje { get; set; }
 

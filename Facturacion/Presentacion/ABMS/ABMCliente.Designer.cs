@@ -29,11 +29,8 @@ namespace Facturacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtdireccion = new System.Windows.Forms.TextBox();
@@ -43,15 +40,9 @@ namespace Facturacion
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAceptar
+            // lblTitulo
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(339, 393);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 11;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            this.lblTitulo.Location = new System.Drawing.Point(350, 25);
             // 
             // txtNombre
             // 
@@ -68,26 +59,6 @@ namespace Facturacion
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 7;
             this.lblNombre.Text = "Nombre";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lblTitulo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 100);
-            this.panel1.TabIndex = 6;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblTitulo.Location = new System.Drawing.Point(342, 31);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(93, 33);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Titulo";
             // 
             // txtApellido
             // 
@@ -150,13 +121,20 @@ namespace Facturacion
             this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.txtApellido);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
-            this.Controls.Add(this.panel1);
             this.Name = "ABMCliente";
             this.Text = "ABMCliente";
             this.Load += new System.EventHandler(this.ABMCliente_Load);
+            this.Controls.SetChildIndex(this.lblNombre, 0);
+            this.Controls.SetChildIndex(this.txtNombre, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.txtApellido, 0);
+            this.Controls.SetChildIndex(this.lblDireccion, 0);
+            this.Controls.SetChildIndex(this.txtdireccion, 0);
+            this.Controls.SetChildIndex(this.lblCodigocliente, 0);
+            this.Controls.SetChildIndex(this.lblCodigoClienteTit, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -165,12 +143,8 @@ namespace Facturacion
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtdireccion;

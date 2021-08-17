@@ -2,12 +2,12 @@
 
 namespace Facturacion.Dominio.Entities
 {
-    public class Zona
+    public class DetalleCliente
     {
         public Guid Id { get; set; }
 
-        public string NombreZona { get; set; }
-
         public Guid ClienteId { get; set; }
+
+        public Guid FacturaId { get; set; }
     }
 }

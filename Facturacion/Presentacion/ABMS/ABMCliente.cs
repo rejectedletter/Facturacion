@@ -1,34 +1,36 @@
 ﻿using Facturacion.Aplicacion.Servicios;
 using Facturacion.Dominio.Entities;
+using Facturacion.Presentacion;
 using System;
 using System.Windows.Forms;
 
 namespace Facturacion
 {
-    public partial class ABMCliente : Form
+    public partial class ABMCliente : ABMBase
     {
-
-        public TipoOperacion _tipoOperacion { get; set; }
-    public ABMCliente(TipoOperacion tipoOperacion)
-        {
-            _tipoOperacion = tipoOperacion;
-
+         public ABMCliente(TipoOperacion tipoOperacion)
+         {
            
-            
             InitializeComponent();
-
             lblCodigocliente.Visible = false;
 
-            if (_tipoOperacion == TipoOperacion.Modificacion)
+            CargarTitulo(tipoOperacion);
+         }
+
+        protected override void CargarTitulo(TipoOperacion tp)
+        {
+           
+
+            if (tp == TipoOperacion.Modificacion)
             {
                 //precargar datos
                 lblTitulo.Text = "Modificar datos del cliente";
             }
 
-            if (_tipoOperacion == TipoOperacion.Alta)
+            if (tp == TipoOperacion.Alta)
             {
                 //precargar datos
-                lblTitulo.Text = "Agregar nuevo cliente";
+                lblTitulo.Text = "Nuevo Cliente";
             }
         }
 

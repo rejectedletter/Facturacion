@@ -2,9 +2,6 @@
 using Facturacion.Dominio.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Facturacion.Infraestructura
 {
@@ -12,7 +9,7 @@ namespace Facturacion.Infraestructura
     {
         public List<Producto> _productos = new List<Producto>();
         public List<Cliente> _clientes = new List<Cliente>();
-        public List<ClientesProductos> _clientesProductos = new List<ClientesProductos>();
+        
         public List<Plan> _planes = new List<Plan>();
         public List<ProductosPlanes> _productosPlanes = new List<ProductosPlanes>();
 
@@ -41,10 +38,7 @@ namespace Facturacion.Infraestructura
             _planes.Add(plan);
         }
 
-        public void AgregarRelacionclientesProductos(ClientesProductos clientesProductos)
-        {
-            _clientesProductos.Add(clientesProductos);
-        }
+        
 
         public void AgregarRelacionclientesProductos(ProductosPlanes productosPlanes)
         {

@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Facturacion.Dominio.Entities
+namespace Facturacion.Dominio.Dto
 {
-    public class ClientesProductos
+    public class DetalleProductoDto
     {
         public Guid id { get; set; }
 
-        public Guid ClienteId { get; set; }
-
-        public Guid ProductoId { get; set; }
+        public Guid MyProperty { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using Facturacion.Dominio;
-using Facturacion.Dominio.Entities;
+﻿using Facturacion.Dominio.Entities;
 using Facturacion.Helpers;
 using System;
 using System.Windows.Forms;

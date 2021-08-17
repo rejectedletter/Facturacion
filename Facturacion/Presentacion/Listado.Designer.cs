@@ -228,8 +228,9 @@ namespace Facturacion
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvProductos);
+            this.MaximumSize = new System.Drawing.Size(1307, 583);
+            this.MinimumSize = new System.Drawing.Size(1307, 583);
             this.Name = "Listado";
-            this.Text = "Listado";
             this.Load += new System.EventHandler(this.Listado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.toolStrip1.ResumeLayout(false);
