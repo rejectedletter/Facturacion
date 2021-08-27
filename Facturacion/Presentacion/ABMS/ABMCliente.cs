@@ -45,7 +45,7 @@ namespace Facturacion
                     Direccion = txtdireccion.Text
                 };
 
-                ClienteServicio.Agregar(nuevoCliente);
+                
 
                 lblCodigocliente.Visible = true;
                 lblCodigocliente.Text = nuevoCliente.CodigoCliente;

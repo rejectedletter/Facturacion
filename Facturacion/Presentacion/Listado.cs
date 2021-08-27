@@ -1,6 +1,9 @@
-﻿using Facturacion.Dominio.Entities;
+﻿using Facturacion.Dominio.Dto;
+using Facturacion.Dominio.Entities;
 using Facturacion.Helpers;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Facturacion
@@ -8,12 +11,14 @@ namespace Facturacion
     public partial class Listado : Form
     {
         public int selectedRowIndex { get; set; }
-
+        public List<ClienteDto> clientes;
         public Listado()
         {
+            clientes = Aplicacion.Servicios.ClienteServicio.Listar(string.Empty);
+
             InitializeComponent();
-            dgvProductos.DataSource = Aplicacion.Servicios.ClienteServicio.Listar(string.Empty);
-            FormatearGrilla();
+            dgvProductos.DataSource = clientes;
+            //FormatearGrilla();
             
         }
 
@@ -75,6 +80,12 @@ namespace Facturacion
         {
             var formDetalleCuenta = new ListadoCuentaCliente((Guid)dgvProductos[0, selectedRowIndex].Value);
             formDetalleCuenta.Show();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            var comprobante = new Factura(clientes.First());
+            comprobante.Show();
         }
     }
 }

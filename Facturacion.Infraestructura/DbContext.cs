@@ -2,62 +2,88 @@
 using Facturacion.Dominio.Entities;
 using System;
 using System.Collections.Generic;
+using Dapper;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Facturacion.Infraestructura
 {
-    public class DbContext : IDisposable
+    public class DbContext 
     {
-        public List<Producto> _productos = new List<Producto>();
-        public List<Cliente> _clientes = new List<Cliente>();
-        
-        public List<Plan> _planes = new List<Plan>();
-        public List<ProductosPlanes> _productosPlanes = new List<ProductosPlanes>();
+        public string ConnectionString { get => throw new NotImplementedException(); set => new SqlConnection("Data Source=localhost;Initial Catalog=Facturacion_Gimnasio_Juan;Integrated Security=True;MultiSubnetFailover=False;MultipleActiveResultSets=False;ApplicationIntent=ReadWrite;"); }
 
-        
+        public int ConnectionTimeout => throw new NotImplementedException();
 
+        public string Database => throw new NotImplementedException();
+
+        public ConnectionState State => throw new NotImplementedException();
 
         public DbContext()
         {
             
-            _productos.Add
-            (
             
-                new Producto() {Id = new Guid("9c664981-b500-4340-9300-714f26b53dc8"), MontoTotalCancelar = 12 }
-            );
-
-            _clientes.Add( new Cliente() { Id=Guid.NewGuid(),Apellido="Vega", Nombre="Daniela", CodigoCliente="7797", Direccion="Los Sauces"});
         }
 
-        public void AgregarProducto(Producto producto)
-        {
-            _productos.Add(producto);
-        }
+        //public void AgregarProducto(Producto producto)
+        //{
+        //    _productos.Add(producto);
+        //}
 
-        public void AgregarPlan(Plan plan)
-        {
-            _planes.Add(plan);
-        }
+        //public void AgregarPlan(Plan plan)
+        //{
+        //    _planes.Add(plan);
+        //}
 
         
 
-        public void AgregarRelacionclientesProductos(ProductosPlanes productosPlanes)
+        //public void AgregarRelacionclientesProductos(ProductosPlanes productosPlanes)
+        //{
+        //    _productosPlanes.Add(productosPlanes);
+        //}
+
+        //public void AgregarRelacionProductosPlanes(ProductosPlanes productosPlanes)
+        //{
+        //    _productosPlanes.Add(productosPlanes);
+        //}
+
+        //public void AgregarClientes(Cliente cliente)
+        //{
+        //    _clientes.Add(cliente);
+        //}
+        //public void Dispose()
+        //{
+
+        //    GC.SuppressFinalize(this);
+        //}
+
+        public IDbTransaction BeginTransaction()
         {
-            _productosPlanes.Add(productosPlanes);
+            throw new NotImplementedException();
         }
 
-        public void AgregarRelacionProductosPlanes(ProductosPlanes productosPlanes)
+        public IDbTransaction BeginTransaction(IsolationLevel il)
         {
-            _productosPlanes.Add(productosPlanes);
+            throw new NotImplementedException();
         }
 
-        public void AgregarClientes(Cliente cliente)
+        public void Close()
         {
-            _clientes.Add(cliente);
+            throw new NotImplementedException();
         }
-        public void Dispose()
-        {
 
-            GC.SuppressFinalize(this);
+        public void ChangeDatabase(string databaseName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDbCommand CreateCommand()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Open()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Facturacion.Dominio.Dto
     {
         public Guid id { get; set; }
 
-        public Guid MyProperty { get; set; }
+        public ProductoDto DetalleProducto { get; set; }
     }
 }

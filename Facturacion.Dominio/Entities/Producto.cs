@@ -11,6 +11,6 @@ namespace Facturacion.Dominio
 
         public decimal MontoTotalCancelar { get; set; }
 
-        
+        public Guid ProductosPlanesId { get; set; }
     }
 }

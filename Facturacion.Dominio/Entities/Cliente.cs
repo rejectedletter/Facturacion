@@ -17,13 +17,14 @@ namespace Facturacion.Dominio.Entities
 
         public string Nombre { get; set; }
 
-        public string ApYNom => Apellido + " " + Nombre;
-
+        
         public string Direccion { get; set; }
 
         public Guid CuentaClienteId { get; set; }
 
-        public Zona Zona { get; set; }
+        public Guid ZonaId { get; set; }
+
+        public Guid ProductoId { get; set; }
 
         public object[] ObtenerPropiedades()
         {

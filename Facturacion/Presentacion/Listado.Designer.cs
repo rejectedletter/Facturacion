@@ -137,6 +137,7 @@ namespace Facturacion
             this.toolStripButton1.Size = new System.Drawing.Size(119, 35);
             this.toolStripButton1.Text = "Emitir Comprobante";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // textBox1
             // 
@@ -144,6 +145,7 @@ namespace Facturacion
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 3;
+            this.textBox1.Text = "26770.00";
             // 
             // label1
             // 
@@ -170,6 +172,7 @@ namespace Facturacion
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 5;
+            this.textBox2.Text = "610.00";
             // 
             // lblTitulo
             // 
@@ -195,6 +198,7 @@ namespace Facturacion
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 8;
+            this.textBox3.Text = "11160.00";
             // 
             // label5
             // 
@@ -211,6 +215,7 @@ namespace Facturacion
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 10;
+            this.textBox4.Text = "15610.00";
             // 
             // Listado
             // 

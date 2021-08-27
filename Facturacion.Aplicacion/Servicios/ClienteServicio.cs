@@ -1,24 +1,48 @@
-﻿using Facturacion.Dominio.Entities;
+﻿using Facturacion.Dominio;
+using Facturacion.Dominio.Dto;
+using Facturacion.Dominio.Entities;
 using Facturacion.Infraestructura;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Facturacion.Aplicacion.Servicios
 {
     public class ClienteServicio
     {
-        public static void Agregar(Cliente cliente)
+        
+        public ClienteServicio()
         {
-           
-
-            using (var context = new DbContext())
+            
+        }
+        public static void Agregar(ClienteDto cliente, ProductoDto producto)
+        {
+            var nuevaCuentaCliente = new CuentaCliente()
             {
-                context.AgregarClientes(cliente);
-                
-            }
+                Id = new CuentaClienteDto().Id,
+                ProductoId = producto.Id,
+                Debe = producto.MontoTotalCancelar
+            };
+
+            var nuevoCliente = new Cliente()
+            {
+                Id = cliente.Id,
+                NroCliente = cliente.NroCliente,
+                CodigoCliente = cliente.CodigoCliente,
+                Apellido = cliente.Apellido,
+                Nombre = cliente.Nombre,
+                Direccion = cliente.Direccion,
+                CuentaClienteId = nuevaCuentaCliente.Id,
+                ZonaId = cliente.Zona.Id,
+                ProductoId = producto.Id
+            };
+
+            var productoAsociado = new Producto()
+            {
+                Id = producto.Id,
+                MontoTotalCancelar = producto.MontoTotalCancelar,
+                ProductosPlanesId = producto.Plan.First().Id
+            };
         }
 
         public static void Modificar(Cliente cliente)
@@ -31,15 +55,40 @@ namespace Facturacion.Aplicacion.Servicios
 
         }
 
-        public static List<Cliente> Listar(string cadena)
+        public static List<ClienteDto> Listar(string cadena)
         {
-            
 
-            using (var context = new DbContext())
+
+            return new List<ClienteDto>()
             {
-
-                return context._clientes;
+                new Dominio.Dto.ClienteDto()
+                {
+                    CodigoCliente = "7930/1",
+                    ApellidoYNombre = "Medina, Andrés Fabian",
+                    Apellido="Medina",
+                    Nombre="Andrés Fabián",
+                    Direccion = "Juan B Justo 3024 - B° El Colmenar - San Miguel de Tucumán",
+                    Productos = new List<ProductoDto>()
+                        {
+                            new ProductoDto()
+                            {
+                                MontoTotalCancelar=26770.00M
+                            }
+                        },
+                    CuentaCliente = new CuentaClienteDto()
+                    {
+                    Debe = 15610.00M,
+                    Haber = 11160.00M,
+                    Movimientos = new List<MovimientoDto>()
+                            {
+                                new MovimientoDto()
+                                {
+                                    FechaMovimiento = new DateTime(2021, 04, 29)
+                                }
+                            }
+                    }
             }
+        };
             
         }
     }

@@ -6,7 +6,7 @@ namespace Facturacion.Dominio.Entities
     {
         public Guid Id { get; set; }
 
-        public Guid CuentaCliente { get; set; }
+        public Guid CuentaClienteId { get; set; }
 
         public Guid ProductoPlanId { get; set; }
     }

@@ -6,10 +6,12 @@ namespace Facturacion.Dominio.Entities
     {
         public Guid Id { get; set; }
 
-        public int CaantidadCuotas { get; set; }
+        public int CantidadCuotas { get; set; }
 
         public decimal Porcentaje { get; set; }
 
-        public bool Cancelado { get; set; }
+        
+
+        public Guid ProductoPlanId { get; set; }
     }
 }

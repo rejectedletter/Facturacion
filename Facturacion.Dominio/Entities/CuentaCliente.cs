@@ -12,6 +12,6 @@ namespace Facturacion.Dominio.Entities
 
         public Guid ProductoId { get; set; }
 
-        public Guid MobimientoId { get; set; }
+        public Guid MovimientoId { get; set; }
     }
 }
