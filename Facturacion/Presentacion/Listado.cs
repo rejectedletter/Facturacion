@@ -14,7 +14,7 @@ namespace Facturacion
         public List<ClienteDto> clientes;
         public Listado()
         {
-            clientes = Aplicacion.Servicios.ClienteServicio.Listar(string.Empty);
+           // clientes = Aplicacion.Servicios.ClienteServicio.Listar(string.Empty);
 
             InitializeComponent();
             dgvProductos.DataSource = clientes;
@@ -49,7 +49,7 @@ namespace Facturacion
        
         private void Listado_Load(object sender, EventArgs e)
         {
-            dgvProductos.DataSource = Aplicacion.Servicios.ClienteServicio.Listar(string.Empty);
+            
         }
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

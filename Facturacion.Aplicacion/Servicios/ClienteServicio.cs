@@ -2,8 +2,10 @@
 using Facturacion.Dominio.Dto;
 using Facturacion.Dominio.Entities;
 using Facturacion.Infraestructura;
+using Facturacion.Infraestructura.Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace Facturacion.Aplicacion.Servicios
@@ -55,41 +57,24 @@ namespace Facturacion.Aplicacion.Servicios
 
         }
 
-        public static List<ClienteDto> Listar(string cadena)
+        public static void Listar(string cadena)
         {
+            //var clientes = new object();
+            //var dt = new DataTable();
 
+            //if (string.IsNullOrEmpty(cadena))
+            //{
 
-            return new List<ClienteDto>()
-            {
-                new Dominio.Dto.ClienteDto()
-                {
-                    CodigoCliente = "7930/1",
-                    ApellidoYNombre = "Medina, Andrés Fabian",
-                    Apellido="Medina",
-                    Nombre="Andrés Fabián",
-                    Direccion = "Juan B Justo 3024 - B° El Colmenar - San Miguel de Tucumán",
-                    Productos = new List<ProductoDto>()
-                        {
-                            new ProductoDto()
-                            {
-                                MontoTotalCancelar=26770.00M
-                            }
-                        },
-                    CuentaCliente = new CuentaClienteDto()
-                    {
-                    Debe = 15610.00M,
-                    Haber = 11160.00M,
-                    Movimientos = new List<MovimientoDto>()
-                            {
-                                new MovimientoDto()
-                                {
-                                    FechaMovimiento = new DateTime(2021, 04, 29)
-                                }
-                            }
-                    }
-            }
-        };
-            
+            //    clientes = ClientesQuery.GetClientes();
+
+            //}
+            //else
+            //{
+            //    clientes = ClientesQuery.GetClientesByZone(cadena);
+            //}
+
+            //dt.Load(clientes);
+            //return dt;
         }
     }
 }

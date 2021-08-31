@@ -8,6 +8,6 @@ namespace Facturacion.Dominio.Entities
 
         public string NombreZona { get; set; }
 
-        public Guid ClienteId { get; set; }
+        
     }
 }
