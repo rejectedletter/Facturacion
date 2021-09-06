@@ -16,9 +16,9 @@ namespace Facturacion.Aplicacion.Servicios
             
             var detalleCliente = new DetalleCliente()
             {
-                Id = new DetalleClienteDto().Id,
-                ClienteId = cliente.Id,
-                FacturaId = nuevaFactura.Id
+                DetalleClienteId = new DetalleClienteDto().DetalleClienteId,
+                ClienteId = cliente.ClienteId,
+                FacturaId = nuevaFactura.FacturaId
             };
 
            

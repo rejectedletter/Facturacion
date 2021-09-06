@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dto\BaseDto.cs" />
     <Compile Include="Dto\ClienteDto.cs" />
     <Compile Include="Dto\CuentaClienteDto.cs" />
     <Compile Include="Dto\DetalleClienteDto.cs" />

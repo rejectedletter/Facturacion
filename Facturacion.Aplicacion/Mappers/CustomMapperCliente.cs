@@ -14,15 +14,14 @@ namespace Facturacion.Aplicacion.Mappers
         {
             return new Cliente()
             {
-                Id = cliente.Id,
+                ClienteId = cliente.ClienteId,
                 NroCliente = cliente.NroCliente,
-                CodigoCliente = cliente.CodigoCliente,
                 Apellido = cliente.Apellido,
                 Nombre = cliente.Nombre,
                 Direccion = cliente.Direccion,
-                CuentaClienteId = cliente.CuentaCliente.Id,
-                ZonaId = cliente.Zona.Id,
-                ProductoId = cliente.Productos.First().Id
+                CuentaClienteId = cliente.CuentaCliente.CuentaClienteId,
+                ZonaId = cliente.Zona.ZonaId,
+                ProductoId = cliente.Productos.First().ProductoId
             };
         }
     }

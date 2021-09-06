@@ -29,5 +29,15 @@ namespace Facturacion.Presentacion
             lblTitulo.AutoSize = true;
             
         }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            RealizarOperacion();
+        }
+
+        protected virtual void RealizarOperacion()
+        {
+            
+        }
     }
 }

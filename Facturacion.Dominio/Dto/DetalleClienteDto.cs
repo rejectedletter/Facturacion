@@ -4,7 +4,7 @@ namespace Facturacion.Dominio.Dto
 {
     public class DetalleClienteDto
     {
-        public Guid Id { get; set; }
+        public Guid DetalleClienteId { get; set; } = Guid.NewGuid();
 
         public ClienteDto Cliente { get; set; }
 

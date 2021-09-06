@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace Facturacion.Dominio.Dto
 {
-    public class CuentaClienteDto : BaseDto
+    public class CuentaClienteDto 
     {
+        public Guid CuentaClienteId { get; set; } = Guid.NewGuid();
         public decimal Debe { get; set; }
 
         public decimal Haber { get; set; }

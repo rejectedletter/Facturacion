@@ -4,7 +4,7 @@ namespace Facturacion.Dominio.Entities
 {
     public class Movimiento
     {
-        public Guid Id { get; set; }
+        public Guid MovimientoId { get; set; }
 
         public decimal Importe { get; set; }
 

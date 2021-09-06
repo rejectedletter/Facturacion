@@ -4,7 +4,7 @@ namespace Facturacion.Dominio.Entities
 {
     public class Factura
     {
-        public Guid Id { get; set; }
+        public Guid FacturaId { get; set; }
 
         public DateTime Fecha { get; set; }
 

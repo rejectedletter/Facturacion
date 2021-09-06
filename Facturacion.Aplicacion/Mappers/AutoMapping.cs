@@ -20,11 +20,11 @@ namespace Facturacion.Aplicacion.Mappers
         {
             CreateMap<ClienteDto, Cliente>()
                 .ForMember(d => d.ZonaId, opt =>
-                opt.MapFrom(s => s.Zona.Id))
+                opt.MapFrom(s => s.Zona.ZonaId))
                 .ForMember(d => d.CuentaClienteId, opt =>
-                 opt.MapFrom(s => s.CuentaCliente.Id))
+                 opt.MapFrom(s => s.CuentaCliente.CuentaClienteId))
                 .ForMember(d => d.ProductoId, opt =>
-                 opt.MapFrom(s => s.Productos.First().Id));
+                 opt.MapFrom(s => s.Productos.First().ProductoId));
 
 
         }

@@ -98,6 +98,8 @@
     <Compile Include="Factura.Designer.cs">
       <DependentUpon>Factura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\DgvFormatting.cs" />
+    <Compile Include="Helpers\TriggerAbm.cs" />
     <Compile Include="Presentacion\ABMS\ABMCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +119,12 @@
       <DependentUpon>ABMProducto.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Utils.cs" />
+    <Compile Include="Presentacion\ABMS\ABMZona.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentacion\ABMS\ABMZona.Designer.cs">
+      <DependentUpon>ABMZona.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentacion\Listado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,8 +170,14 @@
     <EmbeddedResource Include="Presentacion\ABMS\ABMCliente.resx">
       <DependentUpon>ABMCliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\ABMS\ABMPlan.resx">
+      <DependentUpon>ABMPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\ABMS\ABMProducto.resx">
       <DependentUpon>ABMProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentacion\ABMS\ABMZona.resx">
+      <DependentUpon>ABMZona.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentacion\Listado.resx">
       <DependentUpon>Listado.cs</DependentUpon>
@@ -195,6 +209,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.ClienteDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.CuentaClienteDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.DetalleClienteDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.DetalleProductoDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.FacturaDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.MovimientoDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.PlanDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.ProductoDto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Dto.ZonaDto.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

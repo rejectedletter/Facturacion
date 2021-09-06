@@ -12,47 +12,40 @@ namespace Facturacion.Infraestructura.Dapper
     {
         public static List<Zona> GetZonas()
         {
-            var query = $@"SELECT [Id]
+            var query = $@"SELECT [ZonaId]
              ,[NombreZona]
              FROM [Facturacion_Gimnasio_Juan].[dbo].[Zonas]";
 
             using (var connection = new DbConn())
             {
-                return connection.Query<Zona>(query).ToList();
+                return connection.Connection.Query<Zona>(query).ToList();
             }
         }
 
         public static Zona GetZonaById(Guid id)
         {
-            var query = $@"SELECT [Id]
+            var query = $@"SELECT [ZonaId]
              ,[NombreZona]
              FROM [Facturacion_Gimnasio_Juan].[dbo].[Zonas]
-            WHERE Id=@id";
+            WHERE ZonaId=@id";
 
             using (var connection = new DbConn())
             {
-                return connection.Query<Zona>(query, new { id }).ToList().First();
+                return connection.Connection.Query<Zona>(query, new { id }).ToList().First();
             }
         }
 
-        public static bool AddCuentaCliente(Zona zona)
+        public static bool AddZona(Zona zona)
         {
             var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[Zonas]
-           ([Id]
-           ,[NombreZona]
-           ,[ClienteId])
-             VALUES
-           (<@Id, uniqueidentifier,>
-           ,<@NombreZona, varchar(50),>)";
+           ([ZonaId]
+           ,[NombreZona])
+            VALUES
+           ('{zona.ZonaId}', '{zona.NombreZona}')";
 
             using (var connection = new DbConn())
             {
-                if (connection.Execute(query, new
-                {
-                    Id = zona.Id,
-                    NombreZona = zona.NombreZona,
-                    
-                }) == 1)
+                if (connection.Connection.Execute(query) == 1)
                 {
                     return true;
                 }
@@ -63,17 +56,17 @@ namespace Facturacion.Infraestructura.Dapper
             }
         }
 
-        public static bool UpdateCuentaCliente(Zona zona)
+        public static bool UpdateZona(Zona zona)
         {
             var query = $@"UPDATE [Facturacion_Gimnasio_Juan].[dbo].[Zonas]
-            SET [NombreZona] = <@NombreZona, varchar(50),>
-            WHERE Id = @Id";
+            SET [NombreZona] = @NombreZona
+            WHERE ZonaId = @Id";
 
             using (var connection = new DbConn())
             {
-                if (connection.Execute(query, new
+                if (connection.Connection.Execute(query, new
                 {
-                    Id = zona.Id,
+                    Id = zona.ZonaId,
                     NombreZona = zona.NombreZona,
 
                 }) == 1)
@@ -87,14 +80,14 @@ namespace Facturacion.Infraestructura.Dapper
             }
         }
 
-        public static bool DeleteCuentaCliente(Guid id)
+        public static bool DeleteZona(Guid id)
         {
             var query = $@"DELETE FROM [Facturacion_Gimnasio_Juan].[dbo].[Zonas]
-            WHERE Id = @Id";
+            WHERE ZonaId = @Id";
 
             using (var connection = new DbConn())
             {
-                if (connection.Execute(query, new
+                if (connection.Connection.Execute(query, new
                 {
                     Id = id
 

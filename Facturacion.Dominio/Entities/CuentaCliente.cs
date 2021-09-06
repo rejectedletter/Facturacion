@@ -4,7 +4,7 @@ namespace Facturacion.Dominio.Entities
 {
     public class CuentaCliente
     {
-        public Guid Id { get; set; }
+        public Guid CuentaClienteId { get; set; }
 
         public decimal Debe { get; set; }
 

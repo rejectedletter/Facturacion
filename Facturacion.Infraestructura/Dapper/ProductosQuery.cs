@@ -21,7 +21,7 @@ namespace Facturacion.Infraestructura.Dapper
 
             using (var connection = new DbConn())
             {
-                return connection.Query<Producto>(query, new { cuentaClienteId }).ToList();
+                return connection.Connection.Query<Producto>(query, new { cuentaClienteId }).ToList();
             }
         }
 
@@ -40,12 +40,11 @@ namespace Facturacion.Infraestructura.Dapper
 
             using (var connection = new DbConn())
             {
-                if (connection.Execute(query, new
+                if (connection.Connection.Execute(query, new
                 {
-                   Id = producto.Id,
+                   Id = producto.ProductoId,
                    Descripcion = producto.Descripcion,
-                   MontoTotalCancelar = producto.MontoTotalCancelar,
-                   ProductosPlanesId = producto.ProductosPlanesId
+                   MontoTotalCancelar = producto.MontoTotalCancelar
                 }) == 1)
                 {
                     return true;

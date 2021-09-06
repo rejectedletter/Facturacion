@@ -8,7 +8,7 @@ namespace Facturacion.Dominio.Dto
 {
     public class DetalleProductoDto
     {
-        public Guid id { get; set; }
+        public Guid DetalleProductoId { get; set; } = Guid.NewGuid();
 
         public ProductoDto DetalleProducto { get; set; }
     }

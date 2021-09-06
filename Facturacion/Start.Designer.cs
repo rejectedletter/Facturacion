@@ -30,25 +30,26 @@ namespace Facturacion
         private void InitializeComponent()
         {
             this.pnlImg = new System.Windows.Forms.Panel();
+            this.btnMinimizar = new System.Windows.Forms.Button();
+            this.btnMaximizar = new System.Windows.Forms.Button();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnZonas = new System.Windows.Forms.Button();
             this.btnPlanes = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnMaximizar = new System.Windows.Forms.Button();
-            this.btnMinimizar = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnZonas = new System.Windows.Forms.Button();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnModificar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnComprobante = new System.Windows.Forms.Button();
             this.pnlImg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlImg
@@ -63,6 +64,36 @@ namespace Facturacion
             this.pnlImg.Size = new System.Drawing.Size(800, 33);
             this.pnlImg.TabIndex = 0;
             // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Location = new System.Drawing.Point(492, 6);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(32, 24);
+            this.btnMinimizar.TabIndex = 2;
+            this.btnMinimizar.Text = "X";
+            this.btnMinimizar.UseVisualStyleBackColor = true;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.Location = new System.Drawing.Point(530, 6);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(32, 24);
+            this.btnMaximizar.TabIndex = 1;
+            this.btnMaximizar.Text = "X";
+            this.btnMaximizar.UseVisualStyleBackColor = true;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Location = new System.Drawing.Point(568, 6);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(32, 24);
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.Text = "X";
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
             // btnClientes
             // 
             this.btnClientes.BackColor = System.Drawing.Color.DimGray;
@@ -73,7 +104,7 @@ namespace Facturacion
             this.btnClientes.Location = new System.Drawing.Point(0, 3);
             this.btnClientes.Margin = new System.Windows.Forms.Padding(0);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Size = new System.Drawing.Size(204, 38);
+            this.btnClientes.Size = new System.Drawing.Size(266, 38);
             this.btnClientes.TabIndex = 1;
             this.btnClientes.Text = "Clientes";
             this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -88,6 +119,7 @@ namespace Facturacion
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnComprobante);
             this.splitContainer1.Panel1.Controls.Add(this.btnPlanes);
             this.splitContainer1.Panel1.Controls.Add(this.btnZonas);
             this.splitContainer1.Panel1.Controls.Add(this.btnClientes);
@@ -101,23 +133,6 @@ namespace Facturacion
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 3;
             // 
-            // btnZonas
-            // 
-            this.btnZonas.BackColor = System.Drawing.Color.DimGray;
-            this.btnZonas.FlatAppearance.BorderSize = 0;
-            this.btnZonas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZonas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnZonas.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnZonas.Location = new System.Drawing.Point(0, 41);
-            this.btnZonas.Margin = new System.Windows.Forms.Padding(0);
-            this.btnZonas.Name = "btnZonas";
-            this.btnZonas.Size = new System.Drawing.Size(204, 38);
-            this.btnZonas.TabIndex = 2;
-            this.btnZonas.Text = "Zonas";
-            this.btnZonas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnZonas.UseVisualStyleBackColor = false;
-            this.btnZonas.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnPlanes
             // 
             this.btnPlanes.BackColor = System.Drawing.Color.DimGray;
@@ -125,55 +140,32 @@ namespace Facturacion
             this.btnPlanes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlanes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlanes.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnPlanes.Location = new System.Drawing.Point(0, 79);
+            this.btnPlanes.Location = new System.Drawing.Point(0, 41);
             this.btnPlanes.Margin = new System.Windows.Forms.Padding(0);
             this.btnPlanes.Name = "btnPlanes";
-            this.btnPlanes.Size = new System.Drawing.Size(204, 38);
+            this.btnPlanes.Size = new System.Drawing.Size(266, 38);
             this.btnPlanes.TabIndex = 3;
             this.btnPlanes.Text = "Planes";
             this.btnPlanes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPlanes.UseVisualStyleBackColor = false;
             this.btnPlanes.Click += new System.EventHandler(this.btnPlanes_Click);
             // 
-            // btnCerrar
+            // btnZonas
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(568, 6);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(32, 24);
-            this.btnCerrar.TabIndex = 0;
-            this.btnCerrar.Text = "X";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Location = new System.Drawing.Point(530, 6);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(32, 24);
-            this.btnMaximizar.TabIndex = 1;
-            this.btnMaximizar.Text = "X";
-            this.btnMaximizar.UseVisualStyleBackColor = true;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Location = new System.Drawing.Point(492, 6);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(32, 24);
-            this.btnMinimizar.TabIndex = 2;
-            this.btnMinimizar.Text = "X";
-            this.btnMinimizar.UseVisualStyleBackColor = true;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.btnModificar);
-            this.panel1.Controls.Add(this.btnNuevo);
-            this.panel1.Location = new System.Drawing.Point(4, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(523, 47);
-            this.panel1.TabIndex = 0;
+            this.btnZonas.BackColor = System.Drawing.Color.DimGray;
+            this.btnZonas.FlatAppearance.BorderSize = 0;
+            this.btnZonas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZonas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZonas.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnZonas.Location = new System.Drawing.Point(0, 79);
+            this.btnZonas.Margin = new System.Windows.Forms.Padding(0);
+            this.btnZonas.Name = "btnZonas";
+            this.btnZonas.Size = new System.Drawing.Size(266, 38);
+            this.btnZonas.TabIndex = 2;
+            this.btnZonas.Text = "Zonas";
+            this.btnZonas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnZonas.UseVisualStyleBackColor = false;
+            this.btnZonas.Click += new System.EventHandler(this.button1_Click);
             // 
             // dgvDatos
             // 
@@ -187,6 +179,36 @@ namespace Facturacion
             this.dgvDatos.Size = new System.Drawing.Size(524, 377);
             this.dgvDatos.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.btnModificar);
+            this.panel1.Controls.Add(this.btnNuevo);
+            this.panel1.Location = new System.Drawing.Point(4, 7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(523, 47);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(372, 10);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(50, 34);
+            this.btnEliminar.TabIndex = 2;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(238, 10);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(50, 34);
+            this.btnModificar.TabIndex = 1;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
             // btnNuevo
             // 
             this.btnNuevo.Location = new System.Drawing.Point(111, 10);
@@ -195,24 +217,24 @@ namespace Facturacion
             this.btnNuevo.TabIndex = 0;
             this.btnNuevo.Text = "Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnModificar
+            // btnComprobante
             // 
-            this.btnModificar.Location = new System.Drawing.Point(182, 10);
-            this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(50, 34);
-            this.btnModificar.TabIndex = 1;
-            this.btnModificar.Text = "Modificar";
-            this.btnModificar.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(256, 10);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(50, 34);
-            this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnComprobante.BackColor = System.Drawing.Color.DimGray;
+            this.btnComprobante.FlatAppearance.BorderSize = 0;
+            this.btnComprobante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComprobante.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnComprobante.Location = new System.Drawing.Point(0, 117);
+            this.btnComprobante.Margin = new System.Windows.Forms.Padding(0);
+            this.btnComprobante.Name = "btnComprobante";
+            this.btnComprobante.Size = new System.Drawing.Size(266, 38);
+            this.btnComprobante.TabIndex = 4;
+            this.btnComprobante.Text = "Generar Comprobante";
+            this.btnComprobante.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnComprobante.UseVisualStyleBackColor = false;
+            this.btnComprobante.Click += new System.EventHandler(this.btnComprobante_Click);
             // 
             // Start
             // 
@@ -235,8 +257,8 @@ namespace Facturacion
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -257,6 +279,7 @@ namespace Facturacion
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Button btnComprobante;
     }
 }
 

@@ -1,51 +1,29 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Facturacion.Infraestructura
 {
-    public  class DbConn : IDisposable, IDbConnection
+    public class DbConn : IDisposable
     {
-        public string ConnectionString { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public int ConnectionTimeout => throw new NotImplementedException();
-
-        public string Database => throw new NotImplementedException();
-
-        public ConnectionState State => throw new NotImplementedException();
-
-        public IDbTransaction BeginTransaction()
+        private string connectionString = @"Data Source = DESKTOP-ALJK62P\SQLEXPRESS; Initial Catalog = Facturacion_Gimnasio_Juan; Integrated Security = True; User Id=sa; Password=Whatsername;";
+        public readonly SqlConnection Connection;
+        public DbConn()
         {
-            throw new NotImplementedException();
-        }
+            SqlConnection connection = new SqlConnection(connectionString);
+            
+            connection.Open();
+            Connection = connection;
 
-        public IDbTransaction BeginTransaction(IsolationLevel il)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ChangeDatabase(string databaseName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Close()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDbCommand CreateCommand()
-        {
-            throw new NotImplementedException();
+            
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
-        }
 
-        public void Open()
-        {
-            throw new NotImplementedException();
+            Connection.Close();
+            GC.SuppressFinalize(this);
         }
     }
+
 }

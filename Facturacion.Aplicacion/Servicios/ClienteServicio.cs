@@ -21,29 +21,27 @@ namespace Facturacion.Aplicacion.Servicios
         {
             var nuevaCuentaCliente = new CuentaCliente()
             {
-                Id = new CuentaClienteDto().Id,
-                ProductoId = producto.Id,
+                CuentaClienteId = new CuentaClienteDto().CuentaClienteId,
+                ProductoId = producto.ProductoId,
                 Debe = producto.MontoTotalCancelar
             };
 
             var nuevoCliente = new Cliente()
             {
-                Id = cliente.Id,
+                ClienteId = cliente.ClienteId,
                 NroCliente = cliente.NroCliente,
-                CodigoCliente = cliente.CodigoCliente,
                 Apellido = cliente.Apellido,
                 Nombre = cliente.Nombre,
                 Direccion = cliente.Direccion,
-                CuentaClienteId = nuevaCuentaCliente.Id,
-                ZonaId = cliente.Zona.Id,
-                ProductoId = producto.Id
+                CuentaClienteId = nuevaCuentaCliente.CuentaClienteId,
+                ZonaId = cliente.Zona.ZonaId,
+                ProductoId = producto.ProductoId
             };
 
             var productoAsociado = new Producto()
             {
-                Id = producto.Id,
-                MontoTotalCancelar = producto.MontoTotalCancelar,
-                ProductosPlanesId = producto.Plan.First().Id
+                ProductoId = producto.ProductoId,
+                MontoTotalCancelar = producto.MontoTotalCancelar
             };
         }
 
@@ -57,24 +55,15 @@ namespace Facturacion.Aplicacion.Servicios
 
         }
 
-        public static void Listar(string cadena)
+        public static DataTable Listar(string cadena)
         {
-            //var clientes = new object();
-            //var dt = new DataTable();
+            if (string.IsNullOrEmpty(cadena))
+            {
+              return ClientesQuery.GetClientes().Rows.Cast<DataRow>()
+                    .Where(x=>x.Field<DataRow>("NombreZona").ToString() == cadena).CopyToDataTable();
+            }
 
-            //if (string.IsNullOrEmpty(cadena))
-            //{
-
-            //    clientes = ClientesQuery.GetClientes();
-
-            //}
-            //else
-            //{
-            //    clientes = ClientesQuery.GetClientesByZone(cadena);
-            //}
-
-            //dt.Load(clientes);
-            //return dt;
+            return ClientesQuery.GetClientes();
         }
     }
 }

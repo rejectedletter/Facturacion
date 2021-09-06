@@ -1,4 +1,5 @@
 ﻿using Facturacion.Aplicacion.Servicios;
+using Facturacion.Dominio.Dto;
 using Facturacion.Dominio.Entities;
 using Facturacion.Presentacion;
 using System;
@@ -38,7 +39,7 @@ namespace Facturacion
         {
             if (_tipoOperacion == TipoOperacion.Alta)
             {
-                var nuevoCliente = new Cliente()
+                var nuevoCliente = new ClienteDto()
                 {
                     Apellido = txtApellido.Text,
                     Nombre = txtNombre.Text,

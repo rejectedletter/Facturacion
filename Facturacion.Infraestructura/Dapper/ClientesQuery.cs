@@ -4,108 +4,62 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Facturacion.Dominio;
+using System.Data;
 
 namespace Facturacion.Infraestructura.Dapper
 {
     public class ClientesQuery
     {
-        public static List<Cliente> GetClientesByZone(string zoneId)
+        public static DataTable GetClientes()
         {
-            var query = $@"SELECT cli.Id
+            var query = $@"SELECT cli.ClienteId
             ,cli.NroCliente
-            ,cli.CodigoCliente
             ,cli.Apellido
             ,cli.Nombre
             ,cli.Direccion
             ,cli.CuentaClienteId
-            ,cli.ZonaId
-            ,cli.ProductoId
-            ,cuenta.Id
-            ,cuenta.Debe
-            ,cuenta.Haber
-            ,cuenta.MovimientoId
-            ,cuenta.ProductoId
-            ,zona.Id
             ,zona.NombreZona
-            ,zona.ClienteId
-            ,prod.Id
             ,prod.Descripcion
             ,prod.MontoTotalCancelar
-            ,prod.ProductosPlanesId
-            FROM {nameof(Cliente)}as cli
-            INNER JOIN {nameof(CuentaCliente)} as cuenta ON cli.CuentaClienteId = cuenta.Id
-            INNER JOIN {nameof(Zona)} as zona ON cli.ZonaId = zona.Id
-            INNER JOIN {nameof(Producto)} as prod ON cli.ProductoId = prod.Id
-            WHERE cli.zonaId = @zoneId" ;
+            ,pla.Nombre as NombrePlan
+            FROM [Facturacion_Gimnasio_Juan].[dbo].[Clientes] as cli
+            INNER JOIN [Facturacion_Gimnasio_Juan].[dbo].[Zonas] as zona ON cli.ZonaId = zona.ZonaId
+            INNER JOIN [Facturacion_Gimnasio_Juan].[dbo].[Productos] as prod ON cli.ProductoId = prod.ProductoId
+            inner join Facturacion_Gimnasio_Juan.dbo.ProductosPlanes as pp on pp.ProductoId = prod.ProductoId
+            inner JOIN Facturacion_Gimnasio_Juan.dbo.Planes as pla on pla.PlanId = pp.PlantId" ;
 
             using (var connection = new DbConn())
             {
-
-
-                return connection.Query<Cliente>(new CommandDefinition(query, new { zoneId })).ToList();
-            }
-        }
-
-        public static List<Cliente> GetClientes()
-        {
-            var query = $@"SELECT cli.Id
-            ,cli.NroCliente as NroCliente
-            ,cli.CodigoCliente 
-            ,cli.Apellido
-            ,cli.Nombre
-            ,cli.Direccion
-            ,cuenta.Id
-            ,cuenta.Debe
-            ,cuenta.Haber
-            ,cuenta.MovimientoId
-            ,cuenta.ProductoId
-            ,zona.Id
-            ,zona.NombreZona
-            ,zona.ClienteId
-            ,prod.Id
-            ,prod.Descripcion
-            ,prod.MontoTotalCancelar
-            ,prod.ProductosPlanesId
-            FROM {nameof(Cliente)}as cli
-            INNER JOIN {nameof(CuentaCliente)} as cuenta ON cli.CuentaClienteId = cuenta.Id
-            INNER JOIN {nameof(Zona)} as zona ON cli.ZonaId = zona.Id
-            INNER JOIN {nameof(Producto)} as prod ON cli.ProductoId = prod.Id";
-
-            using (var connection = new DbConn())
-            {
-                return connection.Query<Cliente>(new CommandDefinition(query)).ToList();
+                return connection.Connection.Query<DataTable>(new CommandDefinition(query)).First();
             }
         }
 
         public static bool Addclientes(Cliente cliente)
         {
-            var query = $@"INSERT INTO {nameof(Cliente)}
-           ([Id]
+            var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[Clientes]
+           ([ClienteId]
            ,[NroCliente]
-           ,[CodigoCliente]
            ,[Apellido]
            ,[Nombre]
            ,[Direccion]
            ,[CuentaClienteId]
            ,[ZonaId]
            ,[ProductoId])
-             VALUES
-           (<@Id, uniqueidentifier,>
-           ,<@NroCliente, int,>
-           ,<@CodigoCliente, varchar(50),>
-           ,<@Apellido, varchar(50),>
-           ,<@Nombre, varchar(50),>
-           ,<@Direccion, varchar(50),>
-           ,<@CuentaClienteId, uniqueidentifier,>
-           ,<@ZonaId, uniqueidentifier,>
-           ,<@ProductoId, uniqueidentifier,>)";
+            VALUES
+           (@ClienteId,
+           ,@NroCliente,
+           ,@Apellido,
+           ,@Nombre,
+           ,@Direccion,
+           ,@CuentaClienteId,
+           ,@ZonaId,
+           ,@ProductoId)";
             
             using (var connection = new DbConn())
             {
-                if (connection.Execute(query, new { Id = cliente.Id, 
+                if (connection.Connection.Execute(query, new { ClienteId = cliente.ClienteId, 
                     NroCliente = cliente.NroCliente,
-                    Codigocliente = cliente.CodigoCliente,
-                    Apellido = cliente.CodigoCliente,
+                    Apellido = cliente.Apellido,
                     Nombre = cliente.Nombre,
                     Direccion = cliente.Direccion,
                     CuentaClienteId = cliente.CuentaClienteId,
@@ -131,7 +85,7 @@ namespace Facturacion.Infraestructura.Dapper
             
             using (var connection = new DbConn())
             {
-                if (connection.Execute(query, new {clienteId}) == 1)
+                if (connection.Connection.Execute(query, new {clienteId}) == 1)
                 {
                     return true;
                 }

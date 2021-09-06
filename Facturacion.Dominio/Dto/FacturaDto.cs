@@ -2,8 +2,9 @@
 
 namespace Facturacion.Dominio.Dto
 {
-    public class FacturaDto : BaseDto
+    public class FacturaDto 
     {
+        public Guid FacturaId { get; set; } = Guid.NewGuid();
         public DateTime Fecha { get; set; }
 
         public decimal Monto { get; set; }

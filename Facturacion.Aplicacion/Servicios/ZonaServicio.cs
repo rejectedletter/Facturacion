@@ -19,39 +19,60 @@ namespace Facturacion.Aplicacion.Servicios
             _mapper = new Mapper(configuration);
         }
 
-        public void AgregarZona(ZonaDto zona)
+        public bool AgregarZona(ZonaDto zona)
         {
             try
             {
-                ZonaQuery.AddCuentaCliente(new Zona() { Id = zona.Id, NombreZona = zona.NombreZona });
+                ZonaQuery.AddZona(new Zona() { ZonaId = zona.ZonaId, NombreZona = zona.NombreZona });
+                return true;
             }
-            catch
+            catch(Exception e)
             {
-
                 throw new Exception("No se pudo agregar la zona.");
             }
         }
 
-        public void ModificarZona(ZonaDto zona)
+        public bool ModificarZona(ZonaDto zona)
         {
-            var zonaBuscar = ZonaQuery.GetZonaById(zona.Id);
+            var zonaBuscar = ZonaQuery.GetZonaById(zona.ZonaId);
+            zonaBuscar.NombreZona = zona.NombreZona;
+            
             if (zonaBuscar == null)
             {
                 throw new Exception("No se encontró zona");
             }
 
-            ZonaQuery.UpdateCuentaCliente(zonaBuscar);
+            try
+            {
+                ZonaQuery.UpdateZona(zonaBuscar);
+                return true;
+            }
+            catch
+            {
+
+                throw;
+            }
         }
 
-        public void EliminarZona(ZonaDto zona)
+        public bool EliminarZona(Guid id)
         {
-            var zonaBuscar = ZonaQuery.GetZonaById(zona.Id);
+            var zonaBuscar = ZonaQuery.GetZonaById(id);
             if (zonaBuscar == null)
             {
                 throw new Exception("No se encontró zona");
             }
 
-            ZonaQuery.DeleteCuentaCliente(zonaBuscar.Id);
+            try
+            {
+                ZonaQuery.DeleteZona(id);
+                return true;
+            }
+            catch 
+            {
+
+                throw new Exception("No se pudo eliminar zona"); 
+                
+            }
         }
 
         public List<ZonaDto> ListarZonas()

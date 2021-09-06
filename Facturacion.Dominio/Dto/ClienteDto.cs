@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace Facturacion.Dominio.Dto
 {
-    public class ClienteDto : BaseDto
+    public class ClienteDto 
     {
+
+        public Guid ClienteId { get; set; } = Guid.NewGuid();
         public int NroCliente { get; set; }
 
         //codigo complejo

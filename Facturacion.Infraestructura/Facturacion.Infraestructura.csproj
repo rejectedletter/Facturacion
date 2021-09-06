@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Dapper\ClientesQuery.cs" />
     <Compile Include="Dapper\CuentaClienteQuery.cs" />
+    <Compile Include="Dapper\PlanQuery.cs" />
     <Compile Include="Dapper\ProductosQuery.cs" />
     <Compile Include="Dapper\ZonaQuery.cs" />
     <Compile Include="DbConn.cs" />

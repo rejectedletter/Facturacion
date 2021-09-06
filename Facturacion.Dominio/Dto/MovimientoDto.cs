@@ -4,7 +4,7 @@ namespace Facturacion.Dominio.Dto
 {
     public class MovimientoDto
     {
-        public Guid Id { get; set; }
+        public Guid MovimientoId { get; set; } = Guid.NewGuid();
 
         public decimal Importe { get; set; }
 

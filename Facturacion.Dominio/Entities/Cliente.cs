@@ -5,13 +5,10 @@ namespace Facturacion.Dominio.Entities
 
     public class Cliente 
     {
-        public Guid Id { get; set; }
+        public Guid ClienteId { get; set; }
 
         
         public int NroCliente { get; set; }
-
-        //codigo complejo
-        public string CodigoCliente { get; set; }
 
         public string Apellido { get; set; }
 
