@@ -1,31 +1,27 @@
 ﻿using Dapper;
 using Facturacion.Dominio;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Facturacion.Infraestructura.Dapper
 {
     public class ProductosQuery
     {
-        public static List<Producto> GetCuentasClientes(Guid cuentaClienteId)
+        public static Producto GetProductoById(Guid id)
         {
-            var query = $@"SELECT [Id]
-             ,[Descripcion]
-             ,[MontoTotalCancelar]
-             ,[ProductosPlanesId]
-              FROM [Facturacion_Gimnasio_Juan].[dbo].[Productos]
-             WHERE Id = @cuentaClienteId";
+            var query = $@"SELECT [ProductoId]
+                        ,[Descripcion]
+                        ,[MontoTotalCancelar]
+                        FROM [Facturacion_Gimnasio_Juan].[dbo].[Productos]
+                        where ProductoId = @id";
 
             using (var connection = new DbConn())
             {
-                return connection.Connection.Query<Producto>(query, new { cuentaClienteId }).ToList();
+                return connection.Connection.Query<Producto>(query, new { id }).ToList().First();
             }
         }
 
-        public static bool AddCuentaCliente(Producto producto)
+        public static bool AddProducto(Producto producto)
         {
             var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[Productos]
            ([Id]

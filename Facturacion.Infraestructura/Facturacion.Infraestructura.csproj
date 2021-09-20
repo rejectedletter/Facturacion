@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -46,7 +49,9 @@
   <ItemGroup>
     <Compile Include="Dapper\ClientesQuery.cs" />
     <Compile Include="Dapper\CuentaClienteQuery.cs" />
+    <Compile Include="Dapper\MovimientosQuery.cs" />
     <Compile Include="Dapper\PlanQuery.cs" />
+    <Compile Include="Dapper\ProductosPlanesQuery.cs" />
     <Compile Include="Dapper\ProductosQuery.cs" />
     <Compile Include="Dapper\ZonaQuery.cs" />
     <Compile Include="DbConn.cs" />

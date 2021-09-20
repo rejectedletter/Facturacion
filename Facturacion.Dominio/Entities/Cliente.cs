@@ -14,8 +14,18 @@ namespace Facturacion.Dominio.Entities
 
         public string Nombre { get; set; }
 
-        
-        public string Direccion { get; set; }
+        public string DNI { get; set; }
+
+        public DateTime FechaNacimiento { get; set; }
+        public string DomicilioParticular { get; set; }
+
+        public string DomicilioComercial { get; set; }
+
+        public string NroCelular { get; set; }
+
+        public string TelefonoFijo { get; set; }
+
+        public string Rubro { get; set; }
 
         public Guid CuentaClienteId { get; set; }
 
@@ -23,14 +33,5 @@ namespace Facturacion.Dominio.Entities
 
         public Guid ProductoId { get; set; }
 
-        public object[] ObtenerPropiedades()
-        {
-           return this.GetType().GetProperties();
-        }
-
-        public Cliente()
-        {
-            ObtenerPropiedades();
-        }
     }
 }

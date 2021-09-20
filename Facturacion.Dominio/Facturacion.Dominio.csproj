@@ -53,6 +53,7 @@
     <Compile Include="Dto\MovimientoDto.cs" />
     <Compile Include="Dto\PlanDto.cs" />
     <Compile Include="Dto\ProductoDto.cs" />
+    <Compile Include="Dto\ProductosPlanesDto.cs" />
     <Compile Include="Dto\ZonaDto.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\CuentaCliente.cs" />

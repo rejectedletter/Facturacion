@@ -16,6 +16,10 @@ namespace Facturacion
         public ListadoCuentaCliente(Guid clienteId)
         {
             InitializeComponent();
+
+            ColorConfig();
+
+
             dgvCuentaCliente.Columns.Add("Movimiento", "Movimiento");
             dgvCuentaCliente.Columns.Add("Fecha", "Fecha");
             dgvCuentaCliente.Columns.Add("Vencimiento", "Vencimiento");
@@ -31,6 +35,12 @@ namespace Facturacion
             
         }
 
+        private void ColorConfig()
+        {
+            pnlImg.BackColor = (Color)new ColorConverter().ConvertFromString(ColorStatics.orange);
+            lblTitulo.ForeColor = (Color)new ColorConverter().ConvertFromString(ColorStatics.bluelight2);
+        }
+
         private void ListadoCuentaCliente_Load(object sender, EventArgs e)
         {
             dgvCuentaCliente.DataSource = _obj;
@@ -40,6 +50,21 @@ namespace Facturacion
         private void dgvCuentaCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

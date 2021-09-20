@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Facturacion.Aplicacion.Servicios;
 using Facturacion.Dominio.Dto;
 using Facturacion.Helpers;
+using Facturacion.Presentacion;
 using Facturacion.Reportes;
 
 namespace Facturacion
 {
-    public partial class Start : Form
+    public partial class Start : PresentacionBase
     {
         Type tipoAccion;
         public int selectedRowIndex { get; set; }
@@ -22,6 +24,7 @@ namespace Facturacion
             btnNuevo.Visible = false;
             btnModificar.Visible = false;
             btnEliminar.Visible = false;
+            btnCuentaCliente.Visible = false;
            
            
         }
@@ -57,6 +60,8 @@ namespace Facturacion
 
             btnNuevo.Visible = true;
             btnModificar.Visible = true;
+            btnCuentaCliente.Visible = true;
+
         }
 
         private void Start_Load(object sender, EventArgs e)
@@ -85,6 +90,8 @@ namespace Facturacion
             btnNuevo.Visible = true;
             btnModificar.Visible = true;
             btnEliminar.Visible = true;
+            btnCuentaCliente.Visible = false;
+
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -118,6 +125,8 @@ namespace Facturacion
             btnNuevo.Visible = true;
             btnModificar.Visible = true;
             btnEliminar.Visible = true;
+            btnCuentaCliente.Visible = false;
+
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -145,8 +154,17 @@ namespace Facturacion
 
         private void btnComprobante_Click(object sender, EventArgs e)
         {
-            var comprobante = new FacturaComprobante();
+            var comprobante = new FacturaComprobante(new List<FacturaDto>(){new FacturaDto
+            {
+
+            } });
             comprobante.Show();
+        }
+
+        private void btnCuentaCliente_Click(object sender, EventArgs e)
+        {
+            var formCuenta = new ListadoCuentaCliente((Guid)dgvDatos[0, selectedRowIndex].Value);
+            formCuenta.Show();
         }
     }
 }

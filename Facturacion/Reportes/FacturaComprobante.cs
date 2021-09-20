@@ -1,15 +1,20 @@
 ﻿
+using Facturacion.Dominio.Dto;
 using Microsoft.Reporting.WinForms;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Facturacion.Reportes
 {
     public partial class FacturaComprobante : Form
     {
-        public FacturaComprobante()
+        private readonly IEnumerable<FacturaDto> _factura;
+        public FacturaComprobante(IEnumerable<FacturaDto> factura)
         {
             InitializeComponent();
+
+            _factura = factura;
         }
 
         private void FacturaComprobante_Load(object sender, EventArgs e)
@@ -51,6 +56,8 @@ namespace Facturacion.Reportes
         {
             ReportParameter[] reportParams = new ReportParameter[12];
 
+            ReportDataSource rds = new ReportDataSource("DatosFactura", _factura);
+
             reportParams[0] = new ReportParameter("fecha", DateTime.Now.ToString());
             reportParams[1] = new ReportParameter("nroCliente", DateTime.Now.ToString());
             reportParams[2] = new ReportParameter("nombreCliente", DateTime.Now.ToString());
@@ -64,11 +71,11 @@ namespace Facturacion.Reportes
             reportParams[10] = new ReportParameter("alicuotaPlan", DateTime.Now.ToString());
             reportParams[11] = new ReportParameter("fechaEstimadaCancelacion", DateTime.Now.ToString());
 
-            // ReportDataSource rds = new ReportDataSource("DatosFactura", )
+            //ReportDataSource rds = new ReportDataSource("DatosFactura", _factura);
 
             this.rvrFacturacion.LocalReport.ReportEmbeddedResource = "Facturacion.Presentacion.Reportes.FacturaComprobante.rdlc";
             this.rvrFacturacion.LocalReport.DataSources.Clear();
-            // this.rvrFacturacion.LocalReport.DataSources.Add(rds);
+             this.rvrFacturacion.LocalReport.DataSources.Add(rds);
             this.rvrFacturacion.LocalReport.SetParameters(reportParams);
             this.rvrFacturacion.SetDisplayMode(DisplayMode.PrintLayout);
             this.rvrFacturacion.ZoomMode = ZoomMode.PageWidth;

@@ -18,7 +18,7 @@ namespace Facturacion.Aplicacion.Mappers
                 NroCliente = cliente.NroCliente,
                 Apellido = cliente.Apellido,
                 Nombre = cliente.Nombre,
-                Direccion = cliente.Direccion,
+                //Direccion = cliente.Direccion,
                 CuentaClienteId = cliente.CuentaCliente.CuentaClienteId,
                 ZonaId = cliente.Zona.ZonaId,
                 ProductoId = cliente.Productos.First().ProductoId

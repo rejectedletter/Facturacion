@@ -27,7 +27,7 @@ namespace Facturacion
         {
            var agregar = _planServicio.Agregar(new PlanDto()
             {
-                Nombre = txtNombre.Text,
+                NombrePlan = txtNombre.Text,
                 CantidadCuotas = int.Parse(txtCantidadCuotas.Text),
                 Porcentaje = int.Parse(txtProcentaje.Text) / 100
             });

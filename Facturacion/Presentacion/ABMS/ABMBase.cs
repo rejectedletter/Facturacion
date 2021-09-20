@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Facturacion.Presentacion
 {
-    public partial class ABMBase : Form
+    public partial class ABMBase : PresentacionBase
     {
         protected TipoOperacion _tipoOperacion;
         
@@ -19,6 +19,8 @@ namespace Facturacion.Presentacion
             
             
             InitializeComponent();
+            btnAceptar.Visible = true;
+            btnAceptar.BringToFront();
 
             CargarTitulo(_tipoOperacion);
         }
@@ -30,14 +32,16 @@ namespace Facturacion.Presentacion
             
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
-        {
-            RealizarOperacion();
-        }
+        
 
         protected virtual void RealizarOperacion()
         {
             
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+            RealizarOperacion();
         }
     }
 }

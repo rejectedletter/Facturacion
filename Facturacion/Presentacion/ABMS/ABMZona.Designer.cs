@@ -31,7 +31,7 @@ namespace Facturacion.Presentacion.ABMS
         {
             this.lblNobreZona = new System.Windows.Forms.Label();
             this.txtNombreZona = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+           // this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNobreZona
@@ -59,11 +59,11 @@ namespace Facturacion.Presentacion.ABMS
             this.Controls.Add(this.lblNobreZona);
             this.Name = "ABMZona";
             this.Load += new System.EventHandler(this.ABMZona_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
+            //this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.lblNobreZona, 0);
             this.Controls.SetChildIndex(this.txtNombreZona, 0);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            //this.panel1.ResumeLayout(false);
+            //this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

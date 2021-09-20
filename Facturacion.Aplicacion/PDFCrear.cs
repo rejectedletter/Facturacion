@@ -157,9 +157,7 @@ namespace Facturacion.Aplicacion
                new XRect(20, 30, container.Width, container.Height),
                XStringFormats.TopLeft);
 
-            gfx.DrawString(factura.DetalleCliente.Cliente.Direccion, font, XBrushes.Black,
-               new XRect(20, 40, container.Width, container.Height),
-               XStringFormats.TopLeft);
+            
 
             gfx.DrawString("Compra: " + factura.DetalleProducto.DetalleProducto.Descripcion, font, XBrushes.Black,
                new XRect(20, 40, container.Width, container.Height),

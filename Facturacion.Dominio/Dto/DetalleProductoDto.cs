@@ -11,5 +11,7 @@ namespace Facturacion.Dominio.Dto
         public Guid DetalleProductoId { get; set; } = Guid.NewGuid();
 
         public ProductoDto DetalleProducto { get; set; }
+
+        
     }
 }

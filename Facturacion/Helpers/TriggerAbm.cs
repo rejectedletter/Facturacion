@@ -18,7 +18,7 @@ namespace Facturacion.Helpers
             }
             if (type == typeof(ProductoDto))
             {
-                form = new ABMProducto(tipoOperacion, (Guid)id);
+                form = new ABMProducto(tipoOperacion, null);
                 return form;
             }
             if (type == typeof(ClienteDto))

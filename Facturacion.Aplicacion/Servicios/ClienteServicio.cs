@@ -1,69 +1,109 @@
-﻿using Facturacion.Dominio;
+﻿using AutoMapper;
+using Facturacion.Dominio;
 using Facturacion.Dominio.Dto;
 using Facturacion.Dominio.Entities;
-using Facturacion.Infraestructura;
 using Facturacion.Infraestructura.Dapper;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
 namespace Facturacion.Aplicacion.Servicios
 {
     public class ClienteServicio
     {
-        
+        private readonly IMapper _mapper;
         public ClienteServicio()
         {
+            var configuration = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ClienteDto, Cliente>();
+                cfg.CreateMap<ProductoDto, Producto>();
+                cfg.CreateMap<ProductosPlanesDto, ProductosPlanes>();
+                cfg.CreateMap<CuentaClienteDto, CuentaCliente>();
+
+            });
             
+
+            _mapper = new Mapper(configuration);
         }
-        public static void Agregar(ClienteDto cliente, ProductoDto producto)
+        public bool Agregar(ClienteDto cliente, ProductoDto producto = null)
         {
-            var nuevaCuentaCliente = new CuentaCliente()
+            try
             {
-                CuentaClienteId = new CuentaClienteDto().CuentaClienteId,
-                ProductoId = producto.ProductoId,
-                Debe = producto.MontoTotalCancelar
-            };
+                ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
 
-            var nuevoCliente = new Cliente()
-            {
-                ClienteId = cliente.ClienteId,
-                NroCliente = cliente.NroCliente,
-                Apellido = cliente.Apellido,
-                Nombre = cliente.Nombre,
-                Direccion = cliente.Direccion,
-                CuentaClienteId = nuevaCuentaCliente.CuentaClienteId,
-                ZonaId = cliente.Zona.ZonaId,
-                ProductoId = producto.ProductoId
-            };
+                if (producto != null)
+                {
+                    var cuentaCliente = new CuentaCliente()
+                    {
+                        CuentaClienteId = new CuentaClienteDto().CuentaClienteId,
+                        Debe = producto.MontoTotalCancelar,
+                        ProductoId = producto.ProductoId
+                    };
 
-            var productoAsociado = new Producto()
+                    var relacionProdPlan = new ProductosPlanesDto()
+                    {
+                        Producto = producto,
+                        Plan = producto.Planes.First(),
+                        FechaInicioPlanPago = DateTime.Now,
+                        Movimientos = cliente.CuentaCliente.Movimientos
+                    };
+
+                    ProductosQuery.AddProducto(_mapper.Map<Producto>(producto));
+                    ProductosPlanesQuery.AddProductosPlanes(_mapper.Map<ProductosPlanes>(relacionProdPlan));
+                    CuentaClienteQuery.AddCuentaCliente(_mapper.Map<CuentaCliente>(cuentaCliente));
+
+                    
+                }
+
+                return true;
+            }
+            catch(Exception e)
             {
-                ProductoId = producto.ProductoId,
-                MontoTotalCancelar = producto.MontoTotalCancelar
-            };
+                var msg = e.Message;
+                throw new Exception("No fue posible agregar cliente");
+            }
         }
 
-        public static void Modificar(Cliente cliente)
+        public  bool Modificar(ClienteDto cliente)
         {
-
-        }
-
-        public static void Eliminar(Guid id)
-        {
-
-        }
-
-        public static DataTable Listar(string cadena)
-        {
-            if (string.IsNullOrEmpty(cadena))
+            try
             {
-              return ClientesQuery.GetClientes().Rows.Cast<DataRow>()
-                    .Where(x=>x.Field<DataRow>("NombreZona").ToString() == cadena).CopyToDataTable();
+                ClientesQuery.UpdateClientes(_mapper.Map<Cliente>(cliente));
+                return true;
+            }
+            catch
+            {
+
+                throw new Exception("No fue posible modificar al cliente");
+            }
+        }
+
+        public static bool Eliminar(Guid id)
+        {
+            try
+            {
+                ClientesQuery.DeleteCliente(id);
+                return true;
+            }
+            catch
+            {
+
+                throw new Exception("No fue posible eliminar al cliente");
+            }
+        }
+
+        public static List<dynamic> Listar(string cadena)
+        {
+            if (!string.IsNullOrEmpty(cadena))
+            {
+                return ClientesQuery.GetClientes()
+                    .Where(x => x.zona.NombreZona == cadena).ToList();
             }
 
-            return ClientesQuery.GetClientes();
+           return ClientesQuery.GetClientes();
+
+            
         }
     }
 }

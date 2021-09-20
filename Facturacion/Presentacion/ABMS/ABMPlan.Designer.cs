@@ -98,8 +98,6 @@ namespace Facturacion
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
             this.Name = "ABMPlan";
-            this.Text = "ABMPlan";
-            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.lblNombre, 0);
             this.Controls.SetChildIndex(this.txtNombre, 0);
             this.Controls.SetChildIndex(this.label2, 0);

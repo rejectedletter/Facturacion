@@ -21,7 +21,7 @@ namespace Facturacion.Infraestructura
         public void Dispose()
         {
 
-            Connection.Close();
+            //Connection.Close();
             GC.SuppressFinalize(this);
         }
     }

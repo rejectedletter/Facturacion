@@ -11,5 +11,7 @@ namespace Facturacion.Dominio.Entities
         public int Operacion { get; set; }
 
         public DateTime FechaMovimiento { get; set; }
+
+        public Guid CuentaClienteId { get; set; }
     }
 }

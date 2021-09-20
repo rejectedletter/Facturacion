@@ -29,70 +29,25 @@ namespace Facturacion
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlImg = new System.Windows.Forms.Panel();
-            this.btnMinimizar = new System.Windows.Forms.Button();
-            this.btnMaximizar = new System.Windows.Forms.Button();
-            this.btnCerrar = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnPlanes = new System.Windows.Forms.Button();
             this.btnZonas = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCuentaCliente = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnComprobante = new System.Windows.Forms.Button();
-            this.pnlImg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlImg
-            // 
-            this.pnlImg.BackColor = System.Drawing.Color.SandyBrown;
-            this.pnlImg.Controls.Add(this.btnMinimizar);
-            this.pnlImg.Controls.Add(this.btnMaximizar);
-            this.pnlImg.Controls.Add(this.btnCerrar);
-            this.pnlImg.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlImg.Location = new System.Drawing.Point(0, 0);
-            this.pnlImg.Name = "pnlImg";
-            this.pnlImg.Size = new System.Drawing.Size(800, 33);
-            this.pnlImg.TabIndex = 0;
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Location = new System.Drawing.Point(492, 6);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(32, 24);
-            this.btnMinimizar.TabIndex = 2;
-            this.btnMinimizar.Text = "X";
-            this.btnMinimizar.UseVisualStyleBackColor = true;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Location = new System.Drawing.Point(530, 6);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(32, 24);
-            this.btnMaximizar.TabIndex = 1;
-            this.btnMaximizar.Text = "X";
-            this.btnMaximizar.UseVisualStyleBackColor = true;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Location = new System.Drawing.Point(568, 6);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(32, 24);
-            this.btnCerrar.TabIndex = 0;
-            this.btnCerrar.Text = "X";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnClientes
             // 
@@ -119,7 +74,6 @@ namespace Facturacion
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.btnComprobante);
             this.splitContainer1.Panel1.Controls.Add(this.btnPlanes);
             this.splitContainer1.Panel1.Controls.Add(this.btnZonas);
             this.splitContainer1.Panel1.Controls.Add(this.btnClientes);
@@ -127,10 +81,9 @@ namespace Facturacion
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.White;
-            this.splitContainer1.Panel2.Controls.Add(this.dgvDatos);
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 440);
-            this.splitContainer1.SplitterDistance = 266;
+            this.splitContainer1.Panel2.Controls.Add(this.panel2);
+            this.splitContainer1.Size = new System.Drawing.Size(810, 450);
+            this.splitContainer1.SplitterDistance = 269;
             this.splitContainer1.TabIndex = 3;
             // 
             // btnPlanes
@@ -167,31 +120,54 @@ namespace Facturacion
             this.btnZonas.UseVisualStyleBackColor = false;
             this.btnZonas.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvDatos);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(531, 447);
+            this.panel2.TabIndex = 0;
+            // 
             // dgvDatos
             // 
             this.dgvDatos.AllowUserToAddRows = false;
             this.dgvDatos.AllowUserToDeleteRows = false;
-            this.dgvDatos.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgvDatos.BackgroundColor = System.Drawing.Color.White;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Location = new System.Drawing.Point(3, 60);
+            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDatos.Location = new System.Drawing.Point(0, 47);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
-            this.dgvDatos.Size = new System.Drawing.Size(524, 377);
+            this.dgvDatos.Size = new System.Drawing.Size(531, 400);
             this.dgvDatos.TabIndex = 1;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnCuentaCliente);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.btnModificar);
             this.panel1.Controls.Add(this.btnNuevo);
-            this.panel1.Location = new System.Drawing.Point(4, 7);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(523, 47);
+            this.panel1.Size = new System.Drawing.Size(531, 47);
             this.panel1.TabIndex = 0;
+            // 
+            // btnCuentaCliente
+            // 
+            this.btnCuentaCliente.Location = new System.Drawing.Point(408, 10);
+            this.btnCuentaCliente.Name = "btnCuentaCliente";
+            this.btnCuentaCliente.Size = new System.Drawing.Size(50, 34);
+            this.btnCuentaCliente.TabIndex = 3;
+            this.btnCuentaCliente.Text = "Cuenta";
+            this.btnCuentaCliente.UseVisualStyleBackColor = true;
+            this.btnCuentaCliente.Visible = false;
+            this.btnCuentaCliente.Click += new System.EventHandler(this.btnCuentaCliente_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(372, 10);
+            this.btnEliminar.Location = new System.Drawing.Point(294, 10);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(50, 34);
             this.btnEliminar.TabIndex = 2;
@@ -201,7 +177,7 @@ namespace Facturacion
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(238, 10);
+            this.btnModificar.Location = new System.Drawing.Point(161, 10);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(50, 34);
             this.btnModificar.TabIndex = 1;
@@ -211,7 +187,7 @@ namespace Facturacion
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(111, 10);
+            this.btnNuevo.Location = new System.Drawing.Point(51, 10);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(50, 34);
             this.btnNuevo.TabIndex = 0;
@@ -219,44 +195,26 @@ namespace Facturacion
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnComprobante
-            // 
-            this.btnComprobante.BackColor = System.Drawing.Color.DimGray;
-            this.btnComprobante.FlatAppearance.BorderSize = 0;
-            this.btnComprobante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnComprobante.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnComprobante.Location = new System.Drawing.Point(0, 117);
-            this.btnComprobante.Margin = new System.Windows.Forms.Padding(0);
-            this.btnComprobante.Name = "btnComprobante";
-            this.btnComprobante.Size = new System.Drawing.Size(266, 38);
-            this.btnComprobante.TabIndex = 4;
-            this.btnComprobante.Text = "Generar Comprobante";
-            this.btnComprobante.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnComprobante.UseVisualStyleBackColor = false;
-            this.btnComprobante.Click += new System.EventHandler(this.btnComprobante_Click);
-            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(800, 473);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(810, 483);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.pnlImg);
             this.MaximumSize = new System.Drawing.Size(816, 489);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "Start";
             this.ShowIcon = false;
             this.TransparencyKey = System.Drawing.Color.Yellow;
             this.Load += new System.EventHandler(this.Start_Load);
-            this.pnlImg.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.splitContainer1, 0);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -265,21 +223,17 @@ namespace Facturacion
 
 
         #endregion
-
-        private System.Windows.Forms.Panel pnlImg;
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnZonas;
-        private System.Windows.Forms.Button btnMinimizar;
-        private System.Windows.Forms.Button btnMaximizar;
-        private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Button btnPlanes;
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.Button btnComprobante;
+        private System.Windows.Forms.Button btnCuentaCliente;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

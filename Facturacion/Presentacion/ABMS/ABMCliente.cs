@@ -1,6 +1,5 @@
 ﻿using Facturacion.Aplicacion.Servicios;
 using Facturacion.Dominio.Dto;
-using Facturacion.Dominio.Entities;
 using Facturacion.Presentacion;
 using System;
 using System.Windows.Forms;
@@ -9,11 +8,17 @@ namespace Facturacion
 {
     public partial class ABMCliente : ABMBase
     {
+        private readonly ClienteServicio _clienteServicio = new ClienteServicio();
+        private  ProductoDto _producto = new ProductoDto();
          public ABMCliente(TipoOperacion tipoOperacion)
          {
-           
+
+            _tipoOperacion = tipoOperacion;
+
             InitializeComponent();
             lblCodigocliente.Visible = false;
+            btnAceptar.BringToFront();
+
 
             CargarTitulo(tipoOperacion);
          }
@@ -35,7 +40,29 @@ namespace Facturacion
             }
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+       
+
+        private void ABMCliente_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Helpers.Validaciones.LetrasYNumeros(e);
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Helpers.Validaciones.LetrasYNumeros(e);
+        }
+
+        private void txtdireccion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Helpers.Validaciones.LetrasYNumeros(e);
+        }
+
+        protected override void RealizarOperacion()
         {
             if (_tipoOperacion == TipoOperacion.Alta)
             {
@@ -43,19 +70,26 @@ namespace Facturacion
                 {
                     Apellido = txtApellido.Text,
                     Nombre = txtNombre.Text,
-                    Direccion = txtdireccion.Text
+                    FechaNacimiento = dTPFechaNac.Value
                 };
 
-                
+
 
                 lblCodigocliente.Visible = true;
                 lblCodigocliente.Text = nuevoCliente.CodigoCliente;
+            
+
+            _clienteServicio.Agregar(nuevoCliente, _producto);
             }
         }
 
-        private void ABMCliente_Load(object sender, EventArgs e)
-        {
+       
 
+        private void btnCargarProducto_Click_1(object sender, EventArgs e)
+        {
+            var formProducto = new ABMProducto(TipoOperacion.Alta, null);
+            formProducto.ShowDialog();
+            _producto = formProducto.Producto;
         }
     }
 }

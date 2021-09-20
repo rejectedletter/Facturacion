@@ -116,7 +116,6 @@
     <Compile Include="Servicios\FacturaServicio.cs" />
     <Compile Include="Servicios\MovimientoServicio.cs" />
     <Compile Include="Servicios\PlanServicio.cs" />
-    <Compile Include="Servicios\ProductoServicio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\ZonaServicio.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />

@@ -25,7 +25,7 @@ namespace Facturacion
         private void FormatearGrilla()
         {
             
-            Utils.AgregarColumnas(dgvProductos, new Cliente().ObtenerPropiedades());
+            
             
             
         }
@@ -71,7 +71,7 @@ namespace Facturacion
         {
             if (btnAgregarDeuda.Pressed == true)
             {
-                var formNuevaDeuda = new ABMProducto(TipoOperacion.Alta, (Guid)dgvProductos[0, selectedRowIndex].Value);
+                var formNuevaDeuda = new ABMProducto(TipoOperacion.Alta, (Guid?)dgvProductos[0, selectedRowIndex].Value);
                 formNuevaDeuda.Show();
             }
         }

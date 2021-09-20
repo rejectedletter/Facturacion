@@ -10,7 +10,7 @@ namespace Facturacion.Dominio.Dto
 
         public decimal Haber { get; set; }
 
-        public ClienteDto Cliente { get; set; }
+        public ProductoDto Producto { get; set; }
 
         public ICollection<MovimientoDto> Movimientos { get; set; }
     }

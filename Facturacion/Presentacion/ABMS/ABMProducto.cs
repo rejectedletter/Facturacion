@@ -1,28 +1,42 @@
-﻿using Facturacion.Dominio;
+﻿using Facturacion.Aplicacion.Servicios;
+using Facturacion.Dominio;
+using Facturacion.Dominio.Dto;
 using Facturacion.Presentacion;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Facturacion
 {
     public partial class ABMProducto : ABMBase
     {
-         
-        public Guid _clienteId { get; set; }
-        public ABMProducto(TipoOperacion tipoOperacion, Guid clienteId)
+        public ProductoDto Producto = new ProductoDto();
+
+        private readonly PlanServicio _planServicio = new PlanServicio();
+
+        private  List<PlanDto> Planes => _planServicio.ListarPlanes();
+        public ABMProducto(TipoOperacion tipoOperacion, Guid? id)
         {
             _tipoOperacion = tipoOperacion;
-            _clienteId = clienteId;
+           
 
             InitializeComponent();
 
-            CargarTitulo(_tipoOperacion);
+            btnAceptar.BringToFront();
 
+            CargarTitulo(_tipoOperacion);
+            CargarComboPlanes();
             
 
         }
 
-       
+        private void CargarComboPlanes()
+        {
+            cmbPlanes.DataSource = Planes.Select(x=>x.NombrePlan).ToList();
+        }
+
+
 
         //private void CargarInformacionProducto(Guid id)
         //{
@@ -53,55 +67,22 @@ namespace Facturacion
 
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        
+
+        protected override void RealizarOperacion()
         {
-            if (ValidarInput())
+            if (_tipoOperacion == TipoOperacion.Alta)
             {
-                if(_tipoOperacion == TipoOperacion.Alta)
-                {
-                    AgregarProducto(txtDescripcion.Text, txtPrecio.Text, _clienteId);
 
-                    var msg = MessageBox.Show("Se agregó correctamente", caption: "Producto Agregado");
-                    this.Close();
-                }
 
-                //if(_tipoOperacion ==TipoOperacion.Modificacion)
-                //{
-                //    ModificarProducto(txtDescripcion.Text, txtPrecio.Text);
-
-                //    var msg = MessageBox.Show("Se modificó correctamente", caption: "Producto Modificado");
-                //    this.Close();
-                //}
+                Producto.Descripcion = txtDescripcion.Text;
+                    Producto.MontoTotalCancelar = decimal.Parse(txtPrecio.Text);
+                    Producto.Planes = new List<PlanDto>() { Planes.First(x => x.NombrePlan == cmbPlanes.SelectedItem.ToString()) };
                 
+
+                var msg = MessageBox.Show("Se agregó correctamente", caption: "Producto Agregado");
+                this.Close();
             }
-           
-
-            
-
-
-
-        }
-
-        //private void ModificarProducto(string descripcion, string precio)
-        //{
-        //    var objetoModificar = new Producto()
-        //    {
-        //        Descripcion = descripcion,
-        //        PrecioUnitario = decimal.Parse(precio)
-        //    };
-
-        //    Aplicacion.ProductoServicio.Modificar(objetoModificar);
-        //}
-
-        private void AgregarProducto(string descripcion, string monto, Guid clienteId)
-        {
-            var objetoAgregar = new Producto()
-            {
-                Descripcion = descripcion,
-                MontoTotalCancelar = decimal.Parse(monto)
-            };
-
-            Aplicacion.ProductoServicio.Agregar(objetoAgregar, clienteId);
         }
 
         private bool ValidarInput()

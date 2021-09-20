@@ -10,7 +10,7 @@ namespace Facturacion.Infraestructura.Dapper
     {
         public static List<Plan> GetPlanes()
         {
-            var query = $@"SELECT PlanId, Nombre, CantidadCuotas, Porcentaje 
+            var query = $@"SELECT PlanId, NombrePlan, CantidadCuotas, Porcentaje 
             FROM [Facturacion_Gimnasio_Juan].[dbo].[Planes]";
 
             using (var connection = new DbConn())
@@ -46,7 +46,7 @@ namespace Facturacion.Infraestructura.Dapper
                 if (connection.Connection.Execute(query, new 
                 {
                     planId = plan.PlanId,
-                    nombre = plan.Nombre,
+                    nombre = plan.NombrePlan,
                     cantidadCuotas = plan.CantidadCuotas,
                     porcentaje = plan.Porcentaje
 

@@ -50,7 +50,7 @@ namespace Facturacion.Presentacion
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.lblTitulo.Location = new System.Drawing.Point(354, 30);
+            this.lblTitulo.Location = new System.Drawing.Point(354, 53);
             this.lblTitulo.Name = "lblTitulo";
             this.lblTitulo.Size = new System.Drawing.Size(93, 33);
             this.lblTitulo.TabIndex = 0;
@@ -59,12 +59,10 @@ namespace Facturacion.Presentacion
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAceptar.Location = new System.Drawing.Point(360, 365);
+            this.btnAceptar.Location = new System.Drawing.Point(346, 462);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
-            this.btnAceptar.TabIndex = 19;
+            this.btnAceptar.TabIndex = 2;
             this.btnAceptar.Text = "Aceptar";
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
@@ -72,16 +70,10 @@ namespace Facturacion.Presentacion
             // ABMBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(794, 524);
             this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.panel1);
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(816, 489);
-            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "ABMBase";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -89,8 +81,8 @@ namespace Facturacion.Presentacion
         }
 
         #endregion
-        private System.Windows.Forms.Button btnAceptar;
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.Label lblTitulo;
+        protected System.Windows.Forms.Button btnAceptar;
     }
 }
