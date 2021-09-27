@@ -37,7 +37,7 @@ namespace Facturacion.Reportes
 
            
             CargarReporte();
-            
+
 
             //Ejemplo de agregado de parametros
 
@@ -65,6 +65,7 @@ namespace Facturacion.Reportes
             //repViewInformeConsolidado.RefreshReport();
 
 
+            this.rvrFcturacion.RefreshReport();
         }
 
         private void CargarReporte()

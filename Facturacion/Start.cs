@@ -57,7 +57,7 @@ namespace Facturacion
 
         private void CargarClientes()
         {
-           dgvDatos.DataSource = ClienteServicio.Listar(string.Empty);
+           dgvDatos.DataSource = new ClienteServicio().Listar(string.Empty);
 
            // DgvFormatting.FormatCliente(ref dgvDatos);
 
