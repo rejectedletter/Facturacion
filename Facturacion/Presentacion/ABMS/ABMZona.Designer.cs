@@ -31,8 +31,12 @@ namespace Facturacion.Presentacion.ABMS
         {
             this.lblNobreZona = new System.Windows.Forms.Label();
             this.txtNombreZona = new System.Windows.Forms.TextBox();
-           // this.panel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // lblNobreZona
             // 
@@ -54,16 +58,16 @@ namespace Facturacion.Presentacion.ABMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(827, 574);
             this.Controls.Add(this.txtNombreZona);
             this.Controls.Add(this.lblNobreZona);
             this.Name = "ABMZona";
             this.Load += new System.EventHandler(this.ABMZona_Load);
-            //this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.lblNobreZona, 0);
             this.Controls.SetChildIndex(this.txtNombreZona, 0);
-            //this.panel1.ResumeLayout(false);
-            //this.panel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

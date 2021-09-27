@@ -96,6 +96,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ReporteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteFactura.Designer.cs">
+      <DependentUpon>ReporteFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\ColorStatics.cs" />
     <Compile Include="Factura.cs">
       <SubType>Form</SubType>
@@ -149,12 +155,6 @@
     <Compile Include="Presentacion\ABMS\ABMBase.Designer.cs">
       <DependentUpon>ABMBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reportes\FacturaComprobante.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Reportes\FacturaComprobante.Designer.cs">
-      <DependentUpon>FacturaComprobante.cs</DependentUpon>
-    </Compile>
     <Compile Include="Resources\ImageStatics.cs" />
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
@@ -197,10 +197,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\FacturaComprobante.rdlc" />
-    <EmbeddedResource Include="Reportes\FacturaComprobante.resx">
-      <DependentUpon>FacturaComprobante.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\JoelReporte.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteFactura.resx">
+      <DependentUpon>ReporteFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
     </EmbeddedResource>

@@ -29,7 +29,7 @@ namespace Facturacion
             {
                 NombrePlan = txtNombre.Text,
                 CantidadCuotas = int.Parse(txtCantidadCuotas.Text),
-                Porcentaje = int.Parse(txtProcentaje.Text) / 100
+                Porcentaje = decimal.Parse(txtProcentaje.Text)
             });
 
             if (agregar)

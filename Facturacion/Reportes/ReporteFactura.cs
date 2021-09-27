@@ -1,15 +1,19 @@
-﻿
-using Facturacion.Aplicacion.Servicios;
+﻿using Facturacion.Aplicacion.Servicios;
 using Facturacion.Dominio.Dto;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Facturacion.Reportes
 {
-    public partial class FacturaComprobante : Form
+    public partial class ReporteFactura : Form
     {
         FacturaServicio servicio = new FacturaServicio();
         public string DniCliente { get; set; }
@@ -24,48 +28,12 @@ namespace Facturacion.Reportes
             _factura = factura;
         }*/
 
-        public FacturaComprobante(string dniCliente = "39975846")
+        public ReporteFactura(string dniCliente = "42350914")
         {
             InitializeComponent();
 
 
             DniCliente = dniCliente;
-        }
-
-        private void FacturaComprobante_Load(object sender, EventArgs e)
-        {
-
-           
-            CargarReporte();
-
-
-            //Ejemplo de agregado de parametros
-
-            //ReportParameter[] param = new ReportParameter[1];
-
-            //if (!string.IsNullOrEmpty(DatosConfiguracion.PathLogo))
-            //{
-            //    param[0] = new ReportParameter("Imagen", new Uri(DatosConfiguracion.PathLogo).AbsoluteUri);
-            //}
-            //else
-            //{
-            //    param[0] = new ReportParameter("Imagen", "");
-            //}
-
-            //setear datos y enlazzar componente y reporte
-
-            //ReportDataSource rds1 = new ReportDataSource("InformeConsolidado", lInformeConsolidado);
-            //repViewInformeConsolidado.LocalReport.ReportEmbeddedResource = "UI.Desktop.Reportes.RInformeConsolidado.rdlc";
-            //repViewInformeConsolidado.LocalReport.EnableExternalImages = true;
-            //repViewInformeConsolidado.LocalReport.SetParameters(param);
-            //repViewInformeConsolidado.LocalReport.DataSources.Clear();
-            //repViewInformeConsolidado.LocalReport.DataSources.Add(rds1);
-            //repViewInformeConsolidado.SetDisplayMode(DisplayMode.PrintLayout);
-            //repViewInformeConsolidado.ZoomMode = ZoomMode.PageWidth;
-            //repViewInformeConsolidado.RefreshReport();
-
-
-            this.rvrFcturacion.RefreshReport();
         }
 
         private void CargarReporte()
@@ -91,11 +59,16 @@ namespace Facturacion.Reportes
 
             //ReportDataSource rds = new ReportDataSource("DatosFactura", _factura);
 
-            //this.rvrFacturacion.LocalReport.ReportEmbeddedResource = "UI.Desktop.Reportes.RInformeTrazabilidadPorPallet.rdlc";
-            this.rvrFacturacion.LocalReport.SetParameters(reportParams);
+            //this.rvrFacturacion.LocalReport.ReportEmbeddedResource = @"Facturacion\Reportes\JoelReporte.rdlc";
             this.rvrFacturacion.SetDisplayMode(DisplayMode.PrintLayout);
+            this.rvrFacturacion.LocalReport.SetParameters(reportParams);
             this.rvrFacturacion.ZoomMode = ZoomMode.PageWidth;
             this.rvrFacturacion.RefreshReport();
+        }
+
+        private void ReporteFactura_Load(object sender, EventArgs e)
+        {
+            CargarReporte();
         }
     }
 }

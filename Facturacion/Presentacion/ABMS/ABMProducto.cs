@@ -27,6 +27,7 @@ namespace Facturacion
 
             CargarTitulo(_tipoOperacion);
             CargarComboPlanes();
+            btnAceptar.BringToFront();
             
 
         }

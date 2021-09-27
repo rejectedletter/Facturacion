@@ -90,7 +90,7 @@ namespace Facturacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1019, 622);
             this.Controls.Add(this.txtProcentaje);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCantidadCuotas);
@@ -98,6 +98,7 @@ namespace Facturacion
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
             this.Name = "ABMPlan";
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.lblNombre, 0);
             this.Controls.SetChildIndex(this.txtNombre, 0);
             this.Controls.SetChildIndex(this.label2, 0);

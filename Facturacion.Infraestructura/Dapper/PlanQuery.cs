@@ -35,7 +35,7 @@ namespace Facturacion.Infraestructura.Dapper
         {
             var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[Planes]
            ([PlanId]
-           ,[Nombre]
+           ,[NombrePlan]
            ,[CantidadCuotas]
            ,[Porcentaje])
             VALUES

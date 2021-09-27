@@ -100,17 +100,18 @@ namespace Facturacion
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 33);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(855, 511);
+            this.panel2.Size = new System.Drawing.Size(1150, 679);
             this.panel2.TabIndex = 20;
             // 
             // ABMProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(855, 544);
+            this.ClientSize = new System.Drawing.Size(1150, 712);
             this.Controls.Add(this.panel2);
             this.Name = "ABMProducto";
             this.Load += new System.EventHandler(this.ABM_Load);
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

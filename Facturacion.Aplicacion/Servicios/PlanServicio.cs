@@ -19,7 +19,7 @@ namespace Facturacion.Aplicacion.Servicios
             {
                 cfg.CreateMap<Plan, PlanDto>()
                 .ForMember(c => c.Porcentaje, o
-                => o.MapFrom(s=>s.Porcentaje * 100));
+                => o.MapFrom(s=>s.Porcentaje));
 
                 cfg.CreateMap<PlanDto, Plan>();
             });
@@ -33,7 +33,7 @@ namespace Facturacion.Aplicacion.Servicios
                 PlanQuery.AddPlan(_mapper.Map<Plan>(plan));
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
 
                 throw new Exception("Error al agregar nuevo plan.");

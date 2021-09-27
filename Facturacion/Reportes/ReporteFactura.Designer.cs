@@ -1,7 +1,7 @@
 ﻿
 namespace Facturacion.Reportes
 {
-    partial class FacturaComprobante
+    partial class ReporteFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -29,28 +29,28 @@ namespace Facturacion.Reportes
         /// </summary>
         private void InitializeComponent()
         {
-            this.rvrFcturacion = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rvrFacturacion = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // rvrFcturacion
+            // rvrFacturacion
             // 
-            this.rvrFcturacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rvrFcturacion.LocalReport.ReportEmbeddedResource = "Facturacion.Reportes.JoelReporte.rdlc";
-            this.rvrFcturacion.Location = new System.Drawing.Point(0, 0);
-            this.rvrFcturacion.Name = "rvrFcturacion";
-            this.rvrFcturacion.ServerReport.BearerToken = null;
-            this.rvrFcturacion.Size = new System.Drawing.Size(1049, 536);
-            this.rvrFcturacion.TabIndex = 0;
+            this.rvrFacturacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rvrFacturacion.LocalReport.ReportEmbeddedResource = "Facturacion.Reportes.JoelReporte.rdlc";
+            this.rvrFacturacion.Location = new System.Drawing.Point(0, 0);
+            this.rvrFacturacion.Name = "rvrFacturacion";
+            this.rvrFacturacion.ServerReport.BearerToken = null;
+            this.rvrFacturacion.Size = new System.Drawing.Size(800, 450);
+            this.rvrFacturacion.TabIndex = 0;
             // 
-            // FacturaComprobante
+            // ReporteFactura
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 536);
-            this.Controls.Add(this.rvrFcturacion);
-            this.Name = "FacturaComprobante";
-            this.Text = "FacturaComprobante";
-            this.Load += new System.EventHandler(this.FacturaComprobante_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rvrFacturacion);
+            this.Name = "ReporteFactura";
+            this.Text = "ReporteFactura";
+            this.Load += new System.EventHandler(this.ReporteFactura_Load);
             this.ResumeLayout(false);
 
         }
@@ -58,6 +58,5 @@ namespace Facturacion.Reportes
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rvrFacturacion;
-        private Microsoft.Reporting.WinForms.ReportViewer rvrFcturacion;
     }
 }

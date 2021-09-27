@@ -15,6 +15,7 @@ namespace Facturacion.Presentacion.ABMS
 
             InitializeComponent();
             CargarTitulo(tipoOperacion);
+            btnAceptar.BringToFront();
         }
 
         private void ABMZona_Load(object sender, EventArgs e)
@@ -57,6 +58,11 @@ namespace Facturacion.Presentacion.ABMS
             }
             
             
+        }
+
+        private void btnAceptar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

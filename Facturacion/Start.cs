@@ -171,7 +171,7 @@ namespace Facturacion
 
         private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         { 
-            FacturaComprobante frm = new FacturaComprobante();
+            ReporteFactura frm = new ReporteFactura();
             frm.ShowDialog();
         }
     }
