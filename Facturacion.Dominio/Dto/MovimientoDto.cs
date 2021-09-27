@@ -8,6 +8,10 @@ namespace Facturacion.Dominio.Dto
 
         public decimal Importe { get; set; }
 
+        public decimal Debe { get; set; }
+
+        public decimal Haber { get; set; }
+
         public EOperacion Operacion { get; set; }
 
         public DateTime FechaMovimiento { get; set; }

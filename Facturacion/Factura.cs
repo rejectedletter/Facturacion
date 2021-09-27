@@ -39,25 +39,7 @@ namespace Facturacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            PDFCrear.Crear(new FacturaDto()
-            {
-                DetalleCliente = new DetalleClienteDto()
-                {
-                    Cliente = _cliente
 
-
-
-                },
-                DetalleProducto = new DetalleProductoDto()
-                {
-                    DetalleProducto = new ProductoDto()
-                    {
-                        MontoTotalCancelar = 26770.00M
-                    }
-                },
-                Monto = Convert.ToDecimal(txtMonto.Text),
-                Fecha = DateTime.Now
-            }) ; 
         }
     }
 }

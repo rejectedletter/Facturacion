@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Facturacion.Aplicacion.Servicios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,26 +13,29 @@ namespace Facturacion
 {
     public partial class ListadoCuentaCliente : Form
     {
-        public object _obj = new object();
-        public ListadoCuentaCliente(Guid clienteId)
+        private readonly MovimientoServicio movimientoServicio = new MovimientoServicio();
+        private Guid _cuentaCliente;
+        public ListadoCuentaCliente(Guid cuentaclienteId)
         {
+            _cuentaCliente = cuentaclienteId;
+
             InitializeComponent();
 
             ColorConfig();
 
 
-            dgvCuentaCliente.Columns.Add("Movimiento", "Movimiento");
-            dgvCuentaCliente.Columns.Add("Fecha", "Fecha");
-            dgvCuentaCliente.Columns.Add("Vencimiento", "Vencimiento");
-            dgvCuentaCliente.Columns.Add("Operación", "Operación");
-            dgvCuentaCliente.Columns.Add("Importe", "Importe");
-            dgvCuentaCliente.Columns.Add("Debe", "Debe");
-            dgvCuentaCliente.Columns.Add("Haber", "Haber");
-            dgvCuentaCliente.Columns.Add("Saldo", "Saldo");
+            //dgvCuentaCliente.Columns.Add("Movimiento", "Movimiento");
+            //dgvCuentaCliente.Columns.Add("Fecha", "Fecha");
+            //dgvCuentaCliente.Columns.Add("Vencimiento", "Vencimiento");
+            //dgvCuentaCliente.Columns.Add("Operación", "Operación");
+            //dgvCuentaCliente.Columns.Add("Importe", "Importe");
+            //dgvCuentaCliente.Columns.Add("Debe", "Debe");
+            //dgvCuentaCliente.Columns.Add("Haber", "Haber");
+            //dgvCuentaCliente.Columns.Add("Saldo", "Saldo");
 
-            var obj = new object[] { "57", "01/01/9999", "01/01/9999", "Recibo de pago", "$1500", "0.00", "1500", "0.00" };
+            //var obj = new object[] { "57", "01/01/9999", "01/01/9999", "Recibo de pago", "$1500", "0.00", "1500", "0.00" };
 
-            _obj = obj;
+            //_obj = obj;
             
         }
 
@@ -43,7 +47,7 @@ namespace Facturacion
 
         private void ListadoCuentaCliente_Load(object sender, EventArgs e)
         {
-            dgvCuentaCliente.DataSource = _obj;
+            dgvCuentaCliente.DataSource = movimientoServicio.ListarMovimientos(_cuentaCliente);
             
         }
 

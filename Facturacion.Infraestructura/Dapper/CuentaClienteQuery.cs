@@ -6,6 +6,7 @@ using Facturacion.Dominio.Entities;
 using Facturacion.Dominio.Dto;
 using AutoMapper;
 using Facturacion.Dominio;
+using System.Data.SqlClient;
 
 namespace Facturacion.Infraestructura.Dapper
 {
@@ -46,7 +47,7 @@ namespace Facturacion.Infraestructura.Dapper
             if (cuentaCliente != null)
             {
                 cuentaClienteDto = _mapper.Map<CuentaClienteDto>(cuentaCliente);
-                cuentaClienteDto.Movimientos = _mapper.Map<List<MovimientoDto>> (MovimientosQuery.GetMovimientos(cuentaCliente.CuentaClienteId));
+                cuentaClienteDto.Movimientos = _mapper.Map<List<MovimientoDto>> (new MovimientosQuery().GetMovimientos(cuentaCliente.CuentaClienteId));
 
                 cuentaClienteDto.Producto = _mapper.Map<ProductoDto>(ProductosQuery.GetProductoById(cuentaCliente.ProductoId));
 
@@ -55,7 +56,7 @@ namespace Facturacion.Infraestructura.Dapper
             return cuentaClienteDto;
         }
 
-        public static bool AddCuentaCliente(CuentaCliente cuentaCliente)
+        public static bool AddCuentaCliente(CuentaCliente cuentaCliente, SqlConnection connection=null)
         {
             var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[CuentaCliente]
            ([Id]
@@ -70,9 +71,10 @@ namespace Facturacion.Infraestructura.Dapper
            ,<@ProductoId, uniqueidentifier,>
            ,<@MovimientoId, uniqueidentifier,>)";
 
-            using (var connection = new DbConn())
+            if (connection ==null)
             {
-                if (connection.Connection.Execute(query, new {
+                connection = new DbConn().Connection;
+                if (connection.Execute(query, new {
                     Id = cuentaCliente.CuentaClienteId,
                     Debe = cuentaCliente.Debe,
                     Haber = cuentaCliente.Haber,
@@ -86,6 +88,22 @@ namespace Facturacion.Infraestructura.Dapper
                 {
                     return false;
                 }
+            }
+
+            if (connection.Execute(query, new
+            {
+                Id = cuentaCliente.CuentaClienteId,
+                Debe = cuentaCliente.Debe,
+                Haber = cuentaCliente.Haber,
+                ProductoId = cuentaCliente.ProductoId,
+
+            }) == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

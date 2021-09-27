@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Facturacion.Dominio;
 using System;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace Facturacion.Infraestructura.Dapper
@@ -21,26 +22,25 @@ namespace Facturacion.Infraestructura.Dapper
             }
         }
 
-        public static bool AddProducto(Producto producto)
+        public static bool AddProducto(Producto producto, SqlConnection connection = null)
         {
             var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[Productos]
            ([Id]
            ,[Descripcion]
-           ,[MontoTotalCancelar]
-           ,[ProductosPlanesId])
+           ,[MontoTotalCancelar])
              VALUES
-           (<Id, uniqueidentifier,>
-           ,<Descripcion, varchar(50),>
-           ,<MontoTotalCancelar, decimal(18,2),>
-           ,<ProductosPlanesId, uniqueidentifier,>)";
+           (@Id
+           ,@Descripcion
+           ,@MontoTotalCancelar)";
 
-            using (var connection = new DbConn())
+            if (connection==null)
             {
-                if (connection.Connection.Execute(query, new
+                connection = new DbConn().Connection;
+                if (connection.Execute(query, new
                 {
-                   Id = producto.ProductoId,
-                   Descripcion = producto.Descripcion,
-                   MontoTotalCancelar = producto.MontoTotalCancelar
+                    Id = producto.ProductoId,
+                    Descripcion = producto.Descripcion,
+                    MontoTotalCancelar = producto.MontoTotalCancelar
                 }) == 1)
                 {
                     return true;
@@ -50,6 +50,22 @@ namespace Facturacion.Infraestructura.Dapper
                     return false;
                 }
             }
+
+            if (connection.Execute(query, new
+            {
+                Id = producto.ProductoId,
+                Descripcion = producto.Descripcion,
+                MontoTotalCancelar = producto.MontoTotalCancelar
+            }) == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
         }
     }
 }

@@ -59,6 +59,8 @@ namespace Facturacion
             this.label3 = new System.Windows.Forms.Label();
             this.txtDirParticular = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbZona = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlcliente.SuspendLayout();
             this.SuspendLayout();
@@ -134,6 +136,8 @@ namespace Facturacion
             // 
             // pnlcliente
             // 
+            this.pnlcliente.Controls.Add(this.label10);
+            this.pnlcliente.Controls.Add(this.cmbZona);
             this.pnlcliente.Controls.Add(this.btnCargarProducto);
             this.pnlcliente.Controls.Add(this.txtLocParticular);
             this.pnlcliente.Controls.Add(this.label11);
@@ -164,14 +168,15 @@ namespace Facturacion
             this.pnlcliente.Controls.Add(this.label1);
             this.pnlcliente.Controls.Add(this.txtApellido);
             this.pnlcliente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlcliente.Location = new System.Drawing.Point(0, 0);
+            this.pnlcliente.Location = new System.Drawing.Point(0, 33);
             this.pnlcliente.Name = "pnlcliente";
-            this.pnlcliente.Size = new System.Drawing.Size(829, 571);
+            this.pnlcliente.Size = new System.Drawing.Size(829, 538);
             this.pnlcliente.TabIndex = 22;
+            this.pnlcliente.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlcliente_Paint);
             // 
             // btnCargarProducto
             // 
-            this.btnCargarProducto.Location = new System.Drawing.Point(491, 211);
+            this.btnCargarProducto.Location = new System.Drawing.Point(476, 274);
             this.btnCargarProducto.Name = "btnCargarProducto";
             this.btnCargarProducto.Size = new System.Drawing.Size(75, 23);
             this.btnCargarProducto.TabIndex = 38;
@@ -339,6 +344,23 @@ namespace Facturacion
             this.label2.TabIndex = 18;
             this.label2.Text = "Domicilio Particular";
             // 
+            // cmbZona
+            // 
+            this.cmbZona.FormattingEnabled = true;
+            this.cmbZona.Location = new System.Drawing.Point(550, 209);
+            this.cmbZona.Name = "cmbZona";
+            this.cmbZona.Size = new System.Drawing.Size(226, 21);
+            this.cmbZona.TabIndex = 39;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(488, 214);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.TabIndex = 40;
+            this.label10.Text = "Zona";
+            // 
             // ABMCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,6 +369,7 @@ namespace Facturacion
             this.Controls.Add(this.pnlcliente);
             this.Name = "ABMCliente";
             this.Load += new System.EventHandler(this.ABMCliente_Load);
+            this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.pnlcliente, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -387,5 +410,7 @@ namespace Facturacion
         private System.Windows.Forms.TextBox txtBarrioParticular;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnCargarProducto;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cmbZona;
     }
 }

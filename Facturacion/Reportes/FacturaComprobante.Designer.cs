@@ -34,10 +34,12 @@ namespace Facturacion.Reportes
             // 
             // rvrFacturacion
             // 
-            this.rvrFacturacion.Location = new System.Drawing.Point(12, 12);
+            this.rvrFacturacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rvrFacturacion.LocalReport.ReportEmbeddedResource = "Facturacion.Reportes.JoelReporte.rdlc";
+            this.rvrFacturacion.Location = new System.Drawing.Point(0, 0);
             this.rvrFacturacion.Name = "rvrFacturacion";
             this.rvrFacturacion.ServerReport.BearerToken = null;
-            this.rvrFacturacion.Size = new System.Drawing.Size(1025, 512);
+            this.rvrFacturacion.Size = new System.Drawing.Size(1049, 536);
             this.rvrFacturacion.TabIndex = 0;
             // 
             // FacturaComprobante

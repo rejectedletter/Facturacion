@@ -10,6 +10,9 @@ namespace Facturacion.Dominio.Entities
 
         public decimal Monto { get; set; }
 
-        
+        public Guid DetallesProductoId { get; set; }
+
+        public Guid DetallesClienteId { get; set; }
+
     }
 }

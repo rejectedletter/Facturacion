@@ -2,6 +2,7 @@
 using Facturacion.Dominio.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace Facturacion.Infraestructura.Dapper
 {
@@ -31,7 +32,7 @@ namespace Facturacion.Infraestructura.Dapper
             }
         }
 
-        public static bool AddProductosPlanes(ProductosPlanes productosPlanes)
+        public static bool AddProductosPlanes(ProductosPlanes productosPlanes, SqlConnection connection = null)
         {
             var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[ProductosPlanes]
            ([ProductosPlanesId]
@@ -44,11 +45,13 @@ namespace Facturacion.Infraestructura.Dapper
            ,@ProductoId, uniqueidentifier,>
            ,@PlantId, uniqueidentifier,>
            ,@FechaInicioPlanPago, datetime,>
-           ,@Cancelado, bit,>))";
+           ,@Cancelado, bit,>)";
 
-            using (var connection = new DbConn())
+            if(connection == null)
             {
-                if (connection.Connection.Execute(query, new
+                connection = new DbConn().Connection;
+
+                if (connection.Execute(query, new
                 {
                     ProductosPlanesId = productosPlanes.ProductosPlanesId,
                     ProductoId = productosPlanes.ProductoId,
@@ -65,6 +68,24 @@ namespace Facturacion.Infraestructura.Dapper
                     return false;
 
                 }
+            }
+
+            if (connection.Execute(query, new
+            {
+                ProductosPlanesId = productosPlanes.ProductosPlanesId,
+                ProductoId = productosPlanes.ProductoId,
+                PlantId = productosPlanes.PlanId,
+                FechaInicioPlanPago = productosPlanes.FechaInicioPlanPago,
+                Cancelado = productosPlanes.Cancelado
+
+            }) == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+
             }
         }
 

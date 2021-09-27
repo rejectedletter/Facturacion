@@ -34,6 +34,15 @@
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.90\lib\net461\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.12.0.2402.15\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -50,6 +59,7 @@
     <Compile Include="Dto\DetalleProductoDto.cs" />
     <Compile Include="Dto\EOperacion.cs" />
     <Compile Include="Dto\FacturaDto.cs" />
+    <Compile Include="Dto\InformeFacturacionDto.cs" />
     <Compile Include="Dto\MovimientoDto.cs" />
     <Compile Include="Dto\PlanDto.cs" />
     <Compile Include="Dto\ProductoDto.cs" />
@@ -60,6 +70,7 @@
     <Compile Include="Entities\DetalleCliente.cs" />
     <Compile Include="Entities\DetalleProducto.cs" />
     <Compile Include="Entities\Factura.cs" />
+    <Compile Include="Entities\InformeFacturacion.cs" />
     <Compile Include="Entities\Movimiento.cs" />
     <Compile Include="Entities\Plan.cs" />
     <Compile Include="Entities\Producto.cs" />

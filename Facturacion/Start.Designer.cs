@@ -141,6 +141,7 @@ namespace Facturacion
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.Size = new System.Drawing.Size(531, 400);
             this.dgvDatos.TabIndex = 1;
+            this.dgvDatos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellDoubleClick);
             // 
             // panel1
             // 

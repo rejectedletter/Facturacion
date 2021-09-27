@@ -6,22 +6,21 @@ using System.Linq;
 
 namespace Facturacion.Infraestructura.Dapper
 {
-    public class MovimientosQuery
+    public class MovimientosQuery : DapperMaster
     {
-        public static List<Movimiento> GetMovimientos(Guid cuentaClienteId)
+        public  List<Movimiento> GetMovimientos(Guid cuentaClienteId)
         {
-            var query = $@"SELECT  [MovimientoId]
-                        ,[Importe]
-                        ,[Operacion]
-                        ,[FechaMovimiento]
-                        ,[CuentaclienteId]
-                        FROM [Facturacion_Gimnasio_Juan].[dbo].[Movimientos]
-                        Where CuentaclienteId = '@cuentaclienteId";
+            var query = @"SELECT[MovimientoId]
+                ,[Importe]
+                ,[Operacion]
+                ,[Debe]
+                ,[Haber]
+                ,[FechaMovimiento]
+                ,[CuentaClienteId]
+            FROM[Facturacion_Gimnasio_Juan].[dbo].[Movimientos]
+            where CuentaClienteId = @CuentaClienteId";
 
-            using (var connection = new DbConn())
-            {
-                return connection.Connection.Query<Movimiento>(query,new {cuentaClienteId }).ToList();
-            }
+            return DapperExecuteReader<Movimiento>(nameof(Movimiento), query).ToList();
         }
 
         public static bool AddMovimiento(Movimiento movimiento)

@@ -2,6 +2,8 @@
 using Facturacion.Dominio.Dto;
 using Facturacion.Presentacion;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Facturacion
@@ -9,8 +11,12 @@ namespace Facturacion
     public partial class ABMCliente : ABMBase
     {
         private readonly ClienteServicio _clienteServicio = new ClienteServicio();
-        private  ProductoDto _producto = new ProductoDto();
-         public ABMCliente(TipoOperacion tipoOperacion)
+        private ProductoDto _producto = null;
+
+        private readonly ZonaServicio _zonaServicio = new ZonaServicio();
+
+        private List<ZonaDto> Zonas => _zonaServicio.ListarZonas();
+        public ABMCliente(TipoOperacion tipoOperacion)
          {
 
             _tipoOperacion = tipoOperacion;
@@ -19,9 +25,14 @@ namespace Facturacion
             lblCodigocliente.Visible = false;
             btnAceptar.BringToFront();
 
-
+            CargarCombo();
             CargarTitulo(tipoOperacion);
          }
+
+        private void CargarCombo()
+        {
+            cmbZona.DataSource = Zonas.Select(x => x.NombreZona).ToList();
+        }
 
         protected override void CargarTitulo(TipoOperacion tp)
         {
@@ -70,7 +81,8 @@ namespace Facturacion
                 {
                     Apellido = txtApellido.Text,
                     Nombre = txtNombre.Text,
-                    FechaNacimiento = dTPFechaNac.Value
+                    FechaNacimiento = dTPFechaNac.Value,
+                    Zona = Zonas.First(x => x.NombreZona == cmbZona.SelectedItem.ToString())
                 };
 
 
@@ -79,7 +91,12 @@ namespace Facturacion
                 lblCodigocliente.Text = nuevoCliente.CodigoCliente;
             
 
-            _clienteServicio.Agregar(nuevoCliente, _producto);
+              var agregado =_clienteServicio.Agregar(nuevoCliente, _producto);
+                if (agregado)
+                {
+                    MessageBox.Show("Se agregó correctamente", "Agregar Cliente", MessageBoxButtons.OK);
+                    Close();
+                }
             }
         }
 
@@ -90,6 +107,11 @@ namespace Facturacion
             var formProducto = new ABMProducto(TipoOperacion.Alta, null);
             formProducto.ShowDialog();
             _producto = formProducto.Producto;
+        }
+
+        private void pnlcliente_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

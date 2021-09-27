@@ -36,6 +36,7 @@ namespace Facturacion
         private void dgvProductos_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             selectedRowIndex = e.RowIndex;
+            
         }
 
         private void btnListarDePRoductos_Click(object sender, EventArgs e)
@@ -57,6 +58,8 @@ namespace Facturacion
         private void CargarClientes()
         {
            dgvDatos.DataSource = ClienteServicio.Listar(string.Empty);
+
+           // DgvFormatting.FormatCliente(ref dgvDatos);
 
             btnNuevo.Visible = true;
             btnModificar.Visible = true;
@@ -152,19 +155,24 @@ namespace Facturacion
             }
         }
 
-        private void btnComprobante_Click(object sender, EventArgs e)
-        {
-            var comprobante = new FacturaComprobante(new List<FacturaDto>(){new FacturaDto
+        private void btnComprobante_Click(object sender, EventArgs e) { 
+            /*var comprobante = new FacturaComprobante(new List<FacturaDto>(){new FacturaDto
             {
 
             } });
-            comprobante.Show();
+            comprobante.Show();*/
         }
 
         private void btnCuentaCliente_Click(object sender, EventArgs e)
         {
-            var formCuenta = new ListadoCuentaCliente((Guid)dgvDatos[0, selectedRowIndex].Value);
+            var formCuenta = new ListadoCuentaCliente((Guid)dgvDatos["CuentaclienteId", selectedRowIndex].Value);
             formCuenta.Show();
+        }
+
+        private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        { 
+            FacturaComprobante frm = new FacturaComprobante();
+            frm.ShowDialog();
         }
     }
 }

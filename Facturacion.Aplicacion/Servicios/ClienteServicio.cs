@@ -2,6 +2,7 @@
 using Facturacion.Dominio;
 using Facturacion.Dominio.Dto;
 using Facturacion.Dominio.Entities;
+using Facturacion.Infraestructura;
 using Facturacion.Infraestructura.Dapper;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,21 @@ namespace Facturacion.Aplicacion.Servicios
         {
             var configuration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<ClienteDto, Cliente>();
+                cfg.CreateMap<ClienteDto, Cliente>()
+                .ForMember(x=> x.ProductoId, o => {
+                    o.MapFrom(s => s.Productos.First().ProductoId);
+                })
+                .ForMember(x => x.CuentaClienteId, o => {
+                    o.MapFrom(s => s.CuentaCliente.CuentaClienteId);
+                })
+                .ForMember(x => x.ZonaId, o => {
+                    o.MapFrom(s => s.Zona.ZonaId);
+                });
                 cfg.CreateMap<ProductoDto, Producto>();
-                cfg.CreateMap<ProductosPlanesDto, ProductosPlanes>();
+                cfg.CreateMap<ProductosPlanesDto, ProductosPlanes>()
+                .ForMember(x => x.PlanId, o => {
+                    o.MapFrom(s => s.Plan.PlanId);
+                });
                 cfg.CreateMap<CuentaClienteDto, CuentaCliente>();
 
             });
@@ -30,15 +43,15 @@ namespace Facturacion.Aplicacion.Servicios
         {
             try
             {
-                ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
-
                 if (producto != null)
                 {
-                    var cuentaCliente = new CuentaCliente()
+                    
+
+                    var cuentaClienteDto = new CuentaClienteDto()
                     {
-                        CuentaClienteId = new CuentaClienteDto().CuentaClienteId,
                         Debe = producto.MontoTotalCancelar,
-                        ProductoId = producto.ProductoId
+                        Producto = producto,
+                        Movimientos = new List<MovimientoDto>()
                     };
 
                     var relacionProdPlan = new ProductosPlanesDto()
@@ -46,15 +59,41 @@ namespace Facturacion.Aplicacion.Servicios
                         Producto = producto,
                         Plan = producto.Planes.First(),
                         FechaInicioPlanPago = DateTime.Now,
-                        Movimientos = cliente.CuentaCliente.Movimientos
+                        Movimientos = cuentaClienteDto.Movimientos
                     };
 
-                    ProductosQuery.AddProducto(_mapper.Map<Producto>(producto));
-                    ProductosPlanesQuery.AddProductosPlanes(_mapper.Map<ProductosPlanes>(relacionProdPlan));
-                    CuentaClienteQuery.AddCuentaCliente(_mapper.Map<CuentaCliente>(cuentaCliente));
+                    cliente.CuentaCliente = cuentaClienteDto; 
+                    cliente.Productos = new List<ProductoDto>(){ producto};
+                    cliente.ProductosPlanes = new List<ProductosPlanesDto>()
+                    { relacionProdPlan };
 
+                    try
+                    {
+                        ClientesQuery.ExecuteTransactCliente(_mapper.Map<Cliente>(cliente),
+                            _mapper.Map<Producto>(producto),
+                            _mapper.Map<ProductosPlanes>(relacionProdPlan),
+                            _mapper.Map<CuentaCliente>(cuentaClienteDto)
+                            );
+                        //ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
+                        //ProductosQuery.AddProducto(_mapper.Map<Producto>(producto));
+                        //ProductosPlanesQuery.AddProductosPlanes(_mapper.Map<ProductosPlanes>(relacionProdPlan));
+                        //CuentaClienteQuery.AddCuentaCliente(_mapper.Map<CuentaCliente>(cuentaClienteDto));
+
+                    }
+                    catch (Exception e)
+                    {
+
+                        
+                        throw e;
+                    }
                     
+                    //GC.SuppressFinalize(conn);
+                    
+
+                    return true;
                 }
+
+                ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
 
                 return true;
             }
@@ -93,15 +132,15 @@ namespace Facturacion.Aplicacion.Servicios
             }
         }
 
-        public static List<dynamic> Listar(string cadena)
+        public  List<ClienteDto> Listar(string cadena)
         {
             if (!string.IsNullOrEmpty(cadena))
             {
-                return ClientesQuery.GetClientes()
-                    .Where(x => x.zona.NombreZona == cadena).ToList();
+                return _mapper.Map<List<Cliente>, List<ClienteDto>>(ClientesQuery.GetClientes())
+                    .Where(x => x.Zona.NombreZona == cadena).ToList();
             }
 
-           return ClientesQuery.GetClientes();
+           return _mapper.Map<List<Cliente>, List<ClienteDto>>(ClientesQuery.GetClientes());
 
             
         }
