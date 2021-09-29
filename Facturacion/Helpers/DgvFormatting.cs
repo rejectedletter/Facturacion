@@ -1,18 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Facturacion.Helpers
 {
-    public static class DgvFormatting
+    public  class DgvFormatting
     {
-      public static void FormatCliente(ref DataGridView dgvCliente)
+        public TablesConfig Data;
+        public Dictionary<string, string> ClientesColumns;
+        public Dictionary<string, string> CuentasColumns;
+        public DgvFormatting()
         {
-            dgvCliente.Columns["NroCliente"].HeaderText = "Nro. cliente";
-            dgvCliente.Columns["CodigoCliente"].HeaderText = "Codigo Cliente";
-            dgvCliente.Columns["ApellidoyNombre"].HeaderText = "Apellido y Nombre";
-            dgvCliente.Columns["Direccion"].HeaderText = "Direccion";
-            dgvCliente.Columns["NombreZona"].HeaderText = "Zona";
-            dgvCliente.Columns["MontoTotalCancelar"].HeaderText = "Compra";
+            using (StreamReader r = new StreamReader(
+                @"Helpers/TablesConfig.json"))
+            {
+                string json = r.ReadToEnd();
+                Data = JsonConvert.DeserializeObject<TablesConfig>(json);
+            }
+
+            ClientesColumns = Data.Clientes;
+            CuentasColumns = Data.CuentaClientes;
+        }
+        public  void FormatCliente(ref DataGridView dgvCliente)
+        {
+           
+            //foreach (DataGridViewColumn col in dgvCliente.Columns)
+            //{
+            //    col.Visible = false;
+            //}
+
+            foreach (var column in ClientesColumns)
+            {
+                dgvCliente.Columns[column.Key].Visible = true;
+                dgvCliente.Columns[column.Key].HeaderText = column.Value;
+            }
         }
 
         public static void FormatZona(ref DataGridView dgvCliente)
@@ -29,5 +51,12 @@ namespace Facturacion.Helpers
 
             dgvPlan.Columns["CantidadCuotas"].HeaderText = "Cantidad de Cuotas";
         }
+
+        
+    }
+    public class TablesConfig
+    {
+        public Dictionary<string, string> Clientes;
+        public Dictionary<string, string> CuentaClientes;
     }
 }

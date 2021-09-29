@@ -22,6 +22,7 @@ namespace Facturacion.Presentacion
             //btnCerrar.BackgroundImage = ImageStatics.close;
 
             //CargarImagenes();
+            
         }
 
         private void CargarImagenes()
@@ -42,6 +43,11 @@ namespace Facturacion.Presentacion
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void PresentacionBase_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

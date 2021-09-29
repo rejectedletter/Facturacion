@@ -16,4 +16,19 @@ namespace Facturacion.Dominio.Dto
 
         public DateTime FechaMovimiento { get; set; }
     }
+
+    public class MovimientoResult
+    {
+        public Guid MovimientoId { get; set; }
+
+        public int Operacion { get; set; }
+
+        public decimal Debe { get; set; }
+        public decimal Haber { get; set; }
+        public decimal SaldoFechaActual { get; set; }
+
+        public DateTime FechaMovimiento { get; set; }
+        public string NombrePlan { get; set; }
+        public DateTime FechaEstimadaCancelacion { get; set; }
+    }
 }

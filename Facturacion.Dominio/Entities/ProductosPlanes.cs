@@ -12,6 +12,8 @@ namespace Facturacion.Dominio.Entities
 
         public DateTime FechaInicioPlanPago { get; set; }
 
+        public decimal Alicuota { get; set; }
+
         public bool Cancelado { get; set; }
     }
 }

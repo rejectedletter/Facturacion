@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Facturacion.Dominio.Dto;
 using Facturacion.Dominio.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,19 +9,28 @@ namespace Facturacion.Infraestructura.Dapper
 {
     public class MovimientosQuery : DapperMaster
     {
-        public  List<Movimiento> GetMovimientos(Guid cuentaClienteId)
+        public  List<MovimientoResult> GetMovimientos(Guid cuentaClienteId)
         {
             var query = @"SELECT[MovimientoId]
-                ,[Importe]
-                ,[Operacion]
-                ,[Debe]
-                ,[Haber]
-                ,[FechaMovimiento]
-                ,[CuentaClienteId]
-            FROM[Facturacion_Gimnasio_Juan].[dbo].[Movimientos]
-            where CuentaClienteId = @CuentaClienteId";
+				,mov.[Operacion]
+                ,mov.[Importe]
+                ,mov.[Debe]
+                ,mov.[Haber]
+			    ,cc.Debe as SaldoFechaActual
+                ,mov.[FechaMovimiento]
+                ,pla.NombrePlan
+                ,pp.FechaEstimadaCancelacion
+             
+            FROM[Facturacion_Gimnasio_Juan].[dbo].[Movimientos] mov
+            left join Facturacion_Gimnasio_Juan.dbo.CuentaCliente cc on mov.CuentaClienteId = cc.CuentaClienteId
+            left join Facturacion_Gimnasio_Juan.dbo.ProductosPlanes pp on pp.ProductoId = cc.ProductoId
+            left join Facturacion_Gimnasio_Juan.dbo.Planes pla on pp.PlantId = pla.PlanId
+            where mov.CuentaClienteId = @CuentaClienteId";
 
-            return DapperExecuteReader<Movimiento>(nameof(Movimiento), query).ToList();
+            parametrosDapper = new DynamicParameters();
+            parametrosDapper.Add("@CuentaClienteId", cuentaClienteId);
+
+            return DapperExecuteReader<MovimientoResult>(nameof(MovimientoResult), query).ToList();
         }
 
         public static bool AddMovimiento(Movimiento movimiento)

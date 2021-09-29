@@ -30,13 +30,13 @@ namespace Facturacion.Aplicacion.Servicios
 
         }
 
-        public List<MovimientoDto> ListarMovimientos(Guid cuentaClienteId)
+        public List<MovimientoResult> ListarMovimientos(Guid cuentaClienteId)
         {
             try
             {
-                var result = _query.GetMovimientos(cuentaClienteId);
+                return _query.GetMovimientos(cuentaClienteId);
 
-                return _mapper.Map<List<MovimientoDto>>(result);
+                
             }
             catch (Exception e)
             {

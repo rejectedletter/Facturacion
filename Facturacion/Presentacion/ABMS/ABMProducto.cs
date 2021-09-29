@@ -26,14 +26,20 @@ namespace Facturacion
             btnAceptar.BringToFront();
 
             CargarTitulo(_tipoOperacion);
-            CargarComboPlanes();
-            btnAceptar.BringToFront();
+            
+            
             
 
         }
 
         private void CargarComboPlanes()
         {
+            if (Planes.Count < 1 || Planes == null)
+            {
+                MessageBox.Show("Cargar Planes", "Sin Planes Cargados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Close();
+            }
+
             cmbPlanes.DataSource = Planes.Select(x=>x.NombrePlan).ToList();
         }
 
@@ -65,7 +71,7 @@ namespace Facturacion
 
         private void ABM_Load(object sender, EventArgs e)
         {
-
+            CargarComboPlanes();
         }
 
         
@@ -79,17 +85,21 @@ namespace Facturacion
                 Producto.Descripcion = txtDescripcion.Text;
                     Producto.MontoTotalCancelar = decimal.Parse(txtPrecio.Text);
                     Producto.Planes = new List<PlanDto>() { Planes.First(x => x.NombrePlan == cmbPlanes.SelectedItem.ToString()) };
-                
+
+                var prod = new ProductosPlanesDto()
+                {
+                    Producto = Producto,
+                    Plan = Producto.Planes.First(),
+                    FechaInicioPlanPago = DateTime.Now,
+
+                };
 
                 var msg = MessageBox.Show("Se agregó correctamente", caption: "Producto Agregado");
                 this.Close();
             }
         }
 
-        private bool ValidarInput()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         
     }

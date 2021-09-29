@@ -70,5 +70,10 @@ namespace Facturacion
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void btnAgregarMovimiento_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

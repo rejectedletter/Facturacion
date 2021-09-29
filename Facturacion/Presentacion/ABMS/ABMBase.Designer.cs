@@ -32,8 +32,14 @@ namespace Facturacion.Presentacion
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.pnlImg.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlImg
+            // 
+            this.pnlImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.pnlImg.Size = new System.Drawing.Size(883, 33);
             // 
             // panel1
             // 
@@ -59,21 +65,29 @@ namespace Facturacion.Presentacion
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(346, 462);
+            this.btnAceptar.AutoEllipsis = true;
+            this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAceptar.Location = new System.Drawing.Point(371, 472);
             this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btnAceptar.Size = new System.Drawing.Size(131, 32);
             this.btnAceptar.TabIndex = 2;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Text = "ACEPTAR";
+            this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
             // ABMBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(794, 524);
+            this.ClientSize = new System.Drawing.Size(883, 586);
             this.Controls.Add(this.btnAceptar);
             this.Name = "ABMBase";
+            this.Controls.SetChildIndex(this.pnlImg, 0);
             this.Controls.SetChildIndex(this.btnAceptar, 0);
+            this.pnlImg.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

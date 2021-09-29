@@ -132,13 +132,13 @@ namespace Facturacion.Aplicacion.Servicios
             }
         }
 
-        public List<ClienteDto> Listar(string cadena)
+        public List<ClientesResult> Listar(string cadena)
         {
-            if (!string.IsNullOrEmpty(cadena))
-            {
-                return ClientesQuery.GetClientes()
-                    .Where(x => x.Zona.NombreZona == cadena).ToList();
-            }
+            //if (!string.IsNullOrEmpty(cadena))
+            //{
+            //    return ClientesQuery.GetClientes()
+            //        .Where(x => x.Zona.NombreZona == cadena).ToList();
+            //}
 
             return ClientesQuery.GetClientes();
         }

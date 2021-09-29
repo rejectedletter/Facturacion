@@ -21,6 +21,8 @@ namespace Facturacion
         {
             InitializeComponent();
 
+            pnlColor.Width = splitContainer1.Panel1.Width;
+
             btnNuevo.Visible = false;
             btnModificar.Visible = false;
             btnEliminar.Visible = false;
@@ -59,7 +61,7 @@ namespace Facturacion
         {
            dgvDatos.DataSource = new ClienteServicio().Listar(string.Empty);
 
-           // DgvFormatting.FormatCliente(ref dgvDatos);
+          // new DgvFormatting().FormatCliente(ref dgvDatos);
 
             btnNuevo.Visible = true;
             btnModificar.Visible = true;
@@ -105,6 +107,7 @@ namespace Facturacion
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            pnlColor.Width = splitContainer1.Panel1.Width;
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)

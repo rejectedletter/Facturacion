@@ -38,6 +38,8 @@ namespace Facturacion
             this.lblCodigocliente = new System.Windows.Forms.Label();
             this.lblCodigoClienteTit = new System.Windows.Forms.Label();
             this.pnlcliente = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmbZona = new System.Windows.Forms.ComboBox();
             this.btnCargarProducto = new System.Windows.Forms.Button();
             this.txtLocParticular = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -59,11 +61,14 @@ namespace Facturacion
             this.label3 = new System.Windows.Forms.Label();
             this.txtDirParticular = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbZona = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.pnlImg.SuspendLayout();
             this.pnlcliente.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlImg
+            // 
+            this.pnlImg.Size = new System.Drawing.Size(829, 33);
             // 
             // txtNombre
             // 
@@ -172,7 +177,25 @@ namespace Facturacion
             this.pnlcliente.Name = "pnlcliente";
             this.pnlcliente.Size = new System.Drawing.Size(829, 538);
             this.pnlcliente.TabIndex = 22;
-            this.pnlcliente.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlcliente_Paint);
+           
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(488, 214);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(32, 13);
+            this.label10.TabIndex = 40;
+            this.label10.Text = "Zona";
+            // 
+            // cmbZona
+            // 
+            this.cmbZona.FormattingEnabled = true;
+            this.cmbZona.Location = new System.Drawing.Point(550, 209);
+            this.cmbZona.Name = "cmbZona";
+            this.cmbZona.Size = new System.Drawing.Size(226, 21);
+            this.cmbZona.TabIndex = 39;
+           
             // 
             // btnCargarProducto
             // 
@@ -344,23 +367,6 @@ namespace Facturacion
             this.label2.TabIndex = 18;
             this.label2.Text = "Domicilio Particular";
             // 
-            // cmbZona
-            // 
-            this.cmbZona.FormattingEnabled = true;
-            this.cmbZona.Location = new System.Drawing.Point(550, 209);
-            this.cmbZona.Name = "cmbZona";
-            this.cmbZona.Size = new System.Drawing.Size(226, 21);
-            this.cmbZona.TabIndex = 39;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(488, 214);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(32, 13);
-            this.label10.TabIndex = 40;
-            this.label10.Text = "Zona";
-            // 
             // ABMCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,10 +375,12 @@ namespace Facturacion
             this.Controls.Add(this.pnlcliente);
             this.Name = "ABMCliente";
             this.Load += new System.EventHandler(this.ABMCliente_Load);
+            this.Controls.SetChildIndex(this.pnlImg, 0);
             this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.pnlcliente, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlImg.ResumeLayout(false);
             this.pnlcliente.ResumeLayout(false);
             this.pnlcliente.PerformLayout();
             this.ResumeLayout(false);

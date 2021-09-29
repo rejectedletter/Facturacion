@@ -10,7 +10,7 @@ namespace Facturacion.Infraestructura.Dapper
 {
     public class ClientesQuery
     {
-        public static List<ClienteDto> GetClientes()
+        public static List<ClientesResult> GetClientes()
         {
             var query = $@"SELECT cli.ClienteId
             ,cli.NroCliente
@@ -36,19 +36,7 @@ namespace Facturacion.Infraestructura.Dapper
 
             using(var connection = new DbConn())
             {
-                return connection.Connection.Query<ClienteDto, ZonaDto, ProductoDto, PlanDto, ClienteDto>(query,
-                                    (cli, zona, prod, pla) => {
-                                        cli.Zona = zona;
-                                        cli.Productos = new List<ProductoDto>();
-                                        cli.Productos.Add(prod);
-                                        cli.ProductosPlanes = new List<ProductosPlanesDto>();
-                                        cli.ProductosPlanes.Add(new ProductosPlanesDto()
-                                        {
-                                            Producto = prod
-                                        });
-                                        return cli;
-                                    }, splitOn:
-                                        "NombreZona,Descripcion,NombrePlan").AsList();
+                return connection.Connection.Query<ClientesResult>(query).AsList();
 
             }     
         }

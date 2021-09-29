@@ -22,15 +22,20 @@ namespace Facturacion
             _tipoOperacion = tipoOperacion;
 
             InitializeComponent();
+
             lblCodigocliente.Visible = false;
             btnAceptar.BringToFront();
 
-            CargarCombo();
-            CargarTitulo(tipoOperacion);
+           CargarTitulo(tipoOperacion);
          }
 
         private void CargarCombo()
         {
+            if (Zonas.Count < 1 || Zonas == null)
+            {
+                MessageBox.Show("Por favor, primero cargar Zonas", "Sin zonas cargadas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Close();
+            }
             cmbZona.DataSource = Zonas.Select(x => x.NombreZona).ToList();
         }
 
@@ -55,7 +60,7 @@ namespace Facturacion
 
         private void ABMCliente_Load(object sender, EventArgs e)
         {
-
+            CargarCombo();
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -81,7 +86,16 @@ namespace Facturacion
                 {
                     Apellido = txtApellido.Text,
                     Nombre = txtNombre.Text,
+                    Dni = txtDni.Text,
                     FechaNacimiento = dTPFechaNac.Value,
+                    DomicilioParticular = txtDirParticular.Text + txtBarrioParticular.Text + txtLocParticular.Text,
+                    
+
+                    DomicilioComercial =  txtDirComercial.Text + txtBarrioComercial.Text + txtBarrioComercial.Text,
+                    
+                    NroCelular = txtCelular.Text,
+                    TelefonoFijo = txttelefono.Text,
+                    Rubro = txtRubro.Text,
                     Zona = Zonas.First(x => x.NombreZona == cmbZona.SelectedItem.ToString())
                 };
 
@@ -109,9 +123,6 @@ namespace Facturacion
             _producto = formProducto.Producto;
         }
 
-        private void pnlcliente_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+      
     }
 }

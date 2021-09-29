@@ -63,6 +63,36 @@ namespace Facturacion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _056_plus {
+            get {
+                object obj = ResourceManager.GetObject("056-plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _056_plus__1_ {
+            get {
+                object obj = ResourceManager.GetObject("056-plus (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _058_error__1_ {
+            get {
+                object obj = ResourceManager.GetObject("058-error (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _083_substract {
             get {
                 object obj = ResourceManager.GetObject("083-substract", resourceCulture);
@@ -76,6 +106,46 @@ namespace Facturacion.Properties {
         internal static System.Drawing.Bitmap _084_multiply {
             get {
                 object obj = ResourceManager.GetObject("084-multiply", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _218_edit {
+            get {
+                object obj = ResourceManager.GetObject("218-edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _218_edit__3_ {
+            get {
+                object obj = ResourceManager.GetObject("218-edit (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _241_folder__1_ {
+            get {
+                object obj = ResourceManager.GetObject("241-folder (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _276_trash__1_ {
+            get {
+                object obj = ResourceManager.GetObject("276-trash (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
