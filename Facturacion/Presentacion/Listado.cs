@@ -34,7 +34,7 @@ namespace Facturacion
         {
 
 
-            var formModificar = new ABMCliente(TipoOperacion.Modificacion);
+            var formModificar = new ABMCliente(TipoOperacion.Modificacion, (Guid)dgvProductos[0, selectedRowIndex].Value);
             formModificar.Show();
         }
 
@@ -42,7 +42,7 @@ namespace Facturacion
 
         private void lblAgregarCliente_Click(object sender, EventArgs e)
         {
-            var formAgregar = new ABMCliente(TipoOperacion.Alta);
+            var formAgregar = new ABMCliente(TipoOperacion.Alta, (Guid)dgvProductos[0, selectedRowIndex].Value);
             formAgregar.Show();
         }
 

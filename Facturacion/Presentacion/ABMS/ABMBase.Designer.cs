@@ -29,9 +29,12 @@ namespace Facturacion.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlImg.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +68,8 @@ namespace Facturacion.Presentacion
             // 
             // btnAceptar
             // 
+            this.btnAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAceptar.AutoEllipsis = true;
             this.btnAceptar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
             this.btnAceptar.FlatAppearance.BorderSize = 0;
@@ -79,12 +84,27 @@ namespace Facturacion.Presentacion
             this.btnAceptar.UseVisualStyleBackColor = false;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 30;
+            this.bunifuElipse1.TargetControl = this.btnAceptar;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(883, 586);
+            this.flowLayoutPanel1.TabIndex = 3;
+            // 
             // ABMBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(883, 586);
             this.Controls.Add(this.btnAceptar);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "ABMBase";
+            this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
             this.Controls.SetChildIndex(this.pnlImg, 0);
             this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.pnlImg.ResumeLayout(false);
@@ -98,5 +118,7 @@ namespace Facturacion.Presentacion
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.Label lblTitulo;
         protected System.Windows.Forms.Button btnAceptar;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

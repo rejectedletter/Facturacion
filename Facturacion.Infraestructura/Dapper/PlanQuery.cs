@@ -61,7 +61,27 @@ namespace Facturacion.Infraestructura.Dapper
             }
         }
 
-       
+        public static bool DeletePlan(Guid id)
+        {
+            var query = $@"DELETE FROM [Facturacion_Gimnasio_Juan].[dbo].[Planes]
+            WHERE PlanId = @Id";
+
+            using (var connection = new DbConn())
+            {
+                if (connection.Connection.Execute(query, new
+                {
+                    Id = id
+
+                }) == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 
 }

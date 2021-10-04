@@ -37,13 +37,24 @@ namespace Facturacion
             this.cmbPlanes = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.pnlImg.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnAceptar
+            // 
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            // 
+            // pnlImg
+            // 
+            this.pnlImg.Size = new System.Drawing.Size(1150, 33);
+            // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(300, 40);
+            this.label1.Location = new System.Drawing.Point(452, 173);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 1;
@@ -51,22 +62,28 @@ namespace Facturacion
             // 
             // txtDescripcion
             // 
-            this.txtDescripcion.Location = new System.Drawing.Point(395, 40);
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescripcion.Location = new System.Drawing.Point(547, 173);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(112, 20);
             this.txtDescripcion.TabIndex = 2;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(395, 87);
+            this.txtPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPrecio.Location = new System.Drawing.Point(547, 220);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(103, 20);
             this.txtPrecio.TabIndex = 4;
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(326, 90);
+            this.label2.Location = new System.Drawing.Point(478, 223);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 3;
@@ -74,8 +91,10 @@ namespace Facturacion
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(326, 135);
+            this.label3.Location = new System.Drawing.Point(478, 268);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 6;
@@ -83,8 +102,10 @@ namespace Facturacion
             // 
             // cmbPlanes
             // 
+            this.cmbPlanes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbPlanes.FormattingEnabled = true;
-            this.cmbPlanes.Location = new System.Drawing.Point(395, 132);
+            this.cmbPlanes.Location = new System.Drawing.Point(547, 265);
             this.cmbPlanes.Name = "cmbPlanes";
             this.cmbPlanes.Size = new System.Drawing.Size(103, 21);
             this.cmbPlanes.TabIndex = 8;
@@ -109,12 +130,15 @@ namespace Facturacion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 712);
             this.Controls.Add(this.panel2);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ABMProducto";
             this.Load += new System.EventHandler(this.ABM_Load);
+            this.Controls.SetChildIndex(this.pnlImg, 0);
             this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlImg.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);

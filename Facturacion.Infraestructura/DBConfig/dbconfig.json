@@ -1,0 +1,12 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "connectionString":  "Data Source = DESKTOP-ALJK62P\\SQLEXPRESS; Initial Catalog = Facturacion_Gimnasio_Juan; Integrated Security = True; User Id=sa; Password=Whatsername;"
+  
+}

@@ -21,7 +21,7 @@ namespace Facturacion
         {
             InitializeComponent();
 
-            pnlColor.Width = splitContainer1.Panel1.Width;
+            
 
             btnNuevo.Visible = false;
             btnModificar.Visible = false;
@@ -41,11 +41,7 @@ namespace Facturacion
             
         }
 
-        private void btnListarDePRoductos_Click(object sender, EventArgs e)
-        {
-            var formListarProductos = new Listado();
-            formListarProductos.Show();
-        }
+        
 
         private void btnNuevoProducto_Click(object sender, EventArgs e)
         {
@@ -61,11 +57,12 @@ namespace Facturacion
         {
            dgvDatos.DataSource = new ClienteServicio().Listar(string.Empty);
 
-          // new DgvFormatting().FormatCliente(ref dgvDatos);
+           new DgvFormatting().FormatCliente(ref dgvDatos);
 
             btnNuevo.Visible = true;
             btnModificar.Visible = true;
             btnCuentaCliente.Visible = true;
+            btnEliminar.Visible = false;
 
         }
 
@@ -74,17 +71,8 @@ namespace Facturacion
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            tipoAccion = typeof(ZonaDto);
-            
-            CargarZonas();
-        }
+       
+       
 
         private void CargarZonas()
         {
@@ -93,7 +81,7 @@ namespace Facturacion
             DgvFormatting.FormatZona(ref dgvDatos);
 
             btnNuevo.Visible = true;
-            btnModificar.Visible = true;
+            btnModificar.Visible = false;
             btnEliminar.Visible = true;
             btnCuentaCliente.Visible = false;
 
@@ -107,7 +95,7 @@ namespace Facturacion
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            pnlColor.Width = splitContainer1.Panel1.Width;
+            
         }
 
         private void btnMinimizar_Click(object sender, EventArgs e)
@@ -129,7 +117,7 @@ namespace Facturacion
             DgvFormatting.FormatPlan(ref dgvDatos);
 
             btnNuevo.Visible = true;
-            btnModificar.Visible = true;
+            btnModificar.Visible = false;
             btnEliminar.Visible = true;
             btnCuentaCliente.Visible = false;
 
@@ -149,13 +137,26 @@ namespace Facturacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            var eliminar =_zonaServicio.EliminarZona((Guid)dgvDatos[0, selectedRowIndex].Value);
-
-            if (eliminar)
+            if (tipoAccion == typeof(ZonaDto))
             {
-                MessageBox.Show("Se eliminó la zona correctamente", "Eliminar Zona", MessageBoxButtons.OK);
-                
+                var eliminar = _zonaServicio.EliminarZona((Guid)dgvDatos[0, selectedRowIndex].Value);
+                if (eliminar)
+                {
+                    MessageBox.Show("Se eliminó la zona correctamente", "Eliminar Zona", MessageBoxButtons.OK);
+
+                }
             }
+
+            if (tipoAccion == typeof(PlanDto))
+            {
+                var eliminar = _planServicio.EliminarPlan((Guid)dgvDatos[0, selectedRowIndex].Value);
+                if (eliminar)
+                {
+                    MessageBox.Show("Se eliminó el plan correctamente", "Eliminar Plan", MessageBoxButtons.OK);
+
+                }
+            }
+
         }
 
         private void btnComprobante_Click(object sender, EventArgs e) { 
@@ -174,8 +175,24 @@ namespace Facturacion
 
         private void dgvDatos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         { 
-            ReporteFactura frm = new ReporteFactura();
-            frm.ShowDialog();
+            //ReporteFactura frm = new ReporteFactura();
+            //frm.ShowDialog();
+        }
+
+        
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            tipoAccion = typeof(ClienteDto);
+
+            CargarClientes();
+        }
+
+        private void btnZonas_Click(object sender, EventArgs e)
+        {
+            tipoAccion = typeof(ZonaDto);
+
+            CargarZonas();
         }
     }
 }

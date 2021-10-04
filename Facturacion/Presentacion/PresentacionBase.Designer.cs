@@ -30,11 +30,11 @@ namespace Facturacion.Presentacion
         private void InitializeComponent()
         {
             this.pnlImg = new System.Windows.Forms.Panel();
-            this.btnCerrar = new System.Windows.Forms.Button();
-            this.btnMinimizar = new System.Windows.Forms.Button();
-            this.btnMaximizar = new System.Windows.Forms.Button();
-            this.pnlColor = new System.Windows.Forms.Panel();
             this.panelButtons = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnMaximizar = new System.Windows.Forms.Button();
+            this.btnMinimizar = new System.Windows.Forms.Button();
+            this.pnlColor = new System.Windows.Forms.Panel();
             this.pnlImg.SuspendLayout();
             this.panelButtons.SuspendLayout();
             this.SuspendLayout();
@@ -49,48 +49,7 @@ namespace Facturacion.Presentacion
             this.pnlImg.Name = "pnlImg";
             this.pnlImg.Size = new System.Drawing.Size(1107, 33);
             this.pnlImg.TabIndex = 1;
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.BackgroundImage = global::Facturacion.Properties.Resources._084_multiply;
-            this.btnCerrar.Location = new System.Drawing.Point(98, 0);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(32, 24);
-            this.btnCerrar.TabIndex = 0;
-            this.btnCerrar.Text = "X";
-            this.btnCerrar.UseVisualStyleBackColor = true;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.btnMinimizar.BackgroundImage = global::Facturacion.Properties.Resources._083_substract;
-            this.btnMinimizar.Location = new System.Drawing.Point(3, 0);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(32, 24);
-            this.btnMinimizar.TabIndex = 2;
-            this.btnMinimizar.Text = "X";
-            this.btnMinimizar.UseVisualStyleBackColor = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Location = new System.Drawing.Point(51, 0);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(32, 24);
-            this.btnMaximizar.TabIndex = 1;
-            this.btnMaximizar.Text = "X";
-            this.btnMaximizar.UseVisualStyleBackColor = true;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            // 
-            // pnlColor
-            // 
-            this.pnlColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(78)))));
-            this.pnlColor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlColor.Location = new System.Drawing.Point(0, 0);
-            this.pnlColor.Name = "pnlColor";
-            this.pnlColor.Size = new System.Drawing.Size(274, 33);
-            this.pnlColor.TabIndex = 3;
+            this.pnlImg.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlImg_MouseDown);
             // 
             // panelButtons
             // 
@@ -103,6 +62,63 @@ namespace Facturacion.Presentacion
             this.panelButtons.Size = new System.Drawing.Size(133, 33);
             this.panelButtons.TabIndex = 4;
             // 
+            // btnCerrar
+            // 
+            this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.btnCerrar.FlatAppearance.BorderSize = 0;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCerrar.Location = new System.Drawing.Point(98, 3);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(32, 24);
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.Text = "O";
+            this.btnCerrar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnMaximizar
+            // 
+            this.btnMaximizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.btnMaximizar.FlatAppearance.BorderSize = 0;
+            this.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMaximizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMaximizar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMaximizar.Location = new System.Drawing.Point(60, 3);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(32, 24);
+            this.btnMaximizar.TabIndex = 1;
+            this.btnMaximizar.Text = "O";
+            this.btnMaximizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMaximizar.UseVisualStyleBackColor = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.btnMinimizar.FlatAppearance.BorderSize = 0;
+            this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimizar.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMinimizar.Location = new System.Drawing.Point(22, 3);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(32, 24);
+            this.btnMinimizar.TabIndex = 2;
+            this.btnMinimizar.Text = "O";
+            this.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMinimizar.UseVisualStyleBackColor = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            // 
+            // pnlColor
+            // 
+            this.pnlColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(78)))));
+            this.pnlColor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlColor.Location = new System.Drawing.Point(0, 0);
+            this.pnlColor.Name = "pnlColor";
+            this.pnlColor.Size = new System.Drawing.Size(274, 33);
+            this.pnlColor.TabIndex = 3;
+            // 
             // PresentacionBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -113,6 +129,7 @@ namespace Facturacion.Presentacion
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(950, 500);
             this.Name = "PresentacionBase";
             this.Load += new System.EventHandler(this.PresentacionBase_Load);
             this.pnlImg.ResumeLayout(false);

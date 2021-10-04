@@ -36,10 +36,21 @@ namespace Facturacion
             this.txtProcentaje = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.pnlImg.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnAceptar
+            // 
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            // 
+            // pnlImg
+            // 
+            this.pnlImg.Size = new System.Drawing.Size(1019, 33);
             // 
             // lblNombre
             // 
+            this.lblNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNombre.AutoSize = true;
             this.lblNombre.Location = new System.Drawing.Point(325, 175);
             this.lblNombre.Name = "lblNombre";
@@ -49,6 +60,8 @@ namespace Facturacion
             // 
             // txtNombre
             // 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNombre.Location = new System.Drawing.Point(406, 175);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 20);
@@ -56,6 +69,8 @@ namespace Facturacion
             // 
             // txtCantidadCuotas
             // 
+            this.txtCantidadCuotas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCantidadCuotas.Location = new System.Drawing.Point(406, 213);
             this.txtCantidadCuotas.Name = "txtCantidadCuotas";
             this.txtCantidadCuotas.Size = new System.Drawing.Size(100, 20);
@@ -63,6 +78,8 @@ namespace Facturacion
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(270, 213);
             this.label2.Name = "label2";
@@ -72,6 +89,8 @@ namespace Facturacion
             // 
             // txtProcentaje
             // 
+            this.txtProcentaje.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProcentaje.Location = new System.Drawing.Point(406, 248);
             this.txtProcentaje.Name = "txtProcentaje";
             this.txtProcentaje.Size = new System.Drawing.Size(100, 20);
@@ -79,6 +98,8 @@ namespace Facturacion
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(311, 248);
             this.label3.Name = "label3";
@@ -97,7 +118,9 @@ namespace Facturacion
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.lblNombre);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ABMPlan";
+            this.Controls.SetChildIndex(this.pnlImg, 0);
             this.Controls.SetChildIndex(this.btnAceptar, 0);
             this.Controls.SetChildIndex(this.lblNombre, 0);
             this.Controls.SetChildIndex(this.txtNombre, 0);
@@ -107,6 +130,7 @@ namespace Facturacion
             this.Controls.SetChildIndex(this.txtProcentaje, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlImg.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

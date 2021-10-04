@@ -1,4 +1,5 @@
 ﻿using Facturacion.Aplicacion.Servicios;
+using Facturacion.Presentacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Facturacion
 {
-    public partial class ListadoCuentaCliente : Form
+    public partial class ListadoCuentaCliente : PresentacionBase
     {
         private readonly MovimientoServicio movimientoServicio = new MovimientoServicio();
         private Guid _cuentaCliente;
@@ -74,6 +75,11 @@ namespace Facturacion
         private void btnAgregarMovimiento_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected override void CloseForm()
+        {
+            this.Close();
         }
     }
 }

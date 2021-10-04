@@ -45,6 +45,9 @@ namespace Facturacion.Aplicacion.Servicios
             return _mapper.Map<List<PlanDto>>(PlanQuery.GetPlanes());
         }
 
-       
+        public bool EliminarPlan(Guid value)
+        {
+           return PlanQuery.DeletePlan( value);
+        }
     }
 }

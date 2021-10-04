@@ -13,7 +13,7 @@ namespace Facturacion.Presentacion
     public partial class ABMBase : PresentacionBase
     {
         protected TipoOperacion _tipoOperacion;
-        
+        protected Guid? _id;
         public ABMBase()
         {
             
@@ -42,6 +42,10 @@ namespace Facturacion.Presentacion
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             RealizarOperacion();
+        }
+        protected override void CloseForm()
+        {
+            this.Close();
         }
     }
 }

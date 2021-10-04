@@ -29,6 +29,7 @@ namespace Facturacion
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtApellido = new System.Windows.Forms.TextBox();
@@ -61,18 +62,23 @@ namespace Facturacion
             this.label3 = new System.Windows.Forms.Label();
             this.txtDirParticular = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1.SuspendLayout();
             this.pnlImg.SuspendLayout();
             this.pnlcliente.SuspendLayout();
             this.SuspendLayout();
             // 
+            // btnAceptar
+            // 
+            this.btnAceptar.FlatAppearance.BorderSize = 0;
+            // 
             // pnlImg
             // 
-            this.pnlImg.Size = new System.Drawing.Size(829, 33);
+            this.pnlImg.Size = new System.Drawing.Size(948, 33);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(139, 75);
+            this.txtNombre.Location = new System.Drawing.Point(191, 135);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(226, 20);
             this.txtNombre.TabIndex = 8;
@@ -81,7 +87,7 @@ namespace Facturacion
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(70, 75);
+            this.lblNombre.Location = new System.Drawing.Point(122, 135);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(44, 13);
             this.lblNombre.TabIndex = 7;
@@ -89,7 +95,7 @@ namespace Facturacion
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(139, 101);
+            this.txtApellido.Location = new System.Drawing.Point(191, 161);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(226, 20);
             this.txtApellido.TabIndex = 13;
@@ -98,7 +104,7 @@ namespace Facturacion
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 101);
+            this.label1.Location = new System.Drawing.Point(122, 161);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 12;
@@ -106,7 +112,7 @@ namespace Facturacion
             // 
             // txtDni
             // 
-            this.txtDni.Location = new System.Drawing.Point(139, 159);
+            this.txtDni.Location = new System.Drawing.Point(191, 219);
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(226, 20);
             this.txtDni.TabIndex = 15;
@@ -115,7 +121,7 @@ namespace Facturacion
             // lblDireccion
             // 
             this.lblDireccion.AutoSize = true;
-            this.lblDireccion.Location = new System.Drawing.Point(88, 159);
+            this.lblDireccion.Location = new System.Drawing.Point(140, 219);
             this.lblDireccion.Name = "lblDireccion";
             this.lblDireccion.Size = new System.Drawing.Size(26, 13);
             this.lblDireccion.TabIndex = 14;
@@ -124,7 +130,7 @@ namespace Facturacion
             // lblCodigocliente
             // 
             this.lblCodigocliente.AutoSize = true;
-            this.lblCodigocliente.Location = new System.Drawing.Point(445, 22);
+            this.lblCodigocliente.Location = new System.Drawing.Point(497, 82);
             this.lblCodigocliente.Name = "lblCodigocliente";
             this.lblCodigocliente.Size = new System.Drawing.Size(35, 13);
             this.lblCodigocliente.TabIndex = 16;
@@ -133,7 +139,7 @@ namespace Facturacion
             // lblCodigoClienteTit
             // 
             this.lblCodigoClienteTit.AutoSize = true;
-            this.lblCodigoClienteTit.Location = new System.Drawing.Point(340, 22);
+            this.lblCodigoClienteTit.Location = new System.Drawing.Point(392, 82);
             this.lblCodigoClienteTit.Name = "lblCodigoClienteTit";
             this.lblCodigoClienteTit.Size = new System.Drawing.Size(65, 13);
             this.lblCodigoClienteTit.TabIndex = 17;
@@ -175,14 +181,14 @@ namespace Facturacion
             this.pnlcliente.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlcliente.Location = new System.Drawing.Point(0, 33);
             this.pnlcliente.Name = "pnlcliente";
-            this.pnlcliente.Size = new System.Drawing.Size(829, 538);
+            this.pnlcliente.Size = new System.Drawing.Size(948, 538);
             this.pnlcliente.TabIndex = 22;
-           
+            this.pnlcliente.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlcliente_Paint);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(488, 214);
+            this.label10.Location = new System.Drawing.Point(540, 274);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 40;
@@ -191,25 +197,29 @@ namespace Facturacion
             // cmbZona
             // 
             this.cmbZona.FormattingEnabled = true;
-            this.cmbZona.Location = new System.Drawing.Point(550, 209);
+            this.cmbZona.Location = new System.Drawing.Point(602, 269);
             this.cmbZona.Name = "cmbZona";
             this.cmbZona.Size = new System.Drawing.Size(226, 21);
             this.cmbZona.TabIndex = 39;
-           
             // 
             // btnCargarProducto
             // 
-            this.btnCargarProducto.Location = new System.Drawing.Point(476, 274);
+            this.btnCargarProducto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.btnCargarProducto.FlatAppearance.BorderSize = 0;
+            this.btnCargarProducto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCargarProducto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCargarProducto.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCargarProducto.Location = new System.Drawing.Point(528, 334);
             this.btnCargarProducto.Name = "btnCargarProducto";
-            this.btnCargarProducto.Size = new System.Drawing.Size(75, 23);
+            this.btnCargarProducto.Size = new System.Drawing.Size(101, 36);
             this.btnCargarProducto.TabIndex = 38;
-            this.btnCargarProducto.Text = "Producto";
-            this.btnCargarProducto.UseVisualStyleBackColor = true;
+            this.btnCargarProducto.Text = "PRODUCTO";
+            this.btnCargarProducto.UseVisualStyleBackColor = false;
             this.btnCargarProducto.Click += new System.EventHandler(this.btnCargarProducto_Click_1);
             // 
             // txtLocParticular
             // 
-            this.txtLocParticular.Location = new System.Drawing.Point(139, 237);
+            this.txtLocParticular.Location = new System.Drawing.Point(191, 297);
             this.txtLocParticular.Name = "txtLocParticular";
             this.txtLocParticular.Size = new System.Drawing.Size(226, 20);
             this.txtLocParticular.TabIndex = 37;
@@ -217,7 +227,7 @@ namespace Facturacion
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(61, 237);
+            this.label11.Location = new System.Drawing.Point(113, 297);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 13);
             this.label11.TabIndex = 36;
@@ -225,7 +235,7 @@ namespace Facturacion
             // 
             // txtBarrioParticular
             // 
-            this.txtBarrioParticular.Location = new System.Drawing.Point(139, 211);
+            this.txtBarrioParticular.Location = new System.Drawing.Point(191, 271);
             this.txtBarrioParticular.Name = "txtBarrioParticular";
             this.txtBarrioParticular.Size = new System.Drawing.Size(226, 20);
             this.txtBarrioParticular.TabIndex = 35;
@@ -233,7 +243,7 @@ namespace Facturacion
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(80, 211);
+            this.label12.Location = new System.Drawing.Point(132, 271);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(34, 13);
             this.label12.TabIndex = 34;
@@ -242,7 +252,7 @@ namespace Facturacion
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 127);
+            this.label9.Location = new System.Drawing.Point(58, 187);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 13);
             this.label9.TabIndex = 33;
@@ -250,14 +260,14 @@ namespace Facturacion
             // 
             // dTPFechaNac
             // 
-            this.dTPFechaNac.Location = new System.Drawing.Point(139, 127);
+            this.dTPFechaNac.Location = new System.Drawing.Point(191, 187);
             this.dTPFechaNac.Name = "dTPFechaNac";
             this.dTPFechaNac.Size = new System.Drawing.Size(226, 20);
             this.dTPFechaNac.TabIndex = 32;
             // 
             // txtRubro
             // 
-            this.txtRubro.Location = new System.Drawing.Point(550, 179);
+            this.txtRubro.Location = new System.Drawing.Point(602, 239);
             this.txtRubro.Name = "txtRubro";
             this.txtRubro.Size = new System.Drawing.Size(226, 20);
             this.txtRubro.TabIndex = 31;
@@ -265,7 +275,7 @@ namespace Facturacion
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(486, 182);
+            this.label8.Location = new System.Drawing.Point(538, 242);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 30;
@@ -273,7 +283,7 @@ namespace Facturacion
             // 
             // txtLocComercial
             // 
-            this.txtLocComercial.Location = new System.Drawing.Point(550, 153);
+            this.txtLocComercial.Location = new System.Drawing.Point(602, 213);
             this.txtLocComercial.Name = "txtLocComercial";
             this.txtLocComercial.Size = new System.Drawing.Size(226, 20);
             this.txtLocComercial.TabIndex = 29;
@@ -281,7 +291,7 @@ namespace Facturacion
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(469, 156);
+            this.label7.Location = new System.Drawing.Point(521, 216);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 13);
             this.label7.TabIndex = 28;
@@ -289,7 +299,7 @@ namespace Facturacion
             // 
             // txtBarrioComercial
             // 
-            this.txtBarrioComercial.Location = new System.Drawing.Point(550, 127);
+            this.txtBarrioComercial.Location = new System.Drawing.Point(602, 187);
             this.txtBarrioComercial.Name = "txtBarrioComercial";
             this.txtBarrioComercial.Size = new System.Drawing.Size(226, 20);
             this.txtBarrioComercial.TabIndex = 27;
@@ -297,7 +307,7 @@ namespace Facturacion
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(488, 130);
+            this.label6.Location = new System.Drawing.Point(540, 190);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 26;
@@ -305,7 +315,7 @@ namespace Facturacion
             // 
             // txtDirComercial
             // 
-            this.txtDirComercial.Location = new System.Drawing.Point(550, 101);
+            this.txtDirComercial.Location = new System.Drawing.Point(602, 161);
             this.txtDirComercial.Name = "txtDirComercial";
             this.txtDirComercial.Size = new System.Drawing.Size(226, 20);
             this.txtDirComercial.TabIndex = 25;
@@ -313,7 +323,7 @@ namespace Facturacion
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(424, 104);
+            this.label5.Location = new System.Drawing.Point(476, 164);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 13);
             this.label5.TabIndex = 24;
@@ -321,7 +331,7 @@ namespace Facturacion
             // 
             // txttelefono
             // 
-            this.txttelefono.Location = new System.Drawing.Point(550, 75);
+            this.txttelefono.Location = new System.Drawing.Point(602, 135);
             this.txttelefono.Name = "txttelefono";
             this.txttelefono.Size = new System.Drawing.Size(226, 20);
             this.txttelefono.TabIndex = 23;
@@ -329,7 +339,7 @@ namespace Facturacion
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(473, 78);
+            this.label4.Location = new System.Drawing.Point(525, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 22;
@@ -337,7 +347,7 @@ namespace Facturacion
             // 
             // txtCelular
             // 
-            this.txtCelular.Location = new System.Drawing.Point(139, 263);
+            this.txtCelular.Location = new System.Drawing.Point(191, 323);
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(226, 20);
             this.txtCelular.TabIndex = 21;
@@ -345,7 +355,7 @@ namespace Facturacion
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 263);
+            this.label3.Location = new System.Drawing.Point(104, 323);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 20;
@@ -353,7 +363,7 @@ namespace Facturacion
             // 
             // txtDirParticular
             // 
-            this.txtDirParticular.Location = new System.Drawing.Point(139, 185);
+            this.txtDirParticular.Location = new System.Drawing.Point(191, 245);
             this.txtDirParticular.Name = "txtDirParticular";
             this.txtDirParticular.Size = new System.Drawing.Size(226, 20);
             this.txtDirParticular.TabIndex = 19;
@@ -361,18 +371,24 @@ namespace Facturacion
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 185);
+            this.label2.Location = new System.Drawing.Point(70, 245);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 18;
             this.label2.Text = "Domicilio Particular";
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 25;
+            this.bunifuElipse1.TargetControl = this.btnCargarProducto;
+            // 
             // ABMCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 571);
+            this.ClientSize = new System.Drawing.Size(948, 571);
             this.Controls.Add(this.pnlcliente);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ABMCliente";
             this.Load += new System.EventHandler(this.ABMCliente_Load);
             this.Controls.SetChildIndex(this.pnlImg, 0);
@@ -420,5 +436,6 @@ namespace Facturacion
         private System.Windows.Forms.Button btnCargarProducto;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbZona;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

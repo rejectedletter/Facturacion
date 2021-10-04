@@ -47,8 +47,21 @@ namespace Facturacion
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCuentaCliente = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.btnClientes = new System.Windows.Forms.Button();
+            this.btnPlanes = new System.Windows.Forms.Button();
+            this.btnZonas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvProductos
@@ -217,11 +230,136 @@ namespace Facturacion
             this.textBox4.TabIndex = 10;
             this.textBox4.Text = "15610.00";
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Controls.Add(this.dgvDatos);
+            this.panel2.Location = new System.Drawing.Point(466, 41);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(531, 447);
+            this.panel2.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnCuentaCliente);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnModificar);
+            this.panel1.Controls.Add(this.btnNuevo);
+            this.panel1.Location = new System.Drawing.Point(57, 231);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(531, 38);
+            this.panel1.TabIndex = 0;
+            // 
+            // btnCuentaCliente
+            // 
+            this.btnCuentaCliente.Image = global::Facturacion.Properties.Resources._241_folder__1_;
+            this.btnCuentaCliente.Location = new System.Drawing.Point(409, 0);
+            this.btnCuentaCliente.Name = "btnCuentaCliente";
+            this.btnCuentaCliente.Size = new System.Drawing.Size(50, 34);
+            this.btnCuentaCliente.TabIndex = 3;
+            this.btnCuentaCliente.UseVisualStyleBackColor = true;
+            this.btnCuentaCliente.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::Facturacion.Properties.Resources._276_trash__1_;
+            this.button1.Location = new System.Drawing.Point(294, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 34);
+            this.button1.TabIndex = 2;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Image = global::Facturacion.Properties.Resources._218_edit__3_;
+            this.btnModificar.Location = new System.Drawing.Point(158, 0);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(50, 34);
+            this.btnModificar.TabIndex = 1;
+            this.btnModificar.UseVisualStyleBackColor = true;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Image = global::Facturacion.Properties.Resources._056_plus__1_;
+            this.btnNuevo.Location = new System.Drawing.Point(51, 0);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(50, 34);
+            this.btnNuevo.TabIndex = 0;
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            // 
+            // dgvDatos
+            // 
+            this.dgvDatos.AllowUserToAddRows = false;
+            this.dgvDatos.AllowUserToDeleteRows = false;
+            this.dgvDatos.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvDatos.Location = new System.Drawing.Point(0, 65);
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.ReadOnly = true;
+            this.dgvDatos.Size = new System.Drawing.Size(531, 382);
+            this.dgvDatos.TabIndex = 1;
+            // 
+            // btnClientes
+            // 
+            this.btnClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnClientes.FlatAppearance.BorderSize = 0;
+            this.btnClientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClientes.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnClientes.Location = new System.Drawing.Point(283, 304);
+            this.btnClientes.Margin = new System.Windows.Forms.Padding(0);
+            this.btnClientes.Name = "btnClientes";
+            this.btnClientes.Size = new System.Drawing.Size(266, 50);
+            this.btnClientes.TabIndex = 13;
+            this.btnClientes.Text = "Clientes";
+            this.btnClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnClientes.UseVisualStyleBackColor = false;
+            // 
+            // btnPlanes
+            // 
+            this.btnPlanes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnPlanes.FlatAppearance.BorderSize = 0;
+            this.btnPlanes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlanes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlanes.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnPlanes.Location = new System.Drawing.Point(283, 354);
+            this.btnPlanes.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPlanes.Name = "btnPlanes";
+            this.btnPlanes.Size = new System.Drawing.Size(266, 50);
+            this.btnPlanes.TabIndex = 15;
+            this.btnPlanes.Text = "Planes";
+            this.btnPlanes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPlanes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPlanes.UseVisualStyleBackColor = false;
+            // 
+            // btnZonas
+            // 
+            this.btnZonas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnZonas.FlatAppearance.BorderSize = 0;
+            this.btnZonas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZonas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZonas.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnZonas.Location = new System.Drawing.Point(283, 414);
+            this.btnZonas.Margin = new System.Windows.Forms.Padding(0);
+            this.btnZonas.Name = "btnZonas";
+            this.btnZonas.Size = new System.Drawing.Size(266, 50);
+            this.btnZonas.TabIndex = 14;
+            this.btnZonas.Text = "Zonas";
+            this.btnZonas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnZonas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnZonas.UseVisualStyleBackColor = false;
+            // 
             // Listado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1291, 544);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btnClientes);
+            this.Controls.Add(this.btnPlanes);
+            this.Controls.Add(this.btnZonas);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label4);
@@ -240,6 +378,9 @@ namespace Facturacion
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,5 +405,15 @@ namespace Facturacion
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.ToolStripButton btnDetalleCuenta;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnCuentaCliente;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.Button btnClientes;
+        private System.Windows.Forms.Button btnPlanes;
+        private System.Windows.Forms.Button btnZonas;
     }
 }

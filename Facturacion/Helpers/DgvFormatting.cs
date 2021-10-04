@@ -24,11 +24,11 @@ namespace Facturacion.Helpers
         }
         public  void FormatCliente(ref DataGridView dgvCliente)
         {
-           
-            //foreach (DataGridViewColumn col in dgvCliente.Columns)
-            //{
-            //    col.Visible = false;
-            //}
+
+            foreach (DataGridViewColumn col in dgvCliente.Columns)
+            {
+                col.Visible = false;
+            }
 
             foreach (var column in ClientesColumns)
             {

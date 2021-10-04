@@ -1,13 +1,14 @@
 {
   "Clientes": {
      "NroCliente": "Nro. Cliente" ,
-     "ApellidoyNombre": "Apellido y Nombre" ,
+    "Apellido": "Apellido",
+    "Nombre": "Nombre",
      "DNI": "DNI" ,
      "FechaNacimiento": "Fecha de nacimiento" ,
      "DomicilioParticular": "Domicilio particular" ,
      "DomicilioComercial": "Domicilio comercial" ,
      "NroCelular": "Nro. celular" ,
-     "TelefonoFijo": "Teléfono fijo" ,
+     "TelefonoFijo": "Telefono fijo" ,
      "Rubro": "Rubro" ,
      "NombreZona": "Zona" ,
      "MontoTotalCancelar": "Monto a Cancelar" ,

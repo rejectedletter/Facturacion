@@ -16,11 +16,13 @@ namespace Facturacion
         private readonly ZonaServicio _zonaServicio = new ZonaServicio();
 
         private List<ZonaDto> Zonas => _zonaServicio.ListarZonas();
-        public ABMCliente(TipoOperacion tipoOperacion)
+        public ABMCliente(TipoOperacion tipoOperacion, Guid? id)
          {
 
             _tipoOperacion = tipoOperacion;
-
+            _id = id;
+           
+            
             InitializeComponent();
 
             lblCodigocliente.Visible = false;
@@ -61,6 +63,24 @@ namespace Facturacion
         private void ABMCliente_Load(object sender, EventArgs e)
         {
             CargarCombo();
+
+            if (_tipoOperacion == TipoOperacion.Modificacion)
+            {
+                CargarDatosCliente(_id);
+                btnCargarProducto.Visible = false;
+            }
+        }
+
+        private void CargarDatosCliente(Guid? id)
+        {
+            var cliente = _clienteServicio.GetCliente((Guid)id);
+            txtApellido.Text = cliente.Apellido;
+            txtCelular.Text = cliente.NroCelular;
+            txtDni.Text = cliente.Dni;
+            txtNombre.Text = cliente.Nombre;
+            txtRubro.Text = cliente.Rubro;
+            txttelefono.Text = cliente.TelefonoFijo;
+            lblCodigocliente.Text = cliente.CodigoCliente;
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -112,6 +132,41 @@ namespace Facturacion
                     Close();
                 }
             }
+
+            if (_tipoOperacion == TipoOperacion.Modificacion)
+            {
+               
+                
+                var nuevoCliente = new ClienteDto()
+                {
+                    ClienteId = (Guid)_id,
+                    Apellido = txtApellido.Text,
+                    Nombre = txtNombre.Text,
+                    Dni = txtDni.Text,
+                    FechaNacimiento = dTPFechaNac.Value,
+                    DomicilioParticular = txtDirParticular.Text + txtBarrioParticular.Text + txtLocParticular.Text,
+
+
+                    DomicilioComercial = txtDirComercial.Text + txtBarrioComercial.Text + txtBarrioComercial.Text,
+
+                    NroCelular = txtCelular.Text,
+                    TelefonoFijo = txttelefono.Text,
+                    Rubro = txtRubro.Text,
+                    Zona = Zonas.First(x => x.NombreZona == cmbZona.SelectedItem.ToString())
+                };
+
+
+
+                
+
+
+                var agregado = _clienteServicio.Modificar(nuevoCliente);
+                if (agregado)
+                {
+                    MessageBox.Show("Se modificó correctamente", "Modificar Cliente", MessageBoxButtons.OK);
+                    Close();
+                }
+            }
         }
 
        
@@ -123,6 +178,9 @@ namespace Facturacion
             _producto = formProducto.Producto;
         }
 
-      
+        private void pnlcliente_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

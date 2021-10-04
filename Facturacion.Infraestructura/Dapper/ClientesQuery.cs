@@ -60,7 +60,7 @@ namespace Facturacion.Infraestructura.Dapper
             ,[ProductoId])
             VALUES
            (@ClienteId
-           ,@NroCliente
+           ,@NrocCliente
            ,@Apellido
            ,@Nombre
            ,@DNI
@@ -112,8 +112,7 @@ namespace Facturacion.Infraestructura.Dapper
         public static bool UpdateClientes(Cliente cliente)
         {
              var query = $@"UPDATE [Facturacion_Gimnasio_Juan].[dbo].[Clientes]
-                        SET [NroCliente] = @NroCliente
-                        ,[Apellido] = @Apellido
+                        SET [Apellido] = @Apellido
                         ,[Nombre] = @Nombre
                         ,[DNI] = @DNI
                         ,[FechaNacimiento]=@FechaNacimiento
@@ -122,15 +121,15 @@ namespace Facturacion.Infraestructura.Dapper
                         ,NroCelular=@NroCelular
                         ,TelefonoFijo=@TelefonoFijo
                         ,Rubro = @Rubro
-                        ,[CuentaClienteId] = @CuentaClienteId
-                         ,[ZonaId] = @ZonaId
-                        ,[ProductoId] = @ProductoId
+                        ,[ZonaId] = @ZonaId
+                        
                         WHERE ClienteId = @ClienteId";
 
                 using (var connection = new DbConn())
                 {
                     if (connection.Connection.Execute(query, new
                     {
+                        ClienteId = cliente.ClienteId,
                         NroCliente = cliente.NroCliente,
                         Apellido = cliente.Apellido,
                         Nombre = cliente.Nombre,
@@ -141,9 +140,7 @@ namespace Facturacion.Infraestructura.Dapper
                         NroCelular = cliente.NroCelular,
                         TelefonoFijo = cliente.TelefonoFijo,
                         Rubro = cliente.Rubro,
-                        CuentaClienteId = cliente.CuentaClienteId,
-                        ZonaId = cliente.ZonaId,
-                        ProductoId = cliente.ProductoId
+                        ZonaId = cliente.ZonaId
 
                     }) == 1)
                     {
@@ -155,7 +152,32 @@ namespace Facturacion.Infraestructura.Dapper
                     }
                 }
             }
-        
+
+        public static Cliente GetClientesById(Guid id)
+        {
+            var query = @"SELECT * FROM [Facturacion_Gimnasio_Juan].[dbo].[Clientes]
+                    WHERE ClienteId = @clienteId ";
+            
+
+            try
+            {
+                using (var connection = new DbConn())
+                {
+                    return connection.Connection.QueryFirstOrDefault<Cliente>(query, new { clienteId = id });
+
+
+                }
+
+                
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
+        }
+	
 
         public static bool DeleteCliente(Guid clienteId)
         {
@@ -179,6 +201,45 @@ namespace Facturacion.Infraestructura.Dapper
             ProductosPlanes productosPlanes, CuentaCliente cuentaCliente)
         {
             var query = @"begin transaction
+
+             INSERT INTO[Facturacion_Gimnasio_Juan].[dbo].[Productos]
+          ([ProductoId]
+           ,[Descripcion]
+           ,[MontoTotalCancelar])
+             VALUES
+           (@Id
+           ,@Descripcion
+           ,@MontoTotalCancelar)
+
+            INSERT INTO[Facturacion_Gimnasio_Juan].[dbo].[CuentaCliente]
+          ([CuentaClienteId]
+           ,[Debe]
+           ,[Haber]
+           ,[ProductoId])
+             VALUES
+           (@CCuentaclienteId
+           ,@Debe
+           ,@Haber
+           ,@CCProductoId
+          )
+
+           
+
+            INSERT INTO[Facturacion_Gimnasio_Juan].[dbo].[ProductosPlanes]
+          ([ProductosPlanesId]
+           ,[ProductoId]
+           ,[PlantId]
+           ,[FechaInicioPlanPago]
+           ,[Cancelado])
+     VALUES
+           (@ProductosPlanesId
+           ,@PPProductoId
+           ,@PlantId
+           ,@FechaInicioPlanPago
+           ,@Cancelado)
+           
+    
+
             INSERT INTO[Facturacion_Gimnasio_Juan].[dbo].[Clientes]
           ([ClienteId]
             ,[NroCliente]
@@ -211,41 +272,7 @@ namespace Facturacion.Infraestructura.Dapper
            , @ProductoId)
 
 
-     INSERT INTO[Facturacion_Gimnasio_Juan].[dbo].[Productos]
-          ([ProductoId]
-           ,[Descripcion]
-           ,[MontoTotalCancelar])
-             VALUES
-           (@Id
-           ,@Descripcion
-           ,@MontoTotalCancelar)
-
-
-     INSERT INTO[Facturacion_Gimnasio_Juan].[dbo].[ProductosPlanes]
-          ([ProductosPlanesId]
-           ,[ProductoId]
-           ,[PlantId]
-           ,[FechaInicioPlanPago]
-           ,[Cancelado])
-     VALUES
-           (@ProductosPlanesId
-           ,@PPProductoId
-           ,@PlantId
-           ,@FechaInicioPlanPago
-           ,@Cancelado)
-           
-    INSERT INTO[Facturacion_Gimnasio_Juan].[dbo].[CuentaCliente]
-          ([CuentaClienteId]
-           ,[Debe]
-           ,[Haber]
-           ,[ProductoId])
-             VALUES
-           (@CCuentaclienteId
-           ,@Debe
-           ,@Haber
-           ,@CCProductoId
-          )
-
+     
 
             commit ";
 

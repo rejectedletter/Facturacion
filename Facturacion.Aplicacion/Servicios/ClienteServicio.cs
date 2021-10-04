@@ -17,6 +17,8 @@ namespace Facturacion.Aplicacion.Servicios
         {
             var configuration = new MapperConfiguration(cfg =>
             {
+                cfg.CreateMap<Cliente, ClienteDto>();
+
                 cfg.CreateMap<ClienteDto, Cliente>()
                 .ForMember(x=> x.ProductoId, o => {
                     o.MapFrom(s => s.Productos.First().ProductoId);
@@ -93,7 +95,7 @@ namespace Facturacion.Aplicacion.Servicios
                     return true;
                 }
 
-                ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
+               // ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
 
                 return true;
             }
@@ -141,6 +143,11 @@ namespace Facturacion.Aplicacion.Servicios
             //}
 
             return ClientesQuery.GetClientes();
+        }
+
+        public ClienteDto GetCliente(Guid id)
+        {
+            return _mapper.Map<ClienteDto> (ClientesQuery.GetClientesById(id));
         }
     }
 }

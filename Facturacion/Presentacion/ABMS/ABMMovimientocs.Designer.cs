@@ -44,7 +44,7 @@ namespace Facturacion.Presentacion.ABMS
             // 
             // pnlImg
             // 
-            this.pnlImg.Size = new System.Drawing.Size(621, 33);
+            this.pnlImg.Size = new System.Drawing.Size(934, 33);
             // 
             // label1
             // 
@@ -83,11 +83,12 @@ namespace Facturacion.Presentacion.ABMS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 387);
+            this.ClientSize = new System.Drawing.Size(934, 461);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ABMMovimientocs";
             this.Text = "ABMMovimientocs";
             this.Controls.SetChildIndex(this.pnlImg, 0);

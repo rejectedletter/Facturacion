@@ -23,7 +23,7 @@ namespace Facturacion.Helpers
             }
             if (type == typeof(ClienteDto))
             {
-                form = new ABMCliente(tipoOperacion);
+                form = new ABMCliente(tipoOperacion, id);
                 return form;
             }
             if (type == typeof(ZonaDto))

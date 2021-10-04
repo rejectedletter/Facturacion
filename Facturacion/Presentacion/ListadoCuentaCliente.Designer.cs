@@ -31,16 +31,21 @@ namespace Facturacion
         {
             this.dgvCuentaCliente = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pnlImg = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.btnMaximizar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.btnAgregarMovimiento = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlImg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuentaCliente)).BeginInit();
             this.panel1.SuspendLayout();
-            this.pnlImg.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // pnlImg
+            // 
+            this.pnlImg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.pnlImg.Size = new System.Drawing.Size(814, 33);
             // 
             // dgvCuentaCliente
             // 
@@ -48,35 +53,35 @@ namespace Facturacion
             this.dgvCuentaCliente.AllowUserToDeleteRows = false;
             this.dgvCuentaCliente.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvCuentaCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCuentaCliente.Location = new System.Drawing.Point(0, 106);
+            this.dgvCuentaCliente.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvCuentaCliente.Location = new System.Drawing.Point(0, 142);
             this.dgvCuentaCliente.Name = "dgvCuentaCliente";
             this.dgvCuentaCliente.ReadOnly = true;
-            this.dgvCuentaCliente.Size = new System.Drawing.Size(800, 409);
+            this.dgvCuentaCliente.Size = new System.Drawing.Size(814, 436);
             this.dgvCuentaCliente.TabIndex = 2;
             this.dgvCuentaCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCuentaCliente_CellContentClick);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnAgregarMovimiento);
-            this.panel1.Controls.Add(this.pnlImg);
             this.panel1.Controls.Add(this.lblTitulo);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(804, 100);
             this.panel1.TabIndex = 3;
             // 
-            // pnlImg
+            // lblTitulo
             // 
-            this.pnlImg.BackColor = System.Drawing.Color.SandyBrown;
-            this.pnlImg.Controls.Add(this.btnMinimizar);
-            this.pnlImg.Controls.Add(this.btnMaximizar);
-            this.pnlImg.Controls.Add(this.btnCerrar);
-            this.pnlImg.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlImg.Location = new System.Drawing.Point(0, 0);
-            this.pnlImg.Name = "pnlImg";
-            this.pnlImg.Size = new System.Drawing.Size(804, 33);
-            this.pnlImg.TabIndex = 2;
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(84)))), ((int)(((byte)(110)))));
+            this.lblTitulo.Location = new System.Drawing.Point(289, 39);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(221, 33);
+            this.lblTitulo.TabIndex = 1;
+            this.lblTitulo.Text = "Cuenta Cliente";
             // 
             // btnMinimizar
             // 
@@ -108,46 +113,35 @@ namespace Facturacion
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // lblTitulo
+            // flowLayoutPanel1
             // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitulo.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.lblTitulo.Location = new System.Drawing.Point(283, 48);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(221, 33);
-            this.lblTitulo.TabIndex = 1;
-            this.lblTitulo.Text = "Cuenta Cliente";
-            // 
-            // btnAgregarMovimiento
-            // 
-            this.btnAgregarMovimiento.Location = new System.Drawing.Point(703, 48);
-            this.btnAgregarMovimiento.Name = "btnAgregarMovimiento";
-            this.btnAgregarMovimiento.Size = new System.Drawing.Size(51, 40);
-            this.btnAgregarMovimiento.TabIndex = 3;
-            this.btnAgregarMovimiento.Text = "button1";
-            this.btnAgregarMovimiento.UseVisualStyleBackColor = true;
-            this.btnAgregarMovimiento.Click += new System.EventHandler(this.btnAgregarMovimiento_Click);
+            this.flowLayoutPanel1.Controls.Add(this.panel1);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 33);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(814, 109);
+            this.flowLayoutPanel1.TabIndex = 4;
             // 
             // ListadoCuentaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(804, 568);
-            this.ControlBox = false;
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(814, 578);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.dgvCuentaCliente);
-            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(820, 584);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(820, 584);
             this.Name = "ListadoCuentaCliente";
             this.ShowIcon = false;
             this.Load += new System.EventHandler(this.ListadoCuentaCliente_Load);
+            this.Controls.SetChildIndex(this.dgvCuentaCliente, 0);
+            this.Controls.SetChildIndex(this.pnlImg, 0);
+            this.Controls.SetChildIndex(this.flowLayoutPanel1, 0);
+            this.pnlImg.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCuentaCliente)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.pnlImg.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -157,10 +151,10 @@ namespace Facturacion
         private System.Windows.Forms.DataGridView dgvCuentaCliente;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.Panel pnlImg;
+        
         private System.Windows.Forms.Button btnMinimizar;
         private System.Windows.Forms.Button btnMaximizar;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.Button btnAgregarMovimiento;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
