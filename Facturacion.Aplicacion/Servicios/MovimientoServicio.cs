@@ -10,15 +10,15 @@ namespace Facturacion.Aplicacion.Servicios
     public class MovimientoServicio
     {
         private MovimientosQuery _query = new MovimientosQuery();
-        private readonly IMapper _mapper;
+       // private readonly IMapper _mapper;
         public MovimientoServicio()
         {
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Movimiento, MovimientoDto>();
+            //var configuration = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<Movimiento, MovimientoDto>();
 
 
-            });
+            //});
         }
         public void ArgregarMovimiento(MovimientoDto movimiento)
         {

@@ -62,7 +62,7 @@ namespace Facturacion
             this.label3 = new System.Windows.Forms.Label();
             this.txtDirParticular = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+           // this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1.SuspendLayout();
             this.pnlImg.SuspendLayout();
             this.pnlcliente.SuspendLayout();
@@ -379,8 +379,8 @@ namespace Facturacion
             // 
             // bunifuElipse1
             // 
-            this.bunifuElipse1.ElipseRadius = 25;
-            this.bunifuElipse1.TargetControl = this.btnCargarProducto;
+            //this.bunifuElipse1.ElipseRadius = 25;
+            //this.bunifuElipse1.TargetControl = this.btnCargarProducto;
             // 
             // ABMCliente
             // 
@@ -436,6 +436,6 @@ namespace Facturacion
         private System.Windows.Forms.Button btnCargarProducto;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cmbZona;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+      //  private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
     }
 }

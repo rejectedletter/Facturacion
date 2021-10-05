@@ -9,23 +9,23 @@ namespace Facturacion.Aplicacion.Servicios
 {
     public class ObjetoMapper
     {
-        MapperConfiguration config;
-        IMapper mapper;
+        //MapperConfiguration config;
+        //IMapper mapper;
 
-        public IMapper GetNuevoMapper<TEntrada, TSalida>()
-        {
-            config = new MapperConfiguration(cfg => {
-                cfg.CreateMap<TEntrada, TSalida>();
-            });
+        //public IMapper GetNuevoMapper<TEntrada, TSalida>()
+        //{
+        //    config = new MapperConfiguration(cfg => {
+        //        cfg.CreateMap<TEntrada, TSalida>();
+        //    });
 
-            mapper = config.CreateMapper();
+        //    mapper = config.CreateMapper();
 
-            return mapper;
-        }
+        //    return mapper;
+        //}
 
-        public TSalida Mapear<TEntrada, TSalida>(TEntrada objeto)
-        {
-            return mapper.Map<TEntrada, TSalida>(objeto);
-        }
+        //public TSalida Mapear<TEntrada, TSalida>(TEntrada objeto)
+        //{
+        //    return mapper.Map<TEntrada, TSalida>(objeto);
+        //}
     }
 }

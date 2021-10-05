@@ -5,6 +5,7 @@ using Facturacion.Dominio.Dto;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using Facturacion.Dominio;
+using System.Linq;
 
 namespace Facturacion.Infraestructura.Dapper
 {
@@ -36,7 +37,7 @@ namespace Facturacion.Infraestructura.Dapper
 
             using(var connection = new DbConn())
             {
-                return connection.Connection.Query<ClientesResult>(query).AsList();
+                return connection.Connection.Query<ClientesResult>(query).ToList();
 
             }     
         }
@@ -163,7 +164,7 @@ namespace Facturacion.Infraestructura.Dapper
             {
                 using (var connection = new DbConn())
                 {
-                    return connection.Connection.QueryFirstOrDefault<Cliente>(query, new { clienteId = id });
+                    return connection.Connection.Query<Cliente>(query, new { clienteId = id }).FirstOrDefault();
 
 
                 }

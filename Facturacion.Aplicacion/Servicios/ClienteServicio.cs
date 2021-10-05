@@ -12,34 +12,40 @@ namespace Facturacion.Aplicacion.Servicios
 {
     public class ClienteServicio
     {
-        private readonly IMapper _mapper;
+       // private readonly IMapper _mapper;
         public ClienteServicio()
         {
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Cliente, ClienteDto>();
+            //var configuration = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<Cliente, ClienteDto>();
 
-                cfg.CreateMap<ClienteDto, Cliente>()
-                .ForMember(x=> x.ProductoId, o => {
+            //    cfg.CreateMap<ClienteDto, Cliente>()
+            //    .ForMember(x=> x.ProductoId, o => {
+            //        o.MapFrom(s => s.Productos.First().ProductoId);
+            //    })
+            //    .ForMember(x => x.CuentaClienteId, o => {
+            //        o.MapFrom(s => s.CuentaCliente.CuentaClienteId);
+            //    })
+            //    .ForMember(x => x.ZonaId, o => {
+            //        o.MapFrom(s => s.Zona.ZonaId);
+            //    });
+            //    cfg.CreateMap<ProductoDto, Producto>();
+            //    cfg.CreateMap<ProductosPlanesDto, ProductosPlanes>()
+            //    .ForMember(x => x.PlanId, o => {
+            //        o.MapFrom(s => s.Plan.PlanId);
+            //    });
+            //    cfg.CreateMap<CuentaClienteDto, CuentaCliente>();
+
+            //});
+
+
+            //_mapper = new Mapper(configuration);
+
+            Mapper.CreateMap<ClienteDto, Cliente>()
+                .ForMember(x => x.ProductoId, o =>
+                {
                     o.MapFrom(s => s.Productos.First().ProductoId);
-                })
-                .ForMember(x => x.CuentaClienteId, o => {
-                    o.MapFrom(s => s.CuentaCliente.CuentaClienteId);
-                })
-                .ForMember(x => x.ZonaId, o => {
-                    o.MapFrom(s => s.Zona.ZonaId);
                 });
-                cfg.CreateMap<ProductoDto, Producto>();
-                cfg.CreateMap<ProductosPlanesDto, ProductosPlanes>()
-                .ForMember(x => x.PlanId, o => {
-                    o.MapFrom(s => s.Plan.PlanId);
-                });
-                cfg.CreateMap<CuentaClienteDto, CuentaCliente>();
-
-            });
-            
-
-            _mapper = new Mapper(configuration);
         }
         public bool Agregar(ClienteDto cliente, ProductoDto producto = null)
         {
@@ -71,10 +77,10 @@ namespace Facturacion.Aplicacion.Servicios
 
                     try
                     {
-                        ClientesQuery.ExecuteTransactCliente(_mapper.Map<Cliente>(cliente),
-                            _mapper.Map<Producto>(producto),
-                            _mapper.Map<ProductosPlanes>(relacionProdPlan),
-                            _mapper.Map<CuentaCliente>(cuentaClienteDto)
+                        ClientesQuery.ExecuteTransactCliente(Mapper.Map<Cliente>(cliente),
+                            Mapper.Map<Producto>(producto),
+                            Mapper.Map<ProductosPlanes>(relacionProdPlan),
+                            Mapper.Map<CuentaCliente>(cuentaClienteDto)
                             );
                         //ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
                         //ProductosQuery.AddProducto(_mapper.Map<Producto>(producto));
@@ -110,7 +116,7 @@ namespace Facturacion.Aplicacion.Servicios
         {
             try
             {
-                ClientesQuery.UpdateClientes(_mapper.Map<Cliente>(cliente));
+                ClientesQuery.UpdateClientes(Mapper.Map<Cliente>(cliente));
                 return true;
             }
             catch
@@ -147,7 +153,7 @@ namespace Facturacion.Aplicacion.Servicios
 
         public ClienteDto GetCliente(Guid id)
         {
-            return _mapper.Map<ClienteDto> (ClientesQuery.GetClientesById(id));
+            return Mapper.Map<ClienteDto> (ClientesQuery.GetClientesById(id));
         }
     }
 }

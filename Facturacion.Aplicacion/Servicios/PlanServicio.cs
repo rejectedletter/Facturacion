@@ -11,26 +11,26 @@ namespace Facturacion.Aplicacion.Servicios
 {
     public class PlanServicio
     {
-        readonly IMapper _mapper;
+        //readonly IMapper _mapper;
         public PlanServicio()
         {
 
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Plan, PlanDto>()
-                .ForMember(c => c.Porcentaje, o
-                => o.MapFrom(s=>s.Porcentaje));
+            //var configuration = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<Plan, PlanDto>()
+            //    .ForMember(c => c.Porcentaje, o
+            //    => o.MapFrom(s=>s.Porcentaje));
 
-                cfg.CreateMap<PlanDto, Plan>();
-            });
+            //    cfg.CreateMap<PlanDto, Plan>();
+            //});
 
-            _mapper = new Mapper(configuration);
+            //_mapper = new Mapper(configuration);
         }
         public bool Agregar(PlanDto plan)
        {
             try
             {
-                PlanQuery.AddPlan(_mapper.Map<Plan>(plan));
+                PlanQuery.AddPlan(Mapper.Map<Plan>(plan));
                 return true;
             }
             catch(Exception ex)
@@ -42,7 +42,7 @@ namespace Facturacion.Aplicacion.Servicios
 
         public List<PlanDto> ListarPlanes()
         {
-            return _mapper.Map<List<PlanDto>>(PlanQuery.GetPlanes());
+            return Mapper.Map<List<PlanDto>>(PlanQuery.GetPlanes());
         }
 
         public bool EliminarPlan(Guid value)

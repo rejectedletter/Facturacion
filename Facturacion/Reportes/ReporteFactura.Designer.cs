@@ -38,7 +38,7 @@ namespace Facturacion.Reportes
             this.rvrFacturacion.LocalReport.ReportEmbeddedResource = "Facturacion.Reportes.JoelReporte.rdlc";
             this.rvrFacturacion.Location = new System.Drawing.Point(0, 0);
             this.rvrFacturacion.Name = "rvrFacturacion";
-            this.rvrFacturacion.ServerReport.BearerToken = null;
+           // this.rvrFacturacion.ServerReport.BearerToken = null;
             this.rvrFacturacion.Size = new System.Drawing.Size(800, 450);
             this.rvrFacturacion.TabIndex = 0;
             // 
@@ -58,5 +58,6 @@ namespace Facturacion.Reportes
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer rvrFacturacion;
+        
     }
 }

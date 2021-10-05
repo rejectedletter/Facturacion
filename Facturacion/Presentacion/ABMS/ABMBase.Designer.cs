@@ -33,7 +33,7 @@ namespace Facturacion.Presentacion
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            //this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlImg.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -86,8 +86,8 @@ namespace Facturacion.Presentacion
             // 
             // bunifuElipse1
             // 
-            this.bunifuElipse1.ElipseRadius = 30;
-            this.bunifuElipse1.TargetControl = this.btnAceptar;
+            //this.bunifuElipse1.ElipseRadius = 30;
+            //this.bunifuElipse1.TargetControl = this.btnAceptar;
             // 
             // flowLayoutPanel1
             // 
@@ -118,7 +118,8 @@ namespace Facturacion.Presentacion
         protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.Label lblTitulo;
         protected System.Windows.Forms.Button btnAceptar;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+       // private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+     
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

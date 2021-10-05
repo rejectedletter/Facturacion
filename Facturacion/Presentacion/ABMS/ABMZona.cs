@@ -7,7 +7,7 @@ namespace Facturacion.Presentacion.ABMS
     public partial class ABMZona : ABMBase
     {
         private readonly ZonaServicio _zonaServicio = new ZonaServicio();
-        private readonly Guid? _id;
+        
         public ABMZona(TipoOperacion tipoOperacion, Guid? id = null)
         {
             _tipoOperacion = tipoOperacion;

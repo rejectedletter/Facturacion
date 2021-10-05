@@ -12,17 +12,25 @@ namespace Facturacion.Infraestructura.Dapper
 {
     public class CuentaClienteQuery
     {
-        IMapper _mapper;
+
+        // Mapper _mapper;
+        
         public CuentaClienteQuery()
         {
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<CuentaCliente, CuentaClienteDto>();
-                cfg.CreateMap<Movimiento, MovimientoDto>();
-                cfg.CreateMap<Producto, ProductoDto>();
-                
+            //var configuration = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<CuentaCliente, CuentaClienteDto>();
+            //    cfg.CreateMap<Movimiento, MovimientoDto>();
+            //    cfg.CreateMap<Producto, ProductoDto>();
 
-            });
+
+            //});
+            var _mapperCuentacliente = Mapper.CreateMap<CuentaCliente, CuentaClienteDto>();
+            var mapperMovimiento = Mapper.CreateMap<Movimiento, MovimientoDto>();
+            var mapperProducto = Mapper.CreateMap<Producto, ProductoDto>();
+
+
+
         }
         public  CuentaClienteDto GetCuentasClienteById(Guid cuentaClienteId)
         {
@@ -46,10 +54,10 @@ namespace Facturacion.Infraestructura.Dapper
 
             if (cuentaCliente != null)
             {
-                cuentaClienteDto = _mapper.Map<CuentaClienteDto>(cuentaCliente);
-                cuentaClienteDto.Movimientos = _mapper.Map<List<MovimientoDto>> (new MovimientosQuery().GetMovimientos(cuentaCliente.CuentaClienteId));
+                cuentaClienteDto = Mapper.Map<CuentaClienteDto>(cuentaCliente);
+                cuentaClienteDto.Movimientos = Mapper.Map<List<MovimientoDto>> (new MovimientosQuery().GetMovimientos(cuentaCliente.CuentaClienteId));
 
-                cuentaClienteDto.Producto = _mapper.Map<ProductoDto>(ProductosQuery.GetProductoById(cuentaCliente.ProductoId));
+                cuentaClienteDto.Producto = Mapper.Map<ProductoDto>(ProductosQuery.GetProductoById(cuentaCliente.ProductoId));
 
             }
 

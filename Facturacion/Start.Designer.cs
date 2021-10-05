@@ -30,7 +30,7 @@ namespace Facturacion
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+           // this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -60,8 +60,8 @@ namespace Facturacion
             // 
             // bunifuElipse1
             // 
-            this.bunifuElipse1.ElipseRadius = 20;
-            this.bunifuElipse1.TargetControl = this;
+            //this.bunifuElipse1.ElipseRadius = 20;
+            //this.bunifuElipse1.TargetControl = this;
             // 
             // panel1
             // 
@@ -256,7 +256,7 @@ namespace Facturacion
 
 
         #endregion
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+       // private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;

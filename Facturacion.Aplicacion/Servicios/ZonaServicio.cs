@@ -9,15 +9,15 @@ namespace Facturacion.Aplicacion.Servicios
 {
     public class ZonaServicio
     {
-        IMapper _mapper;
-        public ZonaServicio()
-        {
+        //IMapper _mapper;
+        //public ZonaServicio()
+        //{
            
-            var configuration = new MapperConfiguration(cfg =>
-            cfg.CreateMap<Zona, ZonaDto>());
+        //    var configuration = new MapperConfiguration(cfg =>
+        //    cfg.CreateMap<Zona, ZonaDto>());
 
-            _mapper = new Mapper(configuration);
-        }
+        //    _mapper = new Mapper(configuration);
+        //}
 
         public bool AgregarZona(ZonaDto zona)
         {
@@ -77,7 +77,7 @@ namespace Facturacion.Aplicacion.Servicios
 
         public List<ZonaDto> ListarZonas()
         {
-            return _mapper.Map<List<ZonaDto>>(ZonaQuery.GetZonas());
+            return Mapper.Map<List<ZonaDto>>(ZonaQuery.GetZonas());
              
         }
 

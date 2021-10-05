@@ -1,4 +1,5 @@
-﻿using Facturacion.Dominio.Dto;
+﻿using AutoMapper;
+using Facturacion.Dominio.Dto;
 using Facturacion.Dominio.Entities;
 using Facturacion.Infraestructura.Dapper;
 using System;
@@ -30,10 +31,10 @@ namespace Facturacion.Aplicacion.Servicios
 
             List<InformeFacturacionDto> lDto = new List<InformeFacturacionDto>();
 
-            mapper.GetNuevoMapper<InformeFacturacion, InformeFacturacionDto>();
+           
             foreach(var item in servicio.GetInformeFacturacion(dni))
             {
-                var x = mapper.Mapear<InformeFacturacion, InformeFacturacionDto>(item);
+                var x = Mapper.Map<InformeFacturacion, InformeFacturacionDto>(item);
                 lDto.Add(x);
             }
 
