@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using Facturacion.Dominio.Dto;
-using Facturacion.Dominio.Entities;
-using Facturacion.Infraestructura;
-using Facturacion.Infraestructura.Dapper;
+﻿using Facturacion.Infraestructura.Diagram;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +22,14 @@ namespace Facturacion.Aplicacion.Servicios
 
             //_mapper = new Mapper(configuration);
         }
-        public bool Agregar(PlanDto plan)
+        public bool Agregar(Plan plan)
        {
             try
             {
-                PlanQuery.AddPlan(Mapper.Map<Plan>(plan));
+                using (var db = new Facturacion_Gimnasio_JuanEntities())
+                {
+                     db.Plans.Add(plan);
+                }
                 return true;
             }
             catch(Exception ex)
@@ -40,14 +39,41 @@ namespace Facturacion.Aplicacion.Servicios
             }
        }
 
-        public List<PlanDto> ListarPlanes()
+        public List<Plan> ListarPlanes()
         {
-            return Mapper.Map<List<PlanDto>>(PlanQuery.GetPlanes());
+            try
+            {
+                using (var db = new Facturacion_Gimnasio_JuanEntities())
+                {
+                   return db.Plans.Where(x=> x.Eliminado==false).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public bool EliminarPlan(Guid value)
+        public bool EliminarPlan(Guid id)
         {
-           return PlanQuery.DeletePlan( value);
+            try
+            {
+                using (var db = new Facturacion_Gimnasio_JuanEntities())
+                {
+                    var planEliminar = db.Plans.SingleOrDefault(x => x.PlanId == id);
+                    
+                    planEliminar.Eliminado = true;
+                    db.SaveChanges();
+
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("No se pudo eliminar el plan");
+            }
         }
     }
 }

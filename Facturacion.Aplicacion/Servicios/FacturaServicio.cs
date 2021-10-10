@@ -1,12 +1,7 @@
 ﻿using AutoMapper;
 using Facturacion.Dominio.Dto;
-using Facturacion.Dominio.Entities;
 using Facturacion.Infraestructura.Dapper;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Facturacion.Aplicacion.Servicios
 {
@@ -17,12 +12,7 @@ namespace Facturacion.Aplicacion.Servicios
         {
             var nuevaFactura = new FacturaDto();
             
-            var detalleCliente = new DetalleCliente()
-            {
-                DetalleClienteId = new DetalleClienteDto().DetalleClienteId,
-                ClienteId = cliente.ClienteId,
-                FacturaId = nuevaFactura.FacturaId
-            };
+           
         }
 
         public List<InformeFacturacionDto> GetInformeFacturacion(string dni)
@@ -32,11 +22,7 @@ namespace Facturacion.Aplicacion.Servicios
             List<InformeFacturacionDto> lDto = new List<InformeFacturacionDto>();
 
            
-            foreach(var item in servicio.GetInformeFacturacion(dni))
-            {
-                var x = Mapper.Map<InformeFacturacion, InformeFacturacionDto>(item);
-                lDto.Add(x);
-            }
+            
 
             return lDto;
         }

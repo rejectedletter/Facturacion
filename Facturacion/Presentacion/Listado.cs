@@ -1,6 +1,4 @@
 ﻿using Facturacion.Dominio.Dto;
-using Facturacion.Dominio.Entities;
-using Facturacion.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

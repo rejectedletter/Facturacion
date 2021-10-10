@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Facturacion.Dominio.Dto;
-using Facturacion.Dominio.Entities;
+
+using Facturacion.Infraestructura;
 using Facturacion.Infraestructura.Dapper;
+using Facturacion.Infraestructura.Diagram;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Facturacion.Aplicacion.Servicios
 {
@@ -19,65 +22,53 @@ namespace Facturacion.Aplicacion.Servicios
         //    _mapper = new Mapper(configuration);
         //}
 
-        public bool AgregarZona(ZonaDto zona)
+        public bool AgregarZona(Zona zona)
         {
             try
             {
-                ZonaQuery.AddZona(new Zona() { ZonaId = zona.ZonaId, NombreZona = zona.NombreZona });
+                using (var context = new Facturacion_Gimnasio_JuanEntities())
+                {
+                    context.Zonas.Add(zona);
+                }
                 return true;
             }
             catch(Exception e)
             {
+                
                 throw new Exception("No se pudo agregar la zona.");
             }
         }
 
-        public bool ModificarZona(ZonaDto zona)
-        {
-            var zonaBuscar = ZonaQuery.GetZonaById(zona.ZonaId);
-            zonaBuscar.NombreZona = zona.NombreZona;
-            
-            if (zonaBuscar == null)
-            {
-                throw new Exception("No se encontró zona");
-            }
-
-            try
-            {
-                ZonaQuery.UpdateZona(zonaBuscar);
-                return true;
-            }
-            catch
-            {
-
-                throw;
-            }
-        }
+        
 
         public bool EliminarZona(Guid id)
         {
-            var zonaBuscar = ZonaQuery.GetZonaById(id);
-            if (zonaBuscar == null)
-            {
-                throw new Exception("No se encontró zona");
-            }
-
             try
             {
-                ZonaQuery.DeleteZona(id);
+                using (var context = new Facturacion_Gimnasio_JuanEntities())
+                {
+                    var zonaEliminar = context.Zonas.SingleOrDefault(x => x.ZonaId == id);
+                    
+                    zonaEliminar.Eliminado = true;
+                    context.SaveChanges();
+                }
                 return true;
             }
-            catch 
+            catch (Exception e)
             {
 
-                throw new Exception("No se pudo eliminar zona"); 
-                
+                throw new Exception("No se pudo agregar la zona.");
             }
         }
 
-        public List<ZonaDto> ListarZonas()
+        public List<Zona> ListarZonas()
         {
-            return Mapper.Map<List<ZonaDto>>(ZonaQuery.GetZonas());
+            //return Mapper.Map<List<ZonaDto>>(ZonaQuery.GetZonas());
+
+            using (var context = new Facturacion_Gimnasio_JuanEntities())
+            {
+                return context.Zonas.Where(x => x.Eliminado == false).ToList();
+            }
              
         }
 

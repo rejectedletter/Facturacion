@@ -1,4 +1,6 @@
 ﻿using Facturacion.Aplicacion.Servicios;
+using Facturacion.Infraestructura;
+using Facturacion.Infraestructura.Diagram;
 using System;
 using System.Windows.Forms;
 
@@ -39,7 +41,7 @@ namespace Facturacion.Presentacion.ABMS
         {
             if (_tipoOperacion == TipoOperacion.Alta)
             {
-                var result = _zonaServicio.AgregarZona(new Dominio.Dto.ZonaDto() { NombreZona = txtNombreZona.Text });
+                var result = _zonaServicio.AgregarZona(new Zona { NombreZona = txtNombreZona.Text });
 
                 if (result)
                 {
@@ -47,15 +49,15 @@ namespace Facturacion.Presentacion.ABMS
                     this.Close();
                 }
             }
-            else
-            {
-                var modificacion = _zonaServicio.ModificarZona(new Dominio.Dto.ZonaDto() {ZonaId= (Guid)_id, NombreZona= txtNombreZona.Text });
-                if (modificacion)
-                {
-                    MessageBox.Show("Se modificó la zona correctamente");
-                    this.Close();
-                }
-            }
+            //else
+            //{
+            //    var modificacion = _zonaServicio.ModificarZona((Guid)_id);
+            //    if (modificacion)
+            //    {
+            //        MessageBox.Show("Se modificó la zona correctamente");
+            //        this.Close();
+            //    }
+            //}
             
             
         }

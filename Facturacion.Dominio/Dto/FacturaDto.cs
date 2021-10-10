@@ -15,11 +15,11 @@ namespace Facturacion.Dominio.Dto
         public DetalleProductoDto DetalleProducto { get; set; }
 
         public string Compra => DetalleProducto.DetalleProducto.MontoTotalCancelar.ToString("0.00");
-        public string Pagado => DetalleCliente.Cliente.CuentaCliente.Haber.ToString("0.00");
+        //public string Pagado => DetalleCliente.Cliente.CuentaCliente.Haber.ToString("0.00");
 
-        public string Saldo => DetalleCliente.Cliente.CuentaCliente.Debe.ToString("0.00");
+        //public string Saldo => DetalleCliente.Cliente.CuentaCliente.Debe.ToString("0.00");
 
-        public DateTime UltPago => DetalleCliente.Cliente.CuentaCliente.Movimientos.First().FechaMovimiento;
+        //public DateTime UltPago => DetalleCliente.Cliente.CuentaCliente.Movimientos.First().FechaMovimiento;
 
         public string NombrePlan => DetalleProducto.DetalleProducto.Planes.First().NombrePlan;
     }

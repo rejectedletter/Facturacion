@@ -1,5 +1,4 @@
 ﻿using Dapper;
-using Facturacion.Dominio.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -33,62 +32,62 @@ namespace Facturacion.Infraestructura.Dapper
             }
         }
 
-        public static bool AddProductosPlanes(ProductosPlanes productosPlanes, SqlConnection connection = null)
-        {
-            var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[ProductosPlanes]
-           ([ProductosPlanesId]
-           ,[ProductoId]
-           ,[PlantId]
-           ,[FechaInicioPlanPago]
-           ,[Cancelado])
-     VALUES
-           (@ProductosPlanesId, uniqueidentifier,>
-           ,@ProductoId, uniqueidentifier,>
-           ,@PlantId, uniqueidentifier,>
-           ,@FechaInicioPlanPago, datetime,>
-           ,@Cancelado, bit,>)";
+     //   public static bool AddProductosPlanes(ProductosPlanes productosPlanes, SqlConnection connection = null)
+     //   {
+     //       var query = $@"INSERT INTO [Facturacion_Gimnasio_Juan].[dbo].[ProductosPlanes]
+     //      ([ProductosPlanesId]
+     //      ,[ProductoId]
+     //      ,[PlantId]
+     //      ,[FechaInicioPlanPago]
+     //      ,[Cancelado])
+     //VALUES
+     //      (@ProductosPlanesId, uniqueidentifier,>
+     //      ,@ProductoId, uniqueidentifier,>
+     //      ,@PlantId, uniqueidentifier,>
+     //      ,@FechaInicioPlanPago, datetime,>
+     //      ,@Cancelado, bit,>)";
 
-            if(connection == null)
-            {
-                connection = new DbConn().Connection;
+     //       if(connection == null)
+     //       {
+     //           connection = new DbConn().Connection;
 
-                if (connection.Execute(query, new
-                {
-                    ProductosPlanesId = productosPlanes.ProductosPlanesId,
-                    ProductoId = productosPlanes.ProductoId,
-                    PlantId = productosPlanes.PlanId,
-                    FechaInicioPlanPago = productosPlanes.FechaInicioPlanPago,
-                    Cancelado = productosPlanes.Cancelado
+     //           if (connection.Execute(query, new
+     //           {
+     //               ProductosPlanesId = productosPlanes.ProductosPlanesId,
+     //               ProductoId = productosPlanes.ProductoId,
+     //               PlantId = productosPlanes.PlanId,
+     //               FechaInicioPlanPago = productosPlanes.FechaInicioPlanPago,
+     //               Cancelado = productosPlanes.Cancelado
 
-                }) == 1)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
+     //           }) == 1)
+     //           {
+     //               return true;
+     //           }
+     //           else
+     //           {
+     //               return false;
 
-                }
-            }
+     //           }
+     //       }
 
-            if (connection.Execute(query, new
-            {
-                ProductosPlanesId = productosPlanes.ProductosPlanesId,
-                ProductoId = productosPlanes.ProductoId,
-                PlantId = productosPlanes.PlanId,
-                FechaInicioPlanPago = productosPlanes.FechaInicioPlanPago,
-                Cancelado = productosPlanes.Cancelado
+     //       if (connection.Execute(query, new
+     //       {
+     //           ProductosPlanesId = productosPlanes.ProductosPlanesId,
+     //           ProductoId = productosPlanes.ProductoId,
+     //           PlantId = productosPlanes.PlanId,
+     //           FechaInicioPlanPago = productosPlanes.FechaInicioPlanPago,
+     //           Cancelado = productosPlanes.Cancelado
 
-            }) == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
+     //       }) == 1)
+     //       {
+     //           return true;
+     //       }
+     //       else
+     //       {
+     //           return false;
 
-            }
-        }
+     //       }
+     //   }
 
         //public static bool UpdateClientes(Cliente cliente)
         //{

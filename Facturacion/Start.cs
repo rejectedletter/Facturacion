@@ -57,7 +57,7 @@ namespace Facturacion
         {
            dgvDatos.DataSource = new ClienteServicio().Listar(string.Empty);
 
-           new DgvFormatting().FormatCliente(ref dgvDatos);
+           //new DgvFormatting().FormatCliente(ref dgvDatos);
 
             btnNuevo.Visible = true;
             btnModificar.Visible = true;

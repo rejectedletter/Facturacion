@@ -1,6 +1,5 @@
 ﻿using Facturacion.Aplicacion.Servicios;
-using Facturacion.Dominio;
-using Facturacion.Dominio.Dto;
+using Facturacion.Infraestructura.Diagram;
 using Facturacion.Presentacion;
 using System;
 using System.Collections.Generic;
@@ -11,11 +10,11 @@ namespace Facturacion
 {
     public partial class ABMProducto : ABMBase
     {
-        public ProductoDto Producto = new ProductoDto();
+        public Producto Producto = new Producto();
 
         private readonly PlanServicio _planServicio = new PlanServicio();
 
-        private  List<PlanDto> Planes => _planServicio.ListarPlanes();
+        private  List<Plan> Planes => _planServicio.ListarPlanes();
         public ABMProducto(TipoOperacion tipoOperacion, Guid? id)
         {
             _tipoOperacion = tipoOperacion;
@@ -82,17 +81,17 @@ namespace Facturacion
             {
 
 
-                Producto.Descripcion = txtDescripcion.Text;
+                //Producto.Descripcion = txtDescripcion.Text;
                     Producto.MontoTotalCancelar = decimal.Parse(txtPrecio.Text);
-                    Producto.Planes = new List<PlanDto>() { Planes.First(x => x.NombrePlan == cmbPlanes.SelectedItem.ToString()) };
+                    Producto.RelacionProductosPlane.Plane= Planes.First(x => x.NombrePlan == cmbPlanes.SelectedItem.ToString());
 
-                var prod = new ProductosPlanesDto()
-                {
-                    Producto = Producto,
-                    Plan = Producto.Planes.First(),
-                    FechaInicioPlanPago = DateTime.Now,
+                //var prod = new ProductosPlanesDto()
+                //{
+                //    Producto = Producto,
+                //    Plan = Producto.Planes.First(),
+                //    FechaInicioPlanPago = DateTime.Now,
 
-                };
+                //};
 
                 var msg = MessageBox.Show("Se agregó correctamente", caption: "Producto Agregado");
                 this.Close();

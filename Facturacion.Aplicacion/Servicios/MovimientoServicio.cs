@@ -1,49 +1,29 @@
-﻿using AutoMapper;
-using Facturacion.Dominio.Dto;
-using Facturacion.Dominio.Entities;
-using Facturacion.Infraestructura.Dapper;
+﻿using Facturacion.Infraestructura;
 using System;
-using System.Collections.Generic;
 
 namespace Facturacion.Aplicacion.Servicios
 {
-    public class MovimientoServicio
+    public static class MovimientoServicio
     {
-        private MovimientosQuery _query = new MovimientosQuery();
-       // private readonly IMapper _mapper;
-        public MovimientoServicio()
-        {
-            //var configuration = new MapperConfiguration(cfg =>
-            //{
-            //    cfg.CreateMap<Movimiento, MovimientoDto>();
+        // public static bool ArgregarMovimiento(Movimiento movimiento)
+        //{
+        //    try
+        //    {
+        //        using (var db = new FacturacionModelContainer())
+        //        {
+        //            db.Movimientos.Add(movimiento);
+        //        }
+        //        return true;
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw new Exception("No fue posible agregar el movimiento");
+        //    }
+        //}
 
 
-            //});
-        }
-        public void ArgregarMovimiento(MovimientoDto movimiento)
-        {
 
-        }
-
-        public void ModificarMovimiento(MovimientoDto movimiento)
-        {
-
-        }
-
-        public List<MovimientoResult> ListarMovimientos(Guid cuentaClienteId)
-        {
-            try
-            {
-                return _query.GetMovimientos(cuentaClienteId);
-
-                
-            }
-            catch (Exception e)
-            {
-
-                throw;
-            }
-
-        }
+       
     }
 }

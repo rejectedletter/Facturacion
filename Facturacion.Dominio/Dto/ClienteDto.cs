@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Facturacion.Infraestructura;
+using Facturacion.Infraestructura.Diagram;
 
 namespace Facturacion.Dominio.Dto
 {
@@ -31,13 +33,11 @@ namespace Facturacion.Dominio.Dto
 
         public string Rubro { get; set; }
 
-        public CuentaClienteDto CuentaCliente { get; set; }
+        public IEnumerable<CuentaCliente> CuentasCliente { get; set; }
 
-        public ZonaDto Zona { get; set; }
+        public Zona Zona { get; set; }
 
-        public ICollection<ProductoDto> Productos { get; set; }
-
-        public ICollection<ProductosPlanesDto> ProductosPlanes { get; set; }
+        public ICollection<RelacionProductosPlane> ProductosPlanes { get; set; }
     }
     public class ClientesResult
     {

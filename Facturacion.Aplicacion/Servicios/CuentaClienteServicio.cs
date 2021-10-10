@@ -1,4 +1,5 @@
 ﻿using Facturacion.Dominio.Dto;
+using Facturacion.Infraestructura;
 using Facturacion.Infraestructura.Dapper;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,14 @@ using System.Threading.Tasks;
 
 namespace Facturacion.Aplicacion.Servicios
 {
-    public class CuentaClienteServicio
+    public static class CuentaClienteServicio
     {
-        //Alta cuando se da de alta un cliente
-        //Listar
-
-        //public List<CuentaClienteDto> ObtenerCuentaCliente(Guid cuentaClienteId)
+        //public static List<> ListarCuentasDelCliente(Cliente cliente)
         //{
-        //    var listaCliente = CuentaClienteQuery.GetCuentasClientes(cuentaClienteId);
-            
-        //    listaClienteNuevo.ForEach(x=>x.)
+        //    using (var db = new FacturacionContainer())
+        //    {
+
+        //    }
         //}
     }
 }

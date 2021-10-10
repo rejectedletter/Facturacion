@@ -1,5 +1,7 @@
 ﻿using Facturacion.Aplicacion.Servicios;
 using Facturacion.Dominio.Dto;
+using Facturacion.Infraestructura;
+using Facturacion.Infraestructura.Diagram;
 using Facturacion.Presentacion;
 using System;
 using System.Collections.Generic;
@@ -11,11 +13,11 @@ namespace Facturacion
     public partial class ABMCliente : ABMBase
     {
         private readonly ClienteServicio _clienteServicio = new ClienteServicio();
-        private ProductoDto _producto = null;
+        private Producto _producto = null;
 
         private readonly ZonaServicio _zonaServicio = new ZonaServicio();
 
-        private List<ZonaDto> Zonas => _zonaServicio.ListarZonas();
+        private List<Zona> Zonas => _zonaServicio.ListarZonas();
         public ABMCliente(TipoOperacion tipoOperacion, Guid? id)
          {
 
@@ -76,11 +78,11 @@ namespace Facturacion
             var cliente = _clienteServicio.GetCliente((Guid)id);
             txtApellido.Text = cliente.Apellido;
             txtCelular.Text = cliente.NroCelular;
-            txtDni.Text = cliente.Dni;
-            txtNombre.Text = cliente.Nombre;
+            txtDni.Text = cliente.DNI;
+           // txtNombre.Text = cliente.Nombre;
             txtRubro.Text = cliente.Rubro;
             txttelefono.Text = cliente.TelefonoFijo;
-            lblCodigocliente.Text = cliente.CodigoCliente;
+            
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)

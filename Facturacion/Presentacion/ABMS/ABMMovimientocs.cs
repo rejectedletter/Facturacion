@@ -30,7 +30,7 @@ namespace Facturacion.Presentacion.ABMS
 
             var detalleProducto = new DetalleProductoDto()
             {
-                DetalleProducto = Cliente.Productos.First()
+               // DetalleProducto = Cliente.Productos.First()
             };
 
             var factura = new FacturaDto()

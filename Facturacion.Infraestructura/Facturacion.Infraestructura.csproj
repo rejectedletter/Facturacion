@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -43,10 +44,18 @@
     <Reference Include="Dapper, Version=1.31.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.1.31\lib\net40\Dapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
@@ -54,6 +63,8 @@
     <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
     </Reference>
@@ -77,26 +88,94 @@
     <Compile Include="Dapper\ProductosQuery.cs" />
     <Compile Include="Dapper\ZonaQuery.cs" />
     <Compile Include="DbConn.cs" />
-    <Compile Include="DbContext.cs" />
+    <Compile Include="Diagram\Cliente.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\CuentaCliente.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\Factura.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\FacturacionModelcontainer.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacturacionModelcontainer.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\FacturacionModelcontainer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\FacturacionModelcontainer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FacturacionModelcontainer.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\Movimiento.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\Plan.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\Producto.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\RelacionProductosPlane.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Diagram\Zona.cs">
+      <DependentUpon>FacturacionModelcontainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Facturacion.Dominio\Facturacion.Dominio.csproj">
-      <Project>{8B9B7F94-E0C1-4A6C-B0B5-EE67B6CDC871}</Project>
-      <Name>Facturacion.Dominio</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="DBConfig\dbconfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <EntityDeploy Include="Diagram\FacturacionModelcontainer.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FacturacionModelcontainer.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Diagram\FacturacionModelcontainer.edmx.diagram">
+      <DependentUpon>FacturacionModelcontainer.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.Cliente.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.CuentaCliente.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.DetalleCliente.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.DetalleProducto.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.Factura.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.InformeFacturacion.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.Movimiento.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.Plan.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.ProductosPlanes.datasource" />
+    <None Include="Properties\DataSources\Facturacion.Dominio.Entities.Zona.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\AutoMapper.3.1.0\lib\net40\AutoMapper.Net4.dll">
       <Link>AutoMapper.Net4.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Diagram\FacturacionModelcontainer.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FacturacionModelcontainer.edmx</DependentUpon>
+      <LastGenOutput>FacturacionModelcontainer.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Diagram\FacturacionModelcontainer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FacturacionModelcontainer.edmx</DependentUpon>
+      <LastGenOutput>FacturacionModelcontainer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
@@ -105,5 +184,8 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

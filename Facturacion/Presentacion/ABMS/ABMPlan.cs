@@ -1,5 +1,7 @@
 ﻿using Facturacion.Aplicacion.Servicios;
 using Facturacion.Dominio.Dto;
+using Facturacion.Infraestructura;
+using Facturacion.Infraestructura.Diagram;
 using Facturacion.Presentacion;
 using System.Windows.Forms;
 
@@ -25,7 +27,7 @@ namespace Facturacion
 
         protected override void RealizarOperacion()
         {
-           var agregar = _planServicio.Agregar(new PlanDto()
+           var agregar = _planServicio.Agregar(new Plan()
             {
                 NombrePlan = txtNombre.Text,
                 CantidadCuotas = int.Parse(txtCantidadCuotas.Text),

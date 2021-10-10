@@ -245,8 +245,15 @@
       <Project>{8b9b7f94-e0c1-4a6c-b0b5-ee67b6cdc871}</Project>
       <Name>Facturacion.Dominio</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Facturacion.Infraestructura\Facturacion.Infraestructura.csproj">
+      <Project>{065AB72F-0AD2-4F54-BC55-AED252900348}</Project>
+      <Name>Facturacion.Infraestructura</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="EntityFramework">
+      <Version>6.4.4</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.Bcl">
       <Version>1.1.10</Version>
     </PackageReference>

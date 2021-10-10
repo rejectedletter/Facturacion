@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
-using Facturacion.Dominio;
+
 using Facturacion.Dominio.Dto;
-using Facturacion.Dominio.Entities;
+
 using Facturacion.Infraestructura;
 using Facturacion.Infraestructura.Dapper;
+using Facturacion.Infraestructura.Diagram;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,82 +42,83 @@ namespace Facturacion.Aplicacion.Servicios
 
             //_mapper = new Mapper(configuration);
 
-            Mapper.CreateMap<ClienteDto, Cliente>()
-                .ForMember(x => x.ProductoId, o =>
-                {
-                    o.MapFrom(s => s.Productos.First().ProductoId);
-                });
+            
         }
-        public bool Agregar(ClienteDto cliente, ProductoDto producto = null)
+        public bool Agregar(ClienteDto cliente, Producto producto = null)
         {
-            try
+            Cliente clienteAgregar = new Cliente()
             {
-                if (producto != null)
+                ClienteId = cliente.ClienteId,
+                Apellido = cliente.Apellido,
+                DNI = cliente.Dni,
+                FechaNacimiento = cliente.FechaNacimiento,
+                DomicilioParticular = cliente.DomicilioParticular,
+                DomicilioComercial = cliente.DomicilioComercial,
+                NroCelular = cliente.NroCelular,
+                TelefonoFijo = cliente.TelefonoFijo,
+                Rubro = cliente.Rubro,
+                ZonaId = cliente.Zona.ZonaId,
+                
+            };
+
+            CuentaCliente nuevaCuentacliente = new CuentaCliente()
+            {
+                Cliente = clienteAgregar,
+                ClienteId = clienteAgregar.ClienteId,
+                Debe = producto.MontoTotalCancelar
+            };
+
+
+
+            using (var db = new Facturacion_Gimnasio_JuanEntities())
+            {
+
+                using (var trx = db.Database.BeginTransaction())
                 {
-                    
 
-                    var cuentaClienteDto = new CuentaClienteDto()
-                    {
-                        Debe = producto.MontoTotalCancelar,
-                        Producto = producto,
-                        Movimientos = new List<MovimientoDto>()
-                    };
-
-                    var relacionProdPlan = new ProductosPlanesDto()
-                    {
-                        Producto = producto,
-                        Plan = producto.Planes.First(),
-                        FechaInicioPlanPago = DateTime.Now,
-                        Movimientos = cuentaClienteDto.Movimientos
-                    };
-
-                    cliente.CuentaCliente = cuentaClienteDto; 
-                    cliente.Productos = new List<ProductoDto>(){ producto};
-                    cliente.ProductosPlanes = new List<ProductosPlanesDto>()
-                    { relacionProdPlan };
 
                     try
                     {
-                        ClientesQuery.ExecuteTransactCliente(Mapper.Map<Cliente>(cliente),
-                            Mapper.Map<Producto>(producto),
-                            Mapper.Map<ProductosPlanes>(relacionProdPlan),
-                            Mapper.Map<CuentaCliente>(cuentaClienteDto)
-                            );
-                        //ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
-                        //ProductosQuery.AddProducto(_mapper.Map<Producto>(producto));
-                        //ProductosPlanesQuery.AddProductosPlanes(_mapper.Map<ProductosPlanes>(relacionProdPlan));
-                        //CuentaClienteQuery.AddCuentaCliente(_mapper.Map<CuentaCliente>(cuentaClienteDto));
+                        db.Clientes.Add(clienteAgregar);
+                        db.CuentaClientes.Add(nuevaCuentacliente);
+                        db.Productos.Add(producto);
 
+                        db.SaveChanges();
+
+                        trx.Commit();
+
+                        return true;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-
-                        
-                        throw e;
+                        trx.Rollback();
+                        throw new Exception("No se pudo agregar el cliente");
                     }
-                    
-                    //GC.SuppressFinalize(conn);
-                    
-
-                    return true;
                 }
+                
 
-               // ClientesQuery.Addclientes(_mapper.Map<Cliente>(cliente));
-
-                return true;
             }
-            catch(Exception e)
-            {
-                var msg = e.Message;
-                throw new Exception("No fue posible agregar cliente");
-            }
+            
         }
 
         public  bool Modificar(ClienteDto cliente)
         {
             try
             {
-                ClientesQuery.UpdateClientes(Mapper.Map<Cliente>(cliente));
+                using (var db = new Facturacion_Gimnasio_JuanEntities())
+                {
+                    var clienteModificar = db.Clientes.SingleOrDefault(c => c.ClienteId == cliente.ClienteId);
+                    clienteModificar.Apellido = cliente.Apellido;
+                    clienteModificar.DNI = cliente.Dni;
+                    clienteModificar.FechaNacimiento = cliente.FechaNacimiento;
+                    clienteModificar.DomicilioParticular = cliente.DomicilioParticular;
+                    clienteModificar.DomicilioComercial = cliente.DomicilioComercial;
+                    clienteModificar.NroCelular = cliente.NroCelular;
+                    clienteModificar.TelefonoFijo = cliente.TelefonoFijo;
+                    clienteModificar.Rubro = cliente.Rubro;
+                    clienteModificar.ZonaId = cliente.Zona.ZonaId;
+                    
+                }
                 return true;
             }
             catch
@@ -126,21 +128,9 @@ namespace Facturacion.Aplicacion.Servicios
             }
         }
 
-        public static bool Eliminar(Guid id)
-        {
-            try
-            {
-                ClientesQuery.DeleteCliente(id);
-                return true;
-            }
-            catch
-            {
+        
 
-                throw new Exception("No fue posible eliminar al cliente");
-            }
-        }
-
-        public List<ClientesResult> Listar(string cadena)
+        public List<ClienteDto> Listar(string cadena)
         {
             //if (!string.IsNullOrEmpty(cadena))
             //{
@@ -148,12 +138,46 @@ namespace Facturacion.Aplicacion.Servicios
             //        .Where(x => x.Zona.NombreZona == cadena).ToList();
             //}
 
-            return ClientesQuery.GetClientes();
+            try
+            {
+                using (var db = new Facturacion_Gimnasio_JuanEntities())
+                {
+                    var query = from cli in db.Clientes
+                                join z in db.Zonas on cli.ZonaId equals z.ZonaId
+                                join cc in db.CuentaClientes on cli.CuentaClientes.FirstOrDefault().CuentaClienteId equals cc.CuentaClienteId
+                                join prod in db.Productos on cc.RelacionProductosPlanes.FirstOrDefault().Productos.FirstOrDefault().ProductoId equals prod.ProductoId
+                                join pp in db.RelacionProductosPlanes on prod.RelacionProductosPlane.ProductosPlanesId equals pp.ProductosPlanesId
+                                select new ClienteDto
+                                {
+                                    ClienteId = cli.ClienteId,
+                                    NroCliente = cli.NroCliente,
+                                    Apellido = cli.Apellido,
+                                    Nombre = cli.Nombre,
+                                    Dni=cli.DNI,
+                                    FechaNacimiento = cli.FechaNacimiento,
+                                    NroCelular = cli.NroCelular,
+                                    TelefonoFijo = cli.TelefonoFijo,
+                                    Rubro = cli.Rubro,
+                                    CuentasCliente = cli.CuentaClientes,
+                                    Zona = z,
+                                    
+                                };
+                    return query.Where(x=>x.Zona.NombreZona==cadena).ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
-        public ClienteDto GetCliente(Guid id)
+        public Cliente GetCliente(Guid id)
         {
-            return Mapper.Map<ClienteDto> (ClientesQuery.GetClientesById(id));
+            using (var db = new Facturacion_Gimnasio_JuanEntities())
+            {
+                return db.Clientes.SingleOrDefault(c => c.ClienteId == id);
+            }
         }
     }
 }

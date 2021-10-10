@@ -14,7 +14,7 @@ namespace Facturacion
 {
     public partial class ListadoCuentaCliente : PresentacionBase
     {
-        private readonly MovimientoServicio movimientoServicio = new MovimientoServicio();
+        
         private Guid _cuentaCliente;
         public ListadoCuentaCliente(Guid cuentaclienteId)
         {
@@ -48,7 +48,7 @@ namespace Facturacion
 
         private void ListadoCuentaCliente_Load(object sender, EventArgs e)
         {
-            dgvCuentaCliente.DataSource = movimientoServicio.ListarMovimientos(_cuentaCliente);
+           // dgvCuentaCliente.DataSource = MovimientoServicio.ListarMovimientos(_cuentaCliente);
             
         }
 

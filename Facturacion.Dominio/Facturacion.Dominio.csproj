@@ -69,21 +69,19 @@
     <Compile Include="Dto\ProductoDto.cs" />
     <Compile Include="Dto\ProductosPlanesDto.cs" />
     <Compile Include="Dto\ZonaDto.cs" />
-    <Compile Include="Entities\Cliente.cs" />
-    <Compile Include="Entities\CuentaCliente.cs" />
-    <Compile Include="Entities\DetalleCliente.cs" />
-    <Compile Include="Entities\DetalleProducto.cs" />
-    <Compile Include="Entities\Factura.cs" />
-    <Compile Include="Entities\InformeFacturacion.cs" />
-    <Compile Include="Entities\Movimiento.cs" />
-    <Compile Include="Entities\Plan.cs" />
-    <Compile Include="Entities\Producto.cs" />
-    <Compile Include="Entities\ProductosPlanes.cs" />
-    <Compile Include="Entities\Zona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Facturacion.Infraestructura\Facturacion.Infraestructura.csproj">
+      <Project>{065ab72f-0ad2-4f54-bc55-aed252900348}</Project>
+      <Name>Facturacion.Infraestructura</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
